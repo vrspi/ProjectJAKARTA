@@ -1,3 +1,35 @@
+# Dossiers spécifiques à IntelliJ IDEA
 .idea/
-carcrafter/.vscode/
-carcrafter/target/
+
+# Dossiers spécifiques à Eclipse
+.classpath
+.project
+.settings/
+
+# Dossiers spécifiques à NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Dossiers spécifiques à Maven
+/target/
+
+# Dossiers spécifiques à Gradle
+/build/
+/out/
+
+# Fichiers de configuration
+*.iml
+*.ipr
+*.iws
+
+# Fichiers générés par l'environnement de développement
+*.class
+
+# Fichiers de log
+*.log
+
+# Dossiers de sauvegarde
+*~
