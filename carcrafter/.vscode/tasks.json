@@ -1,0 +1,18 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Deploy to Tomcat",
+            "type": "shell",
+            "command": "mvn",
+            "args": [
+                "clean", "package", "cargo:redeploy"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
