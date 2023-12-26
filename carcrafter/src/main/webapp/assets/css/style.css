@@ -860,6 +860,10 @@ label {
   color: var(--theme-color);
 }
 
+.dark-icon {
+  color: var(--color-dark) !important;
+}
+
 .header-top-right {
   display: flex;
   align-items: center;
@@ -889,6 +893,10 @@ label {
 
 .header-top-social a:hover {
   color: var(--theme-color);
+}
+
+.dark-hover:hover{
+  color: var(--color-dark) !important;
 }
 
 
