@@ -1,6 +1,12 @@
 <%@ tag language="java" pageEncoding="UTF-8" %>
 <%@ attribute name="title" required="true" rtexprvalue="true" %>
-<%@ attribute name="content" fragment="true" %>
+
+
+<%! String email = "carcrafter@support.com"; %>
+<%! String phone = "+212 500-000000"; %>
+<%! String open_time = "Mon - Sat (10AM - 06PM)"; %>
+<%! String address = "Rue Al Houria Hay Al Hikma, Oujda, Morocco"; %>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,11 +58,10 @@
                     <div class="header-top-left">
                         <div class="header-top-contact">
                             <ul>
-                                <li><a href="cdn-cgi/l/email-protection.html#ee87808881ae8b968f839e828bc08d8183"><i class="far fa-envelopes"></i>
-                                        <span class="__cf_email__" data-cfemail="375e59515877524f565a475b521954585a">[email&#160;protected]</span></a></li>
-                                <li><a href="tel:+21236547898"><i class="far fa-phone-volume"></i> +2 123 654 7898</a>
+                                <li><a href="mailto:<%= email %>"><i class="far fa-envelopes dark-icon"></i><%= email %></a></li>
+                                <li><a href="tel:<%= phone %>"><i class="far fa-phone-volume"></i><%= phone %></a>
                                 </li>
-                                <li><a href="#"><i class="far fa-alarm-clock"></i> Sun - Fri (08AM - 10PM)</a></li>
+                                <li><a href="#"><i class="far fa-alarm-clock"></i><%= open_time %></a></li>
                             </ul>
                         </div>
                     </div>
@@ -68,9 +73,9 @@
                         <div class="header-top-social">
                             <span>Follow Us: </span>
                             <a href="#"><i class="fab fa-facebook"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-x-twitter"></i></a>
+                            <a href="#" class="dark-hover"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="dark-hover"><i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
@@ -238,30 +243,29 @@
                 </div>
                 <div class="sidebar-about">
                     <h4>About Us</h4>
-                    <p>There are many variations of passages available sure there majority have suffered alteration in
-                        some form by injected humour or randomised words which don't look even slightly believable.</p>
+                    <p>We're a dedicated team in Oujda, Morocco, redefining convenience and transparency in the online marketplace. Welcome to a new era in car shopping with us.</p>
                 </div>
                 <div class="sidebar-contact">
                     <h4>Contact Info</h4>
                     <ul>
                         <li>
                             <h6>Email</h6>
-                            <a href="cdn-cgi/l/email-protection.html#adc4c3cbc2edc8d5ccc0ddc1c883cec2c0"><i class="far fa-envelope"></i><span class="__cf_email__" data-cfemail="61080f070e210419000c110d044f020e0c">[email&#160;protected]</span></a>
+                            <a href="mailto:<%= email %>"><i class="far fa-envelope"></i><%= email %></a>
                         </li>
                         <li>
                             <h6>Phone</h6>
-                            <a href="tel:+21236547898"><i class="far fa-phone"></i>+2 123 654 7898</a>
+                            <a href="tel:<%= phone %>"><i class="far fa-phone"></i><%= phone %></a>
                         </li>
                         <li>
                             <h6>Address</h6>
-                            <a href="#"><i class="far fa-location-dot"></i>25/B Milford Road, New York</a>
+                            <a href="#"><i class="far fa-location-dot"></i><%= address %></a>
                         </li>
                     </ul>
                 </div>
                 <div class="sidebar-social">
                     <h4>Follow Us</h4>
                     <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-linkedin"></i></a>
                 </div>
@@ -272,7 +276,7 @@
 
 
     <main class="main">
-        <jsp:invoke fragment="content"></jsp:invoke>
+        <jsp:doBody />
     </main>
 
 
@@ -292,10 +296,10 @@
                                 in some form by injected humour words believable.
                             </p>
                             <ul class="footer-contact">
-                                <li><a href="tel:+21236547898"><i class="far fa-phone"></i>+2 123 654 7898</a></li>
-                                <li><i class="far fa-map-marker-alt"></i>25/B Milford Road, New York</li>
-                                <li><a href="cdn-cgi/l/email-protection.html#bcd5d2dad3fcd9c4ddd1ccd0d992dfd3d1"><i
-                                            class="far fa-envelope"></i><span class="__cf_email__" data-cfemail="0e676068614e6b766f637e626b206d6163">[email&#160;protected]</span></a></li>
+                                <li><a href="tel:<%= phone %>"><i class="far fa-phone"></i><%= phone %></a></li>
+                                <li><i class="far fa-map-marker-alt"></i><%= address %></li>
+                                <li><a href="mailto:<%= email %>"><i
+                                            class="far fa-envelope"></i><%= email %></a></li>
                             </ul>
                         </div>
                     </div>
@@ -355,7 +359,7 @@
                     <div class="col-md-6 align-self-center">
                         <ul class="footer-social">
                             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
                             <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                             <li><a href="#"><i class="fab fa-youtube"></i></a></li>
                         </ul>
@@ -375,7 +379,7 @@
 
 
     <!-- js -->
-    <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="assets/js/modernizr.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/imagesloaded.pkgd.min.js"></script>
@@ -389,7 +393,5 @@
     <script src="assets/js/jquery.nice-select.min.js"></script>
     <script src="assets/js/wow.min.js"></script>
     <script src="assets/js/main.js"></script>
-
-    <script>(function(){var js = "window['__CF$cv$params']={r:'8305cf47df680c45',t:'MTcwMTcxMTM2Ni44NjgwMDA='};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='cdn-cgi/challenge-platform/h/b/scripts/jsd/56d3063b/main.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script>
 </body>
 </html>
