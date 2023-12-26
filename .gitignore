@@ -14,7 +14,7 @@
 /.nb-gradle/
 
 # Dossiers spécifiques à Maven
-/target/
+/carcrafter/target/
 
 # Dossiers spécifiques à Gradle
 /build/
