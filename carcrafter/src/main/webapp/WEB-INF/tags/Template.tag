@@ -67,8 +67,8 @@
                     </div>
                     <div class="header-top-right">
                         <div class="header-top-link">
-                            <a href="#"><i class="far fa-arrow-right-to-arc"></i> Login</a>
-                            <a href="#"><i class="far fa-user-vneck"></i> Register</a>
+                            <a href="Login"><i class="far fa-arrow-right-to-arc"></i> Login</a>
+                            <a href="Register"><i class="far fa-user-vneck"></i> Register</a>
                         </div>
                         <div class="header-top-social">
                             <span>Follow Us: </span>
