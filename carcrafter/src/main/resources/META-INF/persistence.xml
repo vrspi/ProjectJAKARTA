@@ -1,0 +1,33 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.2">
+    <persistence-unit name="JPAUtil" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <class>com.carcrafter.model.ConditionT</class>
+        <class>com.carcrafter.model.BodyType</class>
+          <class>com.carcrafter.model.Color</class>
+        <class>com.carcrafter.model.Doors</class>
+          <class>com.carcrafter.model.Cylinders</class>
+        <class>com.carcrafter.model.DriveType</class>
+          <class>com.carcrafter.model.Favorites</class>
+        <class>com.carcrafter.model.Features</class>
+          <class>com.carcrafter.model.FuelType</class>
+        <class>com.carcrafter.model.Image</class>
+          <class>com.carcrafter.model.Listing</class>
+        <class>com.carcrafter.model.ListingFeature</class>
+          <class>com.carcrafter.model.ListingImage</class>
+        <class>com.carcrafter.model.MakeBrand</class>
+          <class>com.carcrafter.model.Message</class>
+        <class>com.carcrafter.model.Model</class>
+          <class>com.carcrafter.model.Transmission</class>
+        <class>com.carcrafter.model.Year</class>
+        <!-- Add all your other entity classes here -->
+        <properties>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://up-de-fra1-mysql-1.db.run-on-erla.com:11550/db-em8drk9p60sq"/>
+            <property name="jakarta.persistence.jdbc.user" value="db-em8drk9p60sq"/>
+            <property name="jakarta.persistence.jdbc.password" value="ggHveHwgaLort00gYreoW60h"/>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+        
+            <!-- Additional properties -->
+        </properties>
+    </persistence-unit>
+</persistence>
