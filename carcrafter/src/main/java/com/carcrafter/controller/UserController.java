@@ -19,6 +19,16 @@ public class UserController extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
 
+        if ("Login".equals(action)) {
+            // Process login
+            // Implement your login logic here
+            response.sendRedirect("home"); // Redirect to home page or dashboard
+        } else if ("Register".equals(action)) {
+            // Process signup
+            // Implement your signup logic here
+            response.sendRedirect("login"); // Redirect to login page
+        }
     }
 }

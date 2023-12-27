@@ -2,14 +2,14 @@
 <!--<%@ taglib prefix="mt" tagdir="/WEB-INF/tags" %>-->
 
 <mt:Template title="- Register">
-  <!-- breadcrumb -->
-  <!-- breadcrumb -->
+  <!-- existing content -->
 
-  <!-- breadcrumb end -->
+  <style>
+    .row { display: flex; }
+    .column { flex: 50%; }
+    .form-group { margin-bottom: 15px; }
+  </style>
 
-
-  <!-- login area -->
-  <!-- register area -->
   <div class="login-area py-120">
     <div class="container">
       <div class="col-md-5 mx-auto">
@@ -18,19 +18,44 @@
             <img src="assets/img/logo/logo.png" alt="">
             <p>Create your motex account</p>
           </div>
-          <form action="#">
-            <div class="form-group">
-              <label>Full Name</label>
-              <input type="text" class="form-control" placeholder="Your Name">
+          <form action="UserController" method="post">
+            <div class="row">
+              <div class="column">
+                <!-- Left column inputs -->
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" class="form-control" placeholder="First Name" name="firstName">
+                </div>
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" class="form-control" placeholder="Last Name" name="lastName">
+                </div>
+                <div class="form-group">
+                  <label>Email Address</label>
+                  <input type="email" class="form-control" placeholder="Your Email" name="email">
+                </div>
+                <div class="form-group">
+                  <label>Phone Number</label>
+                  <input type="text" class="form-control" placeholder="Phone Number" name="phone">
+                </div>
+              </div>
+              <div class="column">
+                <!-- Right column inputs -->
+                <div class="form-group">
+                  <label>Address</label>
+                  <input type="text" class="form-control" placeholder="Address" name="address">
+                </div>
+                <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" class="form-control" placeholder="Your Password" name="password">
+                </div>
+                <div class="form-group">
+                  <label>Confirm Password</label>
+                  <input type="password" class="form-control" placeholder="Confirm Password" name="confirmPassword">
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-              <label>Email Address</label>
-              <input type="email" class="form-control" placeholder="Your Email">
-            </div>
-            <div class="form-group">
-              <label>Password</label>
-              <input type="password" class="form-control" placeholder="Your Password">
-            </div>
+
             <div class="form-check form-group">
               <input class="form-check-input" type="checkbox" value="" id="agree">
               <label class="form-check-label" for="agree">
@@ -56,7 +81,5 @@
       </div>
     </div>
   </div>
-  <!-- register area end -->
-  <!-- login area end -->
-  <!-- team-area end -->
+  <!-- rest of the content -->
 </mt:Template>
