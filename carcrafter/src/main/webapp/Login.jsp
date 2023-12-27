@@ -17,7 +17,7 @@
             <img src="assets/img/logo/logo.png" alt="">
             <p>Login with your motex account</p>
           </div>
-          <form action="UserController">
+          <form action="UserController" method="post">
             <div class="form-group">
               <label>Email Address</label>
               <input type="email" class="form-control" placeholder="Your Email">
@@ -36,7 +36,7 @@
               <a href="forgot-password.html" class="forgot-pass">Forgot Password?</a>
             </div>
             <div class="d-flex align-items-center">
-              <button type="submit" class="theme-btn"><i class="far fa-sign-in"></i> Login</button>
+              <button type="submit" name="action" value="Login" class="theme-btn"><i class="far fa-sign-in"></i> Login</button>
             </div>
           </form>
           <div class="login-footer">
