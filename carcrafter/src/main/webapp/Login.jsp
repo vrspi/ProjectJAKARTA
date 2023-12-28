@@ -20,11 +20,13 @@
           <form action="UserController" method="post">
             <div class="form-group">
               <label>Email Address</label>
-              <input type="email" class="form-control" placeholder="Your Email">
+              <input type="email" class="form-control" name="email" placeholder="Your Email"required
+                     pattern="^[a-zA-Z0-9_+&*-]+(?:\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,7}$"
+                     title="Email should be in the format: username@domain.com. Username can contain alphanumeric characters, underscores, pluses, and hyphens. Domain must include alphanumeric characters and a top-level domain between 2 to 7 letters long.">
             </div>
             <div class="form-group">
               <label>Password</label>
-              <input type="password" class="form-control" placeholder="Your Password">
+              <input type="password" class="form-control" name="password" placeholder="Your Password"required>
             </div>
             <div class="d-flex justify-content-between mb-4">
               <div class="form-check">
