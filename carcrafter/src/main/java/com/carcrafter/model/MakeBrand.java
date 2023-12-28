@@ -11,6 +11,14 @@ public class MakeBrand {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int makeID;
 
+    public int getMakeID() {
+        return makeID;
+    }
+
+    public void setMakeID(int makeID) {
+        this.makeID = makeID;
+    }
+
     private String makeName;
 
     public String getMakeName() {
