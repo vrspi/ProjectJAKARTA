@@ -15,6 +15,7 @@
 
 
     <!-- testimonial area -->
-    <%@ include file="partials/addlisting.jsp" %>
+    <jsp:include page="partials/addlisting.jsp" />
+
     <!-- testimonial area end -->
 </mt:TemplateLoggedin>
