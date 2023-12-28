@@ -1,5 +1,6 @@
 package com.carcrafter.controller;
 
+import jakarta.persistence.TypedQuery;
 import jakarta.servlet.ServletException;
 
 import jakarta.servlet.http.*;
@@ -26,7 +27,49 @@ public class UserController extends HttpServlet {
         String action = request.getParameter("action");
         String errorMessage;
         if ("Login".equals(action)) {
-            response.sendRedirect("home");
+
+            String login = request.getParameter("email");
+            String password = request.getParameter("password");
+
+            if (login.isEmpty() || password.isEmpty()) {
+                errorMessage = "Missing required fields !!";
+                request.setAttribute("errorMessage", errorMessage);
+                response.sendRedirect("Login.jsp");
+                return;
+            }
+
+            String hashedPassword = hashPassword(password);
+
+            EntityManager em = JPAUtil.getEntityManager();
+            try {
+                em.getTransaction().begin();
+
+                String jpql = "SELECT COUNT(u) FROM UserProfile u WHERE u.email = :email AND u.password = :hashedPassword";
+                TypedQuery<Long> query = em.createQuery(jpql, Long.class);
+                query.setParameter("email", login);
+                query.setParameter("hashedPassword", hashedPassword);
+
+                Long count = query.getSingleResult();
+
+                if (count > 0) {//etat mliha kolch khedam
+                    HttpSession session = request.getSession();
+                    session.setAttribute("Login", login);
+                    response.sendRedirect("index.jsp");
+                } else {
+                    request.setAttribute("errorMessage", "Invalid username or password");
+                    response.sendRedirect("Login.jsp");
+                }
+
+                em.getTransaction().commit();
+            } catch (Exception e) {
+                e.printStackTrace(); // Log the exception
+            } finally {
+                if (em.isOpen()) {
+                    em.close();
+                }
+            }
+
+            //response.sendRedirect("index.jsp");
         } else if ("Register".equals(action)) {
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
