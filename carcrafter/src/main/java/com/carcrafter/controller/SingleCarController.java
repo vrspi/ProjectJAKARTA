@@ -18,6 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/SingleCar")
 public class SingleCarController extends HttpServlet {
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
         request.getRequestDispatcher("SingleCar.jsp").forward(request, response);
