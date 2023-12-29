@@ -40,7 +40,7 @@
                             </li>
                         </ul>
                     </div>
-                    <a href="about.html" class="theme-btn mt-4">Discover More<i
+                    <a href="carcrafter/about" class="theme-btn mt-4">Discover More<i
                             class="fas fa-arrow-right-long"></i></a>
                 </div>
             </div>
