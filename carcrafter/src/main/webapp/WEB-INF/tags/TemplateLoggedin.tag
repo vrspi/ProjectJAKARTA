@@ -1,16 +1,7 @@
 <%@ tag language="java" pageEncoding="UTF-8" %>
 <%@ attribute name="title" required="true" rtexprvalue="true" %>
 
-
-<%! String email = "carcrafter@support.com"; %>
-<%! String phone = "+212 500-000000"; %>
-<%! String open_time = "Mon - Sat (10AM - 06PM)"; %>
-<%! String address = "Rue Al Houria Hay Al Hikma, Oujda, Morocco"; %>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths"><!-- Mirrored from www.pickuptrucks.co.tz/add-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 04 Dec 2023 17:37:05 GMT --><head>
     <!-- meta tags -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +10,7 @@
     <meta name="keywords" content="">
 
     <!-- title -->
-    <title>Motex <%= title %></title>
+    <title>Motex - Car Dealer And Automotive HTML5 Template</title>
 
     <!-- favicon -->
     <link rel="icon" type="image/x-icon" href="assets/img/logo/favicon.png">
@@ -37,10 +28,10 @@
 
 </head>
 
-<body class="home-3">
+<body>
 
     <!-- preloader -->
-    <div class="preloader">
+    <div class="preloader" style="display: none;">
         <div class="loader-ripple">
             <div></div>
             <div></div>
@@ -58,41 +49,57 @@
                     <div class="header-top-left">
                         <div class="header-top-contact">
                             <ul>
-                                <li><a href="mailto:<%= email %>"><i class="far fa-envelopes dark-icon"></i><%= email %></a></li>
-                                <li><a href="tel:<%= phone %>"><i class="far fa-phone-volume"></i><%= phone %></a>
+                                <li><a href="cdn-cgi/l/email-protection.html#afc6c1c9c0efcad7cec2dfc3ca81ccc0c2"><i class="far fa-envelopes"></i>
+                                        info@example.com</a></li>
+                                <li><a href="tel:+21236547898"><i class="far fa-phone-volume"></i> +2 123 654 7898</a>
                                 </li>
-                                <li><a href="#"><i class="far fa-alarm-clock"></i><%= open_time %></a></li>
+                                <li><a href="#"><i class="far fa-alarm-clock"></i> Sun - Fri (08AM - 10PM)</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="header-top-right">
                         <div class="header-top-link">
-                            <a href="Login"><i class="far fa-arrow-right-to-arc"></i> Login</a>
-                            <a href="Register"><i class="far fa-user-vneck"></i> Register</a>
+                            <a href="#"><i class="far fa-arrow-right-to-arc"></i> Login</a>
+                            <a href="#"><i class="far fa-user-vneck"></i> Register</a>
                         </div>
                         <div class="header-top-social">
                             <span>Follow Us: </span>
                             <a href="#"><i class="fab fa-facebook"></i></a>
-                            <a href="#"><i class="fab fa-x-twitter"></i></a>
-                            <a href="#" class="dark-hover"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="dark-hover"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="main-navigation">
-            <nav class="navbar navbar-expand-lg">
+            <nav class="navbar navbar-expand-lg fixed-top">
                 <div class="container position-relative">
                     <a class="navbar-brand" href="index.html">
                         <img src="assets/img/logo/logo.png" alt="logo">
                     </a>
                     <div class="mobile-menu-right">
-                        <div class="search-btn">
-                            <button type="button" class="nav-right-link"><i class="far fa-search"></i></button>
+                        <div class="nav-right-account">
+                            <div class="dropdown">
+                                <div data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="assets/img/account/user.jpg" alt="">
+                                </div>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="dashboard.html"><i class="far fa-gauge-high"></i>
+                                            Dashboard</a></li>
+                                    <li><a class="dropdown-item" href="profile.html"><i class="far fa-user"></i> My
+                                            Profile</a></li>
+                                    <li><a class="dropdown-item" href="profile-listing.html"><i class="far fa-layer-group"></i> My Listing</a></li>
+                                    <li><a class="dropdown-item" href="profile-favorite.html"><i class="far fa-heart"></i> My Favorites</a></li>
+                                    <li><a class="dropdown-item" href="profile-setting.html"><i class="far fa-cog"></i>
+                                            Settings</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="far fa-sign-out"></i> Log Out</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-mobile-icon"><i class="far fa-bars"></i></span>
                         </button>
                     </div>
@@ -126,7 +133,7 @@
                                             <li><a class="dropdown-item" href="listing-grid.html">Listing Grid</a></li>
                                             <li><a class="dropdown-item" href="listing-list.html">Listing List</a></li>
                                             <li><a class="dropdown-item" href="listing-single.html">Listing Single</a>
-                                            <li><a class="dropdown-item" href="compare.html">Compare</a></li>
+                                            </li><li><a class="dropdown-item" href="compare.html">Compare</a></li>
                                         </ul>
                                     </li>
                                     <li class="dropdown-submenu">
@@ -202,30 +209,31 @@
                             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                         </ul>
                         <div class="nav-right">
-                            <div class="search-btn">
-                                <button type="button" class="nav-right-link"><i class="far fa-search"></i></button>
-                            </div>
                             <div class="cart-btn">
                                 <a href="#" class="nav-right-link"><i class="far fa-cart-plus"></i><span>0</span></a>
+                            </div>
+                            <div class="nav-right-account">
+                                <div class="dropdown">
+                                    <div data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="assets/img/account/user.jpg" alt="">
+                                    </div>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="dashboard.html"><i class="far fa-gauge-high"></i> Dashboard</a></li>
+                                        <li><a class="dropdown-item" href="profile.html"><i class="far fa-user"></i> My
+                                                Profile</a></li>
+                                        <li><a class="dropdown-item" href="profile-listing.html"><i class="far fa-layer-group"></i> My Listing</a></li>
+                                        <li><a class="dropdown-item" href="profile-favorite.html"><i class="far fa-heart"></i> My Favorites</a></li>
+                                        <li><a class="dropdown-item" href="profile-setting.html"><i class="far fa-cog"></i> Settings</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="far fa-sign-out"></i> Log
+                                                Out</a></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="nav-right-btn mt-2">
                                 <a href="#" class="theme-btn"><span class="far fa-plus-circle"></span>Add Listing</a>
                             </div>
-                            <div class="sidebar-btn">
-                                <button type="button" class="nav-right-link"><i class="far fa-bars-sort"></i></button>
-                            </div>
                         </div>
                     </div>
-                    <!-- search area -->
-                    <div class="search-area">
-                        <form action="#">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Type Keyword...">
-                                <button type="submit" class="search-icon-btn"><i class="far fa-search"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- search area end -->
                 </div>
             </nav>
         </div>
@@ -233,50 +241,56 @@
     <!-- header area end -->
 
 
-    <!-- sidebar-popup -->
-    <div class="sidebar-popup">
-        <div class="sidebar-wrapper">
-            <div class="sidebar-content">
-                <button type="button" class="close-sidebar-popup"><i class="far fa-xmark"></i></button>
-                <div class="sidebar-logo">
-                    <img src="assets/img/logo/logo.png" alt="">
-                </div>
-                <div class="sidebar-about">
-                    <h4>About Us</h4>
-                    <p>We're a dedicated team in Oujda, Morocco, redefining convenience and transparency in the online marketplace. Welcome to a new era in car shopping with us.</p>
-                </div>
-                <div class="sidebar-contact">
-                    <h4>Contact Info</h4>
-                    <ul>
-                        <li>
-                            <h6>Email</h6>
-                            <a href="mailto:<%= email %>"><i class="far fa-envelope"></i><%= email %></a>
-                        </li>
-                        <li>
-                            <h6>Phone</h6>
-                            <a href="tel:<%= phone %>"><i class="far fa-phone"></i><%= phone %></a>
-                        </li>
-                        <li>
-                            <h6>Address</h6>
-                            <a href="#"><i class="far fa-location-dot"></i><%= address %></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="sidebar-social">
-                    <h4>Follow Us</h4>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-x-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <main class="main">
+
+        <!-- breadcrumb -->
+     
+     
+
+
+
+     
+        <!-- breadcrumb end -->
+
+
+        <!-- user-profile -->
+        <div class="user-profile py-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="user-profile-sidebar">
+                            <div class="user-profile-sidebar-top">
+                                <div class="user-profile-img">
+                                    <img src="assets/img/account/user.jpg" alt="">
+                                    <button type="button" class="profile-img-btn"><i class="far fa-camera"></i></button>
+                                    <input type="file" class="profile-img-file">
+                                </div>
+                                <h5>Antoni Jonson</h5>
+                                <p>antoni@example.com</p>
+                            </div>
+                            <ul class="user-profile-sidebar-list">
+                                <li><a href="dashboard.html"><i class="far fa-gauge-high"></i> Dashboard</a></li>
+                                <li><a href="profile.html"><i class="far fa-user"></i> My Profile</a></li>
+                                <li><a href="profile-listing.html"><i class="far fa-layer-group"></i> My Listing</a>
+                                </li>
+                                <li><a class="active" href="add-listing.html"><i class="far fa-plus-circle"></i> Add
+                                        Listing</a></li>
+                                <li><a href="profile-favorite.html"><i class="far fa-heart"></i> My Favorites</a></li>
+                                <li><a href="profile-message.html"><i class="far fa-envelope"></i> Messages <span class="badge badge-danger">02</span></a></li>
+                                <li><a href="profile-setting.html"><i class="far fa-gear"></i> Settings</a></li>
+                                <li><a href="#"><i class="far fa-sign-out"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                     <jsp:doBody/>
+                       
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- sidebar-popup end -->
+        <!-- user-profile end -->
 
-
-    <main class="main">
-        <jsp:doBody />
     </main>
 
 
@@ -296,10 +310,9 @@
                                 in some form by injected humour words believable.
                             </p>
                             <ul class="footer-contact">
-                                <li><a href="tel:<%= phone %>"><i class="far fa-phone"></i><%= phone %></a></li>
-                                <li><i class="far fa-map-marker-alt"></i><%= address %></li>
-                                <li><a href="mailto:<%= email %>"><i
-                                            class="far fa-envelope"></i><%= email %></a></li>
+                                <li><a href="tel:+21236547898"><i class="far fa-phone"></i>+2 123 654 7898</a></li>
+                                <li><i class="far fa-map-marker-alt"></i>25/B Milford Road, New York</li>
+                                <li><a href="cdn-cgi/l/email-protection.html#0960676f66496c71686479656c276a6664"><i class="far fa-envelope"></i>info@example.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -353,13 +366,13 @@
                 <div class="row">
                     <div class="col-md-6 align-self-center">
                         <p class="copyright-text">
-                            &copy; Copyright <span id="date"></span> <a href="#"> MOTEX </a> All Rights Reserved.
+                            © Copyright <span id="date">2023</span> <a href="#"> MOTEX </a> All Rights Reserved.
                         </p>
                     </div>
                     <div class="col-md-6 align-self-center">
                         <ul class="footer-social">
                             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                             <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                             <li><a href="#"><i class="fab fa-youtube"></i></a></li>
                         </ul>
@@ -374,7 +387,7 @@
 
 
     <!-- scroll-top -->
-    <a href="#" id="scroll-top"><i class="far fa-arrow-up"></i></a>
+    <a href="#" id="scroll-top" class="active"><i class="far fa-arrow-up"></i></a>
     <!-- scroll-top end -->
 
 
@@ -393,5 +406,9 @@
     <script src="assets/js/jquery.nice-select.min.js"></script>
     <script src="assets/js/wow.min.js"></script>
     <script src="assets/js/main.js"></script>
-</body>
-</html>
+
+<script>(function(){var js = "window['__CF$cv$params']={r:'8305cf8fec930767',t:'MTcwMTcxMTM3OC4wNzQwMDA='};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='cdn-cgi/challenge-platform/h/b/scripts/jsd/56d3063b/main.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe>
+
+
+
+</body><!-- Mirrored from www.pickuptrucks.co.tz/add-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 04 Dec 2023 17:37:05 GMT --></html>
