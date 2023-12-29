@@ -13,12 +13,12 @@
     </div> -->
     <!-- breadcrumb end -->
 
-
+    <div id="partialContainer">
     <!-- testimonial area -->
     <jsp:include page="partials/addlisting.jsp" />
+    </div>
 
 
-    
-
+        
     <!-- testimonial area end -->
 </mt:TemplateLoggedin>
