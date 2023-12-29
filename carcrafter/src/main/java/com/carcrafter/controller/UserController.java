@@ -28,22 +28,16 @@ public class UserController extends HttpServlet {
         String errorMessage;
         if ("Login".equals(action)) {
 
-            String email = request.getParameter("email");
+            String login = request.getParameter("email");
             String password = request.getParameter("password");
 
-            if (email.isEmpty() || password.isEmpty()) {
+            if (login.isEmpty() || password.isEmpty()) {
                 errorMessage = "Missing required fields !!";
                 request.setAttribute("errorMessage", errorMessage);
                 response.sendRedirect("Login.jsp");
                 return;
             }
-            if (!isValidEmail(email)) {
-                request.setAttribute("errorMessage", "Invalid email format !!");
 
-                response.sendRedirect("Login.jsp");
-                return;
-            }
-        //Rehacher le password  pour  le comparer  dans database
             String hashedPassword = hashPassword(password);
 
             EntityManager em = JPAUtil.getEntityManager();
@@ -52,20 +46,18 @@ public class UserController extends HttpServlet {
 
                 String jpql = "SELECT COUNT(u) FROM UserProfile u WHERE u.email = :email AND u.password = :hashedPassword";
                 TypedQuery<Long> query = em.createQuery(jpql, Long.class);
-                query.setParameter("email", email);
+                query.setParameter("email", login);
                 query.setParameter("hashedPassword", hashedPassword);
 
                 Long count = query.getSingleResult();
 
-                if (count > 0) {
-                    //etat mliha kolch khedam
+                if (count > 0) {//etat mliha kolch khedam
                     HttpSession session = request.getSession();
-                    session.setAttribute("Login", email);
+                    session.setAttribute("Login", login);
                     response.sendRedirect("index.jsp");
                 } else {
                     request.setAttribute("errorMessage", "Invalid username or password");
-                    //System.out.println("Error: Invalid email format !!");// AFFICHAGE  DANS L CONSOLE
-                   response.sendRedirect("Login.jsp");
+                    response.sendRedirect("Login.jsp");
                 }
 
                 em.getTransaction().commit();
@@ -77,7 +69,7 @@ public class UserController extends HttpServlet {
                 }
             }
 
-
+            //response.sendRedirect("index.jsp");
         } else if ("Register".equals(action)) {
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
