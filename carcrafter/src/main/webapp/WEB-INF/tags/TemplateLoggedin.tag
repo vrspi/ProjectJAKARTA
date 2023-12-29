@@ -269,16 +269,16 @@
                                 <p>antoni@example.com</p>
                             </div>
                             <ul class="user-profile-sidebar-list">
-                                <li><a href="dashboard.html"><i class="far fa-gauge-high"></i> Dashboard</a></li>
-                                <li><a href="profile.html"><i class="far fa-user"></i> My Profile</a></li>
-                                <li><a href="profile-listing.html"><i class="far fa-layer-group"></i> My Listing</a>
+                                <li><a href="#"  onclick="loadPartial(event, 'partials/Dashboard.jsp')"><i class="far fa-gauge-high"></i> Dashboard</a></li>
+                                <li><a href="#"  onclick="loadPartial(event, 'partials/profile.jsp')"><i class="far fa-user"></i> My Profile</a></li>
+                                <li><a href="#"  onclick="loadPartial(event, 'partials/Listing.jsp')"><i class="far fa-layer-group"></i> My Listing</a>
                                 </li>
-                                <li><a class="active" href="add-listing.html"><i class="far fa-plus-circle"></i> Add
+                                <li><a class="active" href="#"  onclick="loadPartial(event, '/addlisting')"><i class="far fa-plus-circle"></i> Add
                                         Listing</a></li>
-                                <li><a href="profile-favorite.html"><i class="far fa-heart"></i> My Favorites</a></li>
-                                <li><a href="profile-message.html"><i class="far fa-envelope"></i> Messages <span class="badge badge-danger">02</span></a></li>
-                                <li><a href="profile-setting.html"><i class="far fa-gear"></i> Settings</a></li>
-                                <li><a href="#"><i class="far fa-sign-out"></i> Logout</a></li>
+                                <li><a href="#"  onclick="loadPartial(event, 'partials/Favorites.jsp')"><i class="far fa-heart"></i> My Favorites</a></li>
+                                <li><a href="#"  onclick="loadPartial(event, 'partials/Messages.jsp')"><i class="far fa-envelope"></i> Messages <span class="badge badge-danger">02</span></a></li>
+                                <li><a href="#"  onclick="loadPartial(event, 'partials/Settings.jsp')"><i class="far fa-gear"></i> Settings</a></li>
+                                <li><a href="#"  onclick="loadPartial(event, 'partials/Logout.jsp')"><i class="far fa-sign-out"></i> Logout</a></li>
                             </ul>
                         </div>
                     </div>
@@ -410,5 +410,25 @@
 <script>(function(){var js = "window['__CF$cv$params']={r:'8305cf8fec930767',t:'MTcwMTcxMTM3OC4wNzQwMDA='};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='cdn-cgi/challenge-platform/h/b/scripts/jsd/56d3063b/main.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe>
 
 
+    <script>
+        function loadPartial(event, partialPath) {
+            event.preventDefault(); 
+             // Remove 'active' class from all similar elements
+            document.querySelectorAll('.user-profile-sidebar-list a').forEach(function(element) {
+                element.classList.remove('active');
+            });
+
+            // Add 'active' class to the clicked element
+            event.target.classList.add('active');
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById('partialContainer').innerHTML = xhr.responseText;
+                }
+            };
+            xhr.open('GET', '/carcrafter/RouterController?partial=' + partialPath, true);
+            xhr.send();
+        }
+        </script>
 
 </body><!-- Mirrored from www.pickuptrucks.co.tz/add-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 04 Dec 2023 17:37:05 GMT --></html>
