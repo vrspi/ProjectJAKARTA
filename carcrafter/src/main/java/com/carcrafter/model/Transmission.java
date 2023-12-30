@@ -13,6 +13,14 @@ public class Transmission {
 
     private String transmissionType;
 
+    public int getTransmissionID() {
+        return transmissionID;
+    }
+
+    public void setTransmissionID(int transmissionID) {
+        this.transmissionID = transmissionID;
+    }
+
     public String getTransmissionType() {
         return transmissionType;
     }

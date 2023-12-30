@@ -11,6 +11,14 @@ public class Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int modelID;
 
+    public int getModelID() {
+        return modelID;
+    }
+
+    public void setModelID(int modelID) {
+        this.modelID = modelID;
+    }
+
     private String modelName;
 
     public String getModelName() {

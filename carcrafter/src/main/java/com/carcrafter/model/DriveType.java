@@ -11,6 +11,14 @@ public class DriveType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int driveTypeID;
 
+    public int getDriveTypeID() {
+        return driveTypeID;
+    }
+
+    public void setDriveTypeID(int driveTypeID) {
+        this.driveTypeID = driveTypeID;
+    }
+
     private String driveType;
 
     public String getDriveType() {
