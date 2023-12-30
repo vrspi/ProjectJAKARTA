@@ -2,10 +2,14 @@ package com.carcrafter.controller;
 
 import java.io.Console;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.InputStream;
+import java.nio.file.FileAlreadyExistsException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import com.carcrafter.model.JPAUtil;
 import com.carcrafter.model.*;
@@ -13,30 +17,57 @@ import com.carcrafter.model.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
+import jakarta.servlet.http.Part;
 
 
 @WebServlet("/AddListing")
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024,  // 1 MB
+        maxFileSize = 10 * 1024 * 1024,   // 10 MB
+        maxRequestSize = 10 * 1024 * 1024  // 10 MB
+)
 public class CarController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        EntityManager em = JPAUtil.getEntityManager();
         if( request.getAttribute("listingTitle")==null)
         {
             request.setAttribute("listingTitle","");
             request.setAttribute("price","");
+            request.setAttribute("mileage","");
+            request.setAttribute("engineSize","");
+            request.setAttribute("vin","");
+            request.setAttribute("tags","");
+            request.setAttribute("description","");
+
+            request.setAttribute("selectedcondition","-1");
+            request.setAttribute("selectedbodyType","-1");
+            request.setAttribute("selectedmakeBrand","-1");
+            request.setAttribute("selectedmodel","-1");
+            request.setAttribute("selecteddriveType","-1");
+            request.setAttribute("selectedyear","-1");
+            request.setAttribute("selectedtransmission","-1");
+            request.setAttribute("selectedfuelType","-1");
+            request.setAttribute("selectedcylinders","-1");
+            request.setAttribute("selectedcolor","-1");
+            request.setAttribute("selecteddoors","-1");
+
+
+            request.setAttribute("Name","gggg");
+            request.setAttribute("Email","ggg");
+            request.setAttribute("Phone","eeee");
+
         }
 
 
-
-
-
-        EntityManager em = JPAUtil.getEntityManager();
 
         TypedQuery<ConditionT> queryConditionT = em.createQuery("SELECT c FROM ConditionT c", ConditionT.class);
         List<ConditionT> ConditionTs = queryConditionT.getResultList();
@@ -87,9 +118,22 @@ public class CarController extends HttpServlet {
         request.setAttribute("doorsList", doorsList);
         request.setAttribute("featureList", featureList);
 
+
         em.close();
         request.getRequestDispatcher("AddListing.jsp").forward(request, response);
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -112,6 +156,13 @@ public class CarController extends HttpServlet {
         String doors = req.getParameter("doors");
         String vin = req.getParameter("vin");
         String tags = req.getParameter("tags");
+        String description = req.getParameter("description");
+
+        String[] selectedFeatures = req.getParameterValues("feature");
+
+
+
+
 
 
         Map<String, String> errors = new HashMap<>();
@@ -127,10 +178,143 @@ public class CarController extends HttpServlet {
             errors.put("price", "Le prix doit être un nombre valide avec jusqu'à 2 chiffres après la virgule");
         }
 
+        String mileagePattern = "^(\\d{1,10})(\\.\\d{1,2})?$";
+
+        if (mileage == null || mileage.isEmpty() || !mileage.matches(mileagePattern)) {
+            errors.put("mileage", "Le mileage doit être un nombre valide avec jusqu'à 2 chiffres après la virgule");
+        }
+
+
+        String engineSizePattern = "^[1-9]\\d{3,}$";
+
+        if (engineSize == null || engineSize.isEmpty() || !engineSize.matches(engineSizePattern)) {
+            errors.put("engineSize", "La taille du moteur doit être un nombre entier supérieur à 1000");
+        }
+
+        String vinPattern = "^[A-HJ-NPR-Z0-9]{17}$";
+
+        if (vin == null || vin.isEmpty() || !vin.matches(vinPattern)) {
+            errors.put("vin", "Le numéro de VIN doit être composé de 17 caractères alphanumériques (sauf I, O, Q)");
+        }
+
+
+        String tagsPattern = "^[a-zA-Z0-9]+(?:,[a-zA-Z0-9]+)*$";
+
+        if (tags == null || tags.isEmpty() || !tags.matches(tagsPattern)) {
+            errors.put("tags", "Les tags doivent être séparés par des virgules et ne peuvent contenir que des lettres et des chiffres");
+        }
+
+
+        if (description == null || description.isEmpty()) {
+            errors.put("description", "La description est requise.");
+        }
+
+        boolean etat_images = true;
+
+        Collection<Part> fileParts = req.getParts();
+
+        if(fileParts.isEmpty())
+        {
+            etat_images = false;
+        }
+
+        for (Part filePart : fileParts)
+        {
+            String fileName = getFileName(filePart);
+
+            if (fileName != null)
+            {
+                //verifier size
+                if (filePart.getSize() > 2 * 1024 * 1024)
+                {
+                    etat_images = false;
+                    break;
+                }
+
+                //verifier extension
+                if (!fileName.toLowerCase().endsWith(".jpg") && !fileName.toLowerCase().endsWith(".jpeg") &&
+                        !fileName.toLowerCase().endsWith(".png") && !fileName.toLowerCase().endsWith(".gif")) {
+                    etat_images = false;
+                    break;
+                }
+
+
+                /*
+                String hashedFileName = hashFileName(fileName);
+                String uploadDirectory = "C:\\Users\\MO KADI\\Desktop\\Nouveau dossier";
+                Path uploadPath = Path.of(uploadDirectory, hashedFileName);
+                try (InputStream fileContent = filePart.getInputStream())
+                {
+                    Files.copy(fileContent, uploadPath);
+                    String imageUrl = "C:\\Users\\MO KADI\\Desktop\\Nouveau dossier\\" + hashedFileName;
+                }
+                catch (FileAlreadyExistsException e)
+                {
+                    System.out.println("Une image avec le même nom existe déjà sur le serveur.");
+                }
+                catch (Exception e) {
+                    System.out.println("Erreur lors du téléchargement de l'image '" + fileName + "'.");
+                }*/
+
+            }
+        }
+
+
+        if (!etat_images) {
+            errors.put("images", "Aploder les vrais images");
+        }
+
+
+        System.out.println(etat_images);
+
+
+
+
+
+
+        if (selectedFeatures != null && selectedFeatures.length > 0) {
+            for (String feature : selectedFeatures)
+            {
+                System.out.println("Feature selected: " + feature);
+            }
+        }
+        else
+        {
+            System.out.println("Aucune fonctionnalité sélectionnée.");
+        }
+
+
 
         //charger les input
         req.setAttribute("listingTitle",listingTitle);
         req.setAttribute("price",price);
+        req.setAttribute("mileage",mileage);
+        req.setAttribute("engineSize",engineSize);
+        req.setAttribute("vin",vin);
+        req.setAttribute("tags",tags);
+        req.setAttribute("description",description);
+
+
+
+        req.setAttribute("selectedcondition", (condition != null) ? condition : "-1");
+        req.setAttribute("selectedbodyType", (bodyType != null) ? bodyType : "-1");
+        req.setAttribute("selectedmakeBrand", (makeBrand != null) ? makeBrand : "-1");
+        req.setAttribute("selectedmodel", (model != null) ? model : "-1");
+        req.setAttribute("selecteddriveType", (driveType != null) ? driveType : "-1");
+        req.setAttribute("selectedyear", (year != null) ? year : "-1");
+        req.setAttribute("selectedtransmission", (transmission != null) ? transmission : "-1");
+        req.setAttribute("selectedfuelType", (fuelType != null) ? fuelType : "-1");
+        req.setAttribute("selectedcylinders", (cylinders != null) ? cylinders : "-1");
+        req.setAttribute("selectedcolor", (color != null) ? color : "-1");
+        req.setAttribute("selecteddoors", (doors != null) ? doors : "-1");
+
+
+
+        req.setAttribute("Name","gggg");
+        req.setAttribute("Email","ggg");
+        req.setAttribute("Phone","eeee");
+
+
 
 
         if (!errors.isEmpty()) {
@@ -139,4 +323,37 @@ public class CarController extends HttpServlet {
         }
 
     }
+    private String getFileName(Part part) {
+        String submittedFileName = part.getSubmittedFileName();
+        if (submittedFileName != null && !submittedFileName.isEmpty()) {
+            return submittedFileName;
+        }
+        return null;
+    }
+
+
+
+    private String hashFileName(String fileName) {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
+            String currentTimeStamp = dateFormat.format(new Date());
+
+            String fileNameWithTimestamp = fileName + "-" + currentTimeStamp;
+
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(fileNameWithTimestamp.getBytes());
+            byte[] bytes = md.digest();
+
+            StringBuilder sb = new StringBuilder();
+            for (byte b : bytes) {
+                sb.append(String.format("%02x", b));
+            }
+
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return fileName;
+        }
+    }
+
 }
