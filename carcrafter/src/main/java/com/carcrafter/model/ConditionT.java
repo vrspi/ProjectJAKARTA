@@ -1,16 +1,14 @@
 package com.carcrafter.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class ConditionT {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int conditionTID;
-
     private String conditionTType;
 
     public String getConditionTType() {
@@ -21,5 +19,18 @@ public class ConditionT {
         this.conditionTType = conditionTType;
     }
 
+    public int getConditionTID() {
+        return conditionTID;
+    }
+
+    public void setConditionTID(int conditionTID) {
+        this.conditionTID = conditionTID;
+    }
+
+    public List<ConditionT> GetAll(EntityManager em)
+    {
+        TypedQuery<ConditionT> queryConditionT = em.createQuery("SELECT b FROM ConditionT b", ConditionT.class);
+        return queryConditionT.getResultList();
+    }
    
 }

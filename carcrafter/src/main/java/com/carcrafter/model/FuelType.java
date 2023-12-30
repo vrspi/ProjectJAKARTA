@@ -13,6 +13,14 @@ public class FuelType {
 
     private String fuelType;
 
+    public int getFuelTypeID() {
+        return fuelTypeID;
+    }
+
+    public void setFuelTypeID(int fuelTypeID) {
+        this.fuelTypeID = fuelTypeID;
+    }
+
     public String getFuelType() {
         return fuelType;
     }
