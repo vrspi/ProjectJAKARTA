@@ -141,4 +141,124 @@ public class Listing {
     @OneToMany(mappedBy = "listing")
     private List<ListingImage> listingImages;
 
+    public int getListingID() {
+        return listingID;
+    }
+
+    public void setListingID(int listingID) {
+        this.listingID = listingID;
+    }
+
+    public ConditionT getCondition() {
+        return condition;
+    }
+
+    public void setCondition(ConditionT condition) {
+        this.condition = condition;
+    }
+
+    public BodyType getBodyType() {
+        return bodyType;
+    }
+
+    public void setBodyType(BodyType bodyType) {
+        this.bodyType = bodyType;
+    }
+
+    public MakeBrand getMakeBrand() {
+        return makeBrand;
+    }
+
+    public void setMakeBrand(MakeBrand makeBrand) {
+        this.makeBrand = makeBrand;
+    }
+
+    public Model getModel() {
+        return model;
+    }
+
+    public void setModel(Model model) {
+        this.model = model;
+    }
+
+    public Year getYear() {
+        return year;
+    }
+
+    public void setYear(Year year) {
+        this.year = year;
+    }
+
+    public DriveType getDriveType() {
+        return driveType;
+    }
+
+    public void setDriveType(DriveType driveType) {
+        this.driveType = driveType;
+    }
+
+    public Transmission getTransmission() {
+        return transmission;
+    }
+
+    public void setTransmission(Transmission transmission) {
+        this.transmission = transmission;
+    }
+
+    public FuelType getFuelType() {
+        return fuelType;
+    }
+
+    public void setFuelType(FuelType fuelType) {
+        this.fuelType = fuelType;
+    }
+
+    public Cylinders getCylinders() {
+        return cylinders;
+    }
+
+    public void setCylinders(Cylinders cylinders) {
+        this.cylinders = cylinders;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public Doors getDoors() {
+        return doors;
+    }
+
+    public void setDoors(Doors doors) {
+        this.doors = doors;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public List<ListingFeature> getListingFeatures() {
+        return listingFeatures;
+    }
+
+    public void setListingFeatures(List<ListingFeature> listingFeatures) {
+        this.listingFeatures = listingFeatures;
+    }
+
+    public List<ListingImage> getListingImages() {
+        return listingImages;
+    }
+
+    public void setListingImages(List<ListingImage> listingImages) {
+        this.listingImages = listingImages;
+    }
+
 }

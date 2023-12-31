@@ -48,6 +48,16 @@
                                         }
                                     %>
                                 </select>
+                                <!-- eror -->
+                                <%
+                                    if (request.getAttribute("errors") != null)
+                                    {
+                                        String conditionError = errors.get("condition");
+                                        if (conditionError != null)
+                                        { %>
+                                <div class="form-message text-danger" style="font-size: smaller;padding-left: 10px;"><%= conditionError %></div>
+                                <%}
+                                } %>
 
 
 
@@ -70,6 +80,16 @@
                                     %>
 
                                 </select>
+                                <!-- eror -->
+                                <%
+                                    if (request.getAttribute("errors") != null)
+                                    {
+                                        String bodyTypeError = errors.get("bodyType");
+                                        if (bodyTypeError != null)
+                                        { %>
+                                <div class="form-message text-danger" style="font-size: smaller;padding-left: 10px;"><%= bodyTypeError %></div>
+                                <%}
+                                } %>
 
 
                             </div>
@@ -89,6 +109,16 @@
                                     %>
 
                                 </select>
+                                <!-- eror -->
+                                <%
+                                    if (request.getAttribute("errors") != null)
+                                    {
+                                        String makeBrandError = errors.get("makeBrand");
+                                        if (makeBrandError != null)
+                                        { %>
+                                <div class="form-message text-danger" style="font-size: smaller;padding-left: 10px;"><%= makeBrandError %></div>
+                                <%}
+                                } %>
                             </div>
                         </div>
                         <div class="col-lg-4 mb-3">
@@ -107,6 +137,16 @@
 
                                 </select>
                                 <!-- <div class="nice-select select" tabindex="0"><span class="current">Choose</span><ul class="list"><li data-value="" class="option selected">Choose</li><li data-value="1" class="option">A3</li><li data-value="2" class="option">A4</li><li data-value="3" class="option">A6</li><li data-value="4" class="option">Q4</li><li data-value="5" class="option">Q7</li></ul></div> -->
+                                <!-- eror -->
+                                <%
+                                    if (request.getAttribute("errors") != null)
+                                    {
+                                        String modelError = errors.get("model");
+                                        if (modelError != null)
+                                        { %>
+                                <div class="form-message text-danger" style="font-size: smaller;padding-left: 10px;"><%= modelError %></div>
+                                <%}
+                                } %>
                             </div>
                         </div>
                         <div class="col-lg-4 mb-3">
@@ -139,7 +179,16 @@
                                         }
                                     %>
                                 </select>
-                                <!-- <div class="nice-select select" tabindex="0"><span class="current">Choose</span><ul class="list"><li data-value="" class="option selected">Choose</li><li data-value="1" class="option">2023</li><li data-value="2" class="option">2022</li><li data-value="3" class="option">2021</li><li data-value="4" class="option">2020</li><li data-value="5" class="option">2019</li></ul></div> -->
+                                <!-- eror -->
+                                <%
+                                    if (request.getAttribute("errors") != null)
+                                    {
+                                        String yearError = errors.get("year");
+                                        if (yearError != null)
+                                        { %>
+                                <div class="form-message text-danger" style="font-size: smaller;padding-left: 10px;"><%= yearError %></div>
+                                <%}
+                                } %>
                             </div>
                         </div>
                         <div class="col-lg-4 mb-3">
@@ -156,7 +205,16 @@
                                         }
                                     %>
                                 </select>
-                                <!-- <div class="nice-select select" tabindex="0"><span class="current">Choose</span><ul class="list"><li data-value="" class="option selected">Choose</li><li data-value="1" class="option">Automatic</li><li data-value="2" class="option">Semi Auto</li><li data-value="3" class="option">Manual</li></ul></div> -->
+                                <!-- eror -->
+                                <%
+                                    if (request.getAttribute("errors") != null)
+                                    {
+                                        String driveTypeError = errors.get("driveType");
+                                        if (driveTypeError != null)
+                                        { %>
+                                <div class="form-message text-danger" style="font-size: smaller;padding-left: 10px;"><%= driveTypeError %></div>
+                                <%}
+                                } %>
                             </div>
                         </div>
                         <div class="col-lg-4 mb-3">
@@ -173,7 +231,16 @@
                                         }
                                     %>
                                 </select>
-                                <!-- <div class="nice-select select" tabindex="0"><span class="current">Choose</span><ul class="list"><li data-value="" class="option selected">Choose</li><li data-value="1" class="option">Automatic</li><li data-value="2" class="option">Manual</li></ul></div> -->
+                                <!-- eror -->
+                                <%
+                                    if (request.getAttribute("errors") != null)
+                                    {
+                                        String transmissionError = errors.get("transmission");
+                                        if (transmissionError != null)
+                                        { %>
+                                <div class="form-message text-danger" style="font-size: smaller;padding-left: 10px;"><%= transmissionError %></div>
+                                <%}
+                                } %>
                             </div>
                         </div>
                         <div class="col-lg-4 mb-3">
@@ -190,7 +257,17 @@
                                         }
                                     %>
                                 </select>
-                                <!-- <div class="nice-select select" tabindex="0"><span class="current">Choose</span><ul class="list"><li data-value="" class="option selected">Choose</li><li data-value="1" class="option">Diesel</li><li data-value="2" class="option">Petrol</li></ul></div> -->
+                                <!-- eror -->
+                                <%
+                                    if (request.getAttribute("errors") != null)
+                                    {
+                                        String fuelTypeError = errors.get("fuelType");
+                                        if (fuelTypeError != null)
+                                        { %>
+                                <div class="form-message text-danger" style="font-size: smaller;padding-left: 10px;"><%= fuelTypeError %></div>
+                                <%}
+                                } %>
+
                             </div>
                         </div>
                         <div class="col-lg-4 mb-3">
@@ -239,7 +316,16 @@
                                         }
                                     %>
                                 </select>
-                                <!-- <div class="nice-select select" tabindex="0"><span class="current">Choose</span><ul class="list"><li data-value="" class="option selected">Choose</li><li data-value="1" class="option">4</li><li data-value="2" class="option">6</li></ul></div> -->
+                                <!-- eror -->
+                                <%
+                                    if (request.getAttribute("errors") != null)
+                                    {
+                                        String cylindersError = errors.get("cylinders");
+                                        if (cylindersError != null)
+                                        { %>
+                                <div class="form-message text-danger" style="font-size: smaller;padding-left: 10px;"><%= cylindersError %></div>
+                                <%}
+                                } %>
                             </div>
                         </div>
                         <div class="col-lg-4 mb-3">
@@ -256,7 +342,16 @@
                                         }
                                     %>
                                 </select>
-                                <!-- <div class="nice-select select" tabindex="0"><span class="current">Choose</span><ul class="list"><li data-value="" class="option selected">Choose</li><li data-value="1" class="option">Red</li><li data-value="2" class="option">White</li><li data-value="3" class="option">Black</li></ul></div> -->
+                                <!-- eror -->
+                                <%
+                                    if (request.getAttribute("errors") != null)
+                                    {
+                                        String colorError = errors.get("color");
+                                        if (colorError != null)
+                                        { %>
+                                <div class="form-message text-danger" style="font-size: smaller;padding-left: 10px;"><%= colorError %></div>
+                                <%}
+                                } %>
                             </div>
                         </div>
                         <div class="col-lg-4 mb-3">
@@ -273,7 +368,16 @@
                                         }
                                     %>
                                 </select>
-                                <!-- <div class="nice-select select" tabindex="0"><span class="current">Choose</span><ul class="list"><li data-value="" class="option selected">Choose</li><li data-value="1" class="option">2</li><li data-value="2" class="option">4</li><li data-value="3" class="option">6</li></ul></div> -->
+                                <!-- eror -->
+                                <%
+                                    if (request.getAttribute("errors") != null)
+                                    {
+                                        String doorsError = errors.get("doors");
+                                        if (doorsError != null)
+                                        { %>
+                                <div class="form-message text-danger" style="font-size: smaller;padding-left: 10px;"><%= doorsError %></div>
+                                <%}
+                                } %>
                             </div>
                         </div>
                         <div class="col-lg-4 mb-3">
@@ -334,7 +438,7 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea name="description" value="<%= request.getAttribute("description") %>" class="form-control" placeholder="Write description" cols="30" rows="5"></textarea>
+                                <textarea name="description" class="form-control" placeholder="Write description" cols="30" rows="5"><%= request.getAttribute("description") %></textarea>
                                 <!-- eror -->
                                 <%
                                     if (request.getAttribute("errors") != null)
@@ -355,10 +459,20 @@
                         <div class="col-6 col-md-4">
                             <div class="form-check">
                                 <input class="form-check-input" name="feature" type="checkbox" value="<%= features.getFeatureID() %>" id="feature1">
-                                <label class="form-check-label" for="feature1">
+                                <label class="form-check-label">
                                     <%= features.getFeatureName() %>
                                 </label>
                             </div>
+                            <!-- eror -->
+                            <%
+                                if (request.getAttribute("errors") != null)
+                                {
+                                    String featuresError = errors.get("features");
+                                    if (featuresError != null)
+                                    { %>
+                            <div class="form-message text-danger" style="font-size: smaller;padding-left: 10px;"><%= featuresError %></div>
+                            <%}
+                            } %>
                         </div>
                         <%
                             }
@@ -390,6 +504,16 @@
                                 <label class="form-check-label" for="agree">
                                     I Agree With Your Terms Of Services And Privacy Policy.
                                 </label>
+                                <!-- eror -->
+                                <%
+                                    if (request.getAttribute("errors") != null)
+                                    {
+                                        String agreeError = errors.get("agree");
+                                        if (agreeError != null)
+                                        { %>
+                                <div class="form-message text-danger" style="font-size: smaller;padding-left: 10px;"><%= agreeError %></div>
+                                <%}
+                                } %>
                             </div>
                         </div>
                         <div class="col-lg-12 my-4">
