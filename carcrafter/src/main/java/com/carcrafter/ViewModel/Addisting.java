@@ -1,8 +1,15 @@
 package com.carcrafter.ViewModel;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.math.BigDecimal;
 
-public class AddListing {
+
+public class Addisting {
+
     private int listingID;
     private int userID;
     private String title;

@@ -12,7 +12,6 @@ import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import com.carcrafter.ViewModel.AddListing;
 import com.carcrafter.model.JPAUtil;
 import com.carcrafter.model.*;
 
@@ -603,28 +602,61 @@ public class CarController extends HttpServlet {
         else
         {
 
-            /*
+
             // creer lobjet listing
             try {
                 em.getTransaction().begin();
 
-                AddListing listing = new AddListing();
+                Listing listing = new Listing();
                 listing.setUserID(1);
                 listing.setTitle(listingTitle);
-                listing.setConditionTID(Integer.parseInt(condition));
-                listing.setBodyTypeID(Integer.parseInt(bodyType));
-                listing.setMakeID(Integer.parseInt(makeBrand));
-                listing.setModelID(Integer.parseInt(model));
+                ConditionT conditionEntity = new ConditionT();
+                conditionEntity.setConditionTID(Integer.parseInt(condition));
+                BodyType bodyTypeEntity = new BodyType();
+                bodyTypeEntity.setBodyTypeID(Integer.parseInt(bodyType));
+                MakeBrand makeEntity = new MakeBrand();
+                makeEntity.setMakeID(Integer.parseInt(makeBrand));
+                Model modelEntity = new Model();
+                modelEntity.setModelID(Integer.parseInt(model));
+                listing.setCondition(conditionEntity);
+                listing.setBodyType(bodyTypeEntity);
+                listing.setMakeBrand(makeEntity);
+                listing.setModel(modelEntity);
                 listing.setPrice(new BigDecimal(price));
-                listing.setYearID(Integer.parseInt(year));
-                listing.setDriveTypeID(Integer.parseInt(driveType));
-                listing.setTransmissionID(Integer.parseInt(transmission));
-                listing.setFuelTypeID(Integer.parseInt(fuelType));
+                // Assuming you have entities like Year, DriveType, Transmission, and FuelType
+                Year yearEntity = new Year();
+                DriveType driveTypeEntity = new DriveType();
+                Transmission transmissionEntity = new Transmission();
+                FuelType fuelTypeEntity = new FuelType();
+
+// Set properties for each entity based on the values from the request parameters
+                yearEntity.setYearID(Integer.parseInt(year));
+                driveTypeEntity.setDriveTypeID(Integer.parseInt(driveType));
+                transmissionEntity.setTransmissionID(Integer.parseInt(transmission));
+                fuelTypeEntity.setFuelTypeID(Integer.parseInt(fuelType));
+
+// Now, set these entities in the AddListing entity
+                listing.setYear(yearEntity);
+                listing.setDriveType(driveTypeEntity);
+                listing.setTransmission(transmissionEntity);
+                listing.setFuelType(fuelTypeEntity);
                 listing.setMileage(Integer.parseInt(mileage));
                 listing.setEngineSize(new BigDecimal(engineSize));
-                listing.setCylindersID(Integer.parseInt(cylinders));
-                listing.setColorID(Integer.parseInt(color));
-                listing.setDoorsID(Integer.parseInt(doors));
+                // Assuming you have entities like Cylinders, Color, and Doors
+                Cylinders cylindersEntity = new Cylinders();
+                Color colorEntity = new Color();
+                Doors doorsEntity = new Doors();
+
+// Set properties for each entity based on the values from the request parameters
+                cylindersEntity.setCylindersID(Integer.parseInt(cylinders));
+                colorEntity.setColorID(Integer.parseInt(color));
+                doorsEntity.setDoorsID(Integer.parseInt(doors));
+
+// Now, set these entities in the AddListing entity
+                listing.setCylinders(cylindersEntity);
+                listing.setColor(colorEntity);
+                listing.setDoors(doorsEntity);
+
                 listing.setVin(vin);
                 listing.setTags(tags);
                 listing.setDescription(description);
@@ -642,8 +674,6 @@ public class CarController extends HttpServlet {
                 em.close();
                 JPAUtil.close();
             }
-
-            */
 
 
             //Fitures de voiture
