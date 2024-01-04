@@ -43,8 +43,13 @@ public class UserController extends HttpServlet {
             EntityManager em = JPAUtil.getEntityManager();
             try {
                 em.getTransaction().begin();
+             //  String jbdl2 = "ALTER TABLE UserProfile " +
+                //        "ADD COLUMN role VARCHAR(30), " +
+                //        "ADD COLUMN image VARCHAR(100);";
+            //    em.createNativeQuery(jbdl2).executeUpdate();
 
                 String jpql = "SELECT COUNT(u) FROM UserProfile u WHERE u.email = :email AND u.password = :hashedPassword";
+
                 TypedQuery<Long> query = em.createQuery(jpql, Long.class);
                 query.setParameter("email", login);
                 query.setParameter("hashedPassword", hashedPassword);
