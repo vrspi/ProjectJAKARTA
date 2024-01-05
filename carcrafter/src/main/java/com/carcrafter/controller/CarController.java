@@ -629,30 +629,30 @@ public class CarController extends HttpServlet {
                 Transmission transmissionEntity = new Transmission();
                 FuelType fuelTypeEntity = new FuelType();
 
-// Set properties for each entity based on the values from the request parameters
+
                 yearEntity.setYearID(Integer.parseInt(year));
                 driveTypeEntity.setDriveTypeID(Integer.parseInt(driveType));
                 transmissionEntity.setTransmissionID(Integer.parseInt(transmission));
                 fuelTypeEntity.setFuelTypeID(Integer.parseInt(fuelType));
 
-// Now, set these entities in the AddListing entity
+
                 listing.setYear(yearEntity);
                 listing.setDriveType(driveTypeEntity);
                 listing.setTransmission(transmissionEntity);
                 listing.setFuelType(fuelTypeEntity);
                 listing.setMileage(Integer.parseInt(mileage));
                 listing.setEngineSize(new BigDecimal(engineSize));
-                // Assuming you have entities like Cylinders, Color, and Doors
+
                 Cylinders cylindersEntity = new Cylinders();
                 Color colorEntity = new Color();
                 Doors doorsEntity = new Doors();
 
-// Set properties for each entity based on the values from the request parameters
+
                 cylindersEntity.setCylindersID(Integer.parseInt(cylinders));
                 colorEntity.setColorID(Integer.parseInt(color));
                 doorsEntity.setDoorsID(Integer.parseInt(doors));
 
-// Now, set these entities in the AddListing entity
+
                 listing.setCylinders(cylindersEntity);
                 listing.setColor(colorEntity);
                 listing.setDoors(doorsEntity);
@@ -662,7 +662,6 @@ public class CarController extends HttpServlet {
                 listing.setDescription(description);
 
                 em.persist(listing);
-
                 em.getTransaction().commit();
             } catch (Exception e)
             {
@@ -671,13 +670,53 @@ public class CarController extends HttpServlet {
                 }
                 e.printStackTrace();
             } finally {
-                em.close();
-                JPAUtil.close();
+                //em.close();
+                //JPAUtil.close();
             }
 
 
+            //select le ID de la voiture inserer
+            TypedQuery<Integer> countQuery = em.createQuery("SELECT MAX(l.listingID) FROM Listing l", Integer.class);
+            int maxListingID = countQuery.getSingleResult();
+
+
+
             //Fitures de voiture
-            System.out.println("list : "+Myfeatures.toString());
+            Listing lst = new Listing();
+            lst.setListingID(maxListingID);
+
+            //System.out.println("list : " + Myfeatures.toString());
+            EntityTransaction transaction = em.getTransaction();
+
+            try {
+                transaction.begin();
+
+                for (int i = 0; i < Myfeatures.size(); i++) {
+                    Features ftc = new Features();
+                    ftc.setFeatureID(Myfeatures.get(i));
+                    ListingFeature lf = new ListingFeature();
+                    lf.setListing(lst);
+                    lf.setFeature(ftc);
+
+                    em.persist(lf);
+                }
+
+                transaction.commit();
+            } catch (Exception e) {
+                if (transaction.isActive()) {
+                    transaction.rollback();
+                }
+                e.printStackTrace(); // Gérez l'exception de manière appropriée ici
+            } finally {
+                if (em.isOpen()) {
+                    em.close();
+                }
+            }
+
+
+
+
+
 
 
             //aploder les image au serveur et metre dans la base de donnee
