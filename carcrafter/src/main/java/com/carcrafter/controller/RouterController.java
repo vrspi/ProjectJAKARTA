@@ -19,7 +19,11 @@ public class RouterController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
         String partialPath = request.getParameter("partial");
-        if(partialPath.contains("addlist")){
+        if(partialPath.contains("Messages.jsp")){
+            request.getRequestDispatcher("/Messages").forward(request, response);
+
+        }
+        else if(partialPath.contains("addlist")){
             EntityManager em = JPAUtil.getEntityManager();
         try{
 
