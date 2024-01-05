@@ -11,6 +11,14 @@ public class Cylinders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cylindersID;
 
+    public int getCylindersID() {
+        return cylindersID;
+    }
+
+    public void setCylindersID(int cylindersID) {
+        this.cylindersID = cylindersID;
+    }
+
     private int numberOfCylinders;
 
     public int getNumberOfCylinders() {

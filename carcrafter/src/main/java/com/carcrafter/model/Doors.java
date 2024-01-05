@@ -13,6 +13,14 @@ public class Doors {
 
     private int numberOfDoors;
 
+    public int getDoorsID() {
+        return doorsID;
+    }
+
+    public void setDoorsID(int doorsID) {
+        this.doorsID = doorsID;
+    }
+
     public int getNumberOfDoors() {
         return numberOfDoors;
     }

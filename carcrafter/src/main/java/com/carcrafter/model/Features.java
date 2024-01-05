@@ -11,6 +11,14 @@ public class Features {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int featureID;
 
+    public int getFeatureID() {
+        return featureID;
+    }
+
+    public void setFeatureID(int featureID) {
+        this.featureID = featureID;
+    }
+
     private String featureName;
 
     public String getFeatureName() {

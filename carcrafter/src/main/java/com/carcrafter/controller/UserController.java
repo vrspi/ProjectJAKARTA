@@ -34,7 +34,7 @@ public class UserController extends HttpServlet {
             if (login.isEmpty() || password.isEmpty()) {
                 errorMessage = "Missing required fields !!";
                 request.setAttribute("errorMessage", errorMessage);
-                response.sendRedirect("Login.jsp");
+                request.getRequestDispatcher("Login.jsp").forward(request, response);
                 return;
             }
 
@@ -43,8 +43,13 @@ public class UserController extends HttpServlet {
             EntityManager em = JPAUtil.getEntityManager();
             try {
                 em.getTransaction().begin();
+             //  String jbdl2 = "ALTER TABLE UserProfile " +
+                //        "ADD COLUMN role VARCHAR(30), " +
+                //        "ADD COLUMN image VARCHAR(100);";
+            //    em.createNativeQuery(jbdl2).executeUpdate();
 
                 String jpql = "SELECT COUNT(u) FROM UserProfile u WHERE u.email = :email AND u.password = :hashedPassword";
+
                 TypedQuery<Long> query = em.createQuery(jpql, Long.class);
                 query.setParameter("email", login);
                 query.setParameter("hashedPassword", hashedPassword);
@@ -57,7 +62,7 @@ public class UserController extends HttpServlet {
                     response.sendRedirect("index.jsp");
                 } else {
                     request.setAttribute("errorMessage", "Invalid username or password");
-                    response.sendRedirect("Login.jsp");
+                    request.getRequestDispatcher("Login.jsp").forward(request, response);
                 }
 
                 em.getTransaction().commit();
@@ -82,21 +87,21 @@ public class UserController extends HttpServlet {
             if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || phone.isEmpty() || address.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                 errorMessage = "Missing required fields !!";
                 request.setAttribute("errorMessage", errorMessage);
-                response.sendRedirect("Register.jsp");
+                request.getRequestDispatcher("Register.jsp").forward(request, response);
                 return;
             }
 
             // Validate email format
             if (!isValidEmail(email)) {
                 request.setAttribute("errorMessage", "Invalid email format !!");
-                response.sendRedirect("Register.jsp");
+                request.getRequestDispatcher("Register.jsp").forward(request, response);
                 return;
             }
 
             // Validate password criteria and confirm password
             if (!password.equals(confirmPassword)) {
                 request.setAttribute("errorMessage", "Invalid password or passwords do not match !!");
-                response.sendRedirect("Register.jsp");
+                request.getRequestDispatcher("Register.jsp").forward(request, response);
                 return;
             }
 
@@ -117,8 +122,8 @@ public class UserController extends HttpServlet {
             em.getTransaction().commit();
             em.close();
 
-            // Redirect to login page after successful registration
-            response.sendRedirect("Login.jsp");
+            request.setAttribute("successMessage","Registration successful, you can log in now");
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
         }
     }
     private boolean isValidEmail(String email) {
