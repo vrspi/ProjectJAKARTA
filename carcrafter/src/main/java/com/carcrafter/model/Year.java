@@ -14,6 +14,14 @@ public class Year {
 
     private String year;
 
+    public int getYearID() {
+        return yearID;
+    }
+
+    public void setYearID(int yearID) {
+        this.yearID = yearID;
+    }
+
     public String getYear() {
         return year;
     }

@@ -424,7 +424,7 @@
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     document.getElementById('partialContainer').innerHTML = xhr.responseText;
-                }
+                }s
             };
             xhr.open('GET', '/carcrafter/RouterController?partial=' + partialPath, true);
             xhr.send();
