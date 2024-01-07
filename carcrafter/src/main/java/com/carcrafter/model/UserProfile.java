@@ -28,6 +28,12 @@ public class UserProfile {
     @Column(name = "Password", length = 100)
     private String password;
 
+    @Column(name = "role", length = 30)
+    private String role;
+
+    @Column(name = "image", length = 100)
+    private String image;
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -50,5 +56,33 @@ public class UserProfile {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getPhone() {
+        return this.phone;
+    }
+
+    public String getRole() {
+        return this.role;
     }
 }

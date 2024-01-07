@@ -26,7 +26,15 @@
     <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
     <link rel="stylesheet" href="assets/css/nice-select.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .logout-button {
+            background-color: #0000;
+        }
 
+        .logout-button:hover {
+            color: red;
+        }
+    </style>
 </head>
 
 <body class="home-3">
@@ -59,8 +67,18 @@
                     </div>
                     <div class="header-top-right">
                         <div class="header-top-link">
+                            <% if (session != null && session.getAttribute("Email") != null) { %>
+                            <form action="UserController" method="post">
+                                <input type="hidden" name="action" value="Logout">
+                                <button type="submit" class="theme-btn logout-button">
+                                    <i class="far fa-sign-out-alt"></i> Logout
+                                </button>
+                            </form>
+                            <% } else { %>
                             <a href="Login"><i class="far fa-arrow-right-to-arc"></i> Login</a>
                             <a href="Register"><i class="far fa-user-vneck"></i> Register</a>
+                            <% } %>
+
                         </div>
                         <div class="header-top-social">
                             <span>Follow Us: </span>
@@ -76,7 +94,7 @@
         <div class="main-navigation">
             <nav class="navbar navbar-expand-lg">
                 <div class="container position-relative">
-                    <a class="navbar-brand" href="/">
+                    <a class="navbar-brand" href="Home">
                         <img src="assets/img/logo/logo.png" alt="logo">
                     </a>
                     <div class="mobile-menu-right">
@@ -200,9 +218,11 @@
                             <div class="cart-btn">
                                 <a href="#" class="nav-right-link"><i class="far fa-cart-plus"></i><span>0</span></a>
                             </div>
+                            <% if (session != null && "admin".equals(session.getAttribute("role"))) { %>
                             <div class="nav-right-btn mt-2">
-                                <a href="#" class="theme-btn"><span class="far fa-plus-circle"></span>Add Listing</a>
+                                <a href="AddListing" class="theme-btn"><span class="far fa-plus-circle"></span>Add Listing</a>
                             </div>
+                            <% } %>
                             <div class="sidebar-btn">
                                 <button type="button" class="nav-right-link"><i class="far fa-bars-sort"></i></button>
                             </div>

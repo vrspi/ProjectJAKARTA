@@ -111,7 +111,7 @@
                 Remember Me
               </label>
             </div>
-            <a href="forgot-password.html" class="forgot-pass">Forgot Password?</a>
+            <a href="ForgotPassword" class="forgot-pass">Forgot Password?</a>
           </div>
           <div class="d-flex align-items-center">
             <button type="submit" name="action" value="Login" class="theme-btn"><i class="far fa-sign-in"></i> Login</button>
