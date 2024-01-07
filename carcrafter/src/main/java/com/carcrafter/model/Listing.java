@@ -130,7 +130,8 @@ public class Listing {
     public void setDescription(String description) {
         this.description = description;
     }
-
+    
+    
     @ManyToOne
     @JoinColumn(name = "locationID")
     private Location location;
