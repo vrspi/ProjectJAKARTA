@@ -132,7 +132,7 @@
           </div>
 
           <div class="form-check form-group">
-            <input class="form-check-input" type="checkbox" value="" id="agree">
+            <input class="form-check-input" type="checkbox" value="" id="agree" required>
             <label class="form-check-label" for="agree">
               I agree with the <a href="terms">Terms Of Service.</a>
             </label>

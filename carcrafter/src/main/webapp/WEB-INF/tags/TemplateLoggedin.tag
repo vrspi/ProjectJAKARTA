@@ -76,7 +76,7 @@
         <div class="main-navigation">
             <nav class="navbar navbar-expand-lg fixed-top">
                 <div class="container position-relative">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="Home">
                         <img src="assets/img/logo/logo.png" alt="logo">
                     </a>
                     <div class="mobile-menu-right">
@@ -229,9 +229,11 @@
                                     </ul>
                                 </div>
                             </div>
+                            <% if (session != null && "admin".equals(session.getAttribute("role"))) { %>
                             <div class="nav-right-btn mt-2">
-                                <a href="#" class="theme-btn"><span class="far fa-plus-circle"></span>Add Listing</a>
+                                <a href="AddListing" class="theme-btn"><span class="far fa-plus-circle"></span>Add Listing</a>
                             </div>
+                            <% } %>
                         </div>
                     </div>
                 </div>
