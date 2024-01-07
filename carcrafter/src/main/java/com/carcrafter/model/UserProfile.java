@@ -65,4 +65,24 @@ public class UserProfile {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getPhone() {
+        return this.phone;
+    }
+
+    public String getRole() {
+        return this.role;
+    }
 }
