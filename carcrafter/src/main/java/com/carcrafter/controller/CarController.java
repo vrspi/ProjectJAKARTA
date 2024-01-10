@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
@@ -19,13 +20,11 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
+import jakarta.servlet.http.*;
 
 
 @WebServlet("/AddListing")
@@ -62,9 +61,10 @@ public class CarController extends HttpServlet {
             request.setAttribute("selecteddoors","-1");
 
 
-            request.setAttribute("Name","kadi");
-            request.setAttribute("Email","kadi@gmail.com");
-            request.setAttribute("Phone","0682653265");
+            HttpSession session = request.getSession(false);
+            request.setAttribute("Name",session.getAttribute("FullName"));
+            request.setAttribute("Email",session.getAttribute("Email"));
+            request.setAttribute("Phone",session.getAttribute("Phone"));
 
         }
 
@@ -607,8 +607,10 @@ public class CarController extends HttpServlet {
             try {
                 em.getTransaction().begin();
 
+                HttpSession session = req.getSession(false);
                 Listing listing = new Listing();
-                listing.setUserID(1);
+                Integer userId = (Integer) session.getAttribute("id");
+                listing.setUserID(userId);
                 listing.setTitle(listingTitle);
                 ConditionT conditionEntity = new ConditionT();
                 conditionEntity.setConditionTID(Integer.parseInt(condition));
@@ -629,30 +631,30 @@ public class CarController extends HttpServlet {
                 Transmission transmissionEntity = new Transmission();
                 FuelType fuelTypeEntity = new FuelType();
 
-// Set properties for each entity based on the values from the request parameters
+
                 yearEntity.setYearID(Integer.parseInt(year));
                 driveTypeEntity.setDriveTypeID(Integer.parseInt(driveType));
                 transmissionEntity.setTransmissionID(Integer.parseInt(transmission));
                 fuelTypeEntity.setFuelTypeID(Integer.parseInt(fuelType));
 
-// Now, set these entities in the AddListing entity
+
                 listing.setYear(yearEntity);
                 listing.setDriveType(driveTypeEntity);
                 listing.setTransmission(transmissionEntity);
                 listing.setFuelType(fuelTypeEntity);
                 listing.setMileage(Integer.parseInt(mileage));
                 listing.setEngineSize(new BigDecimal(engineSize));
-                // Assuming you have entities like Cylinders, Color, and Doors
+
                 Cylinders cylindersEntity = new Cylinders();
                 Color colorEntity = new Color();
                 Doors doorsEntity = new Doors();
 
-// Set properties for each entity based on the values from the request parameters
+
                 cylindersEntity.setCylindersID(Integer.parseInt(cylinders));
                 colorEntity.setColorID(Integer.parseInt(color));
                 doorsEntity.setDoorsID(Integer.parseInt(doors));
 
-// Now, set these entities in the AddListing entity
+
                 listing.setCylinders(cylindersEntity);
                 listing.setColor(colorEntity);
                 listing.setDoors(doorsEntity);
@@ -662,7 +664,6 @@ public class CarController extends HttpServlet {
                 listing.setDescription(description);
 
                 em.persist(listing);
-
                 em.getTransaction().commit();
             } catch (Exception e)
             {
@@ -671,13 +672,49 @@ public class CarController extends HttpServlet {
                 }
                 e.printStackTrace();
             } finally {
-                em.close();
-                JPAUtil.close();
+                //em.close();
+                //JPAUtil.close();
             }
 
 
+            //select le ID de la voiture inserer
+            TypedQuery<Integer> countQuery = em.createQuery("SELECT MAX(l.listingID) FROM Listing l", Integer.class);
+            int maxListingID = countQuery.getSingleResult();
+
+
+
             //Fitures de voiture
-            System.out.println("list : "+Myfeatures.toString());
+            Listing lst = new Listing();
+            lst.setListingID(maxListingID);
+
+            //System.out.println("list : " + Myfeatures.toString());
+            EntityTransaction transaction = em.getTransaction();
+
+            try {
+                transaction.begin();
+
+                for (int i = 0; i < Myfeatures.size(); i++) {
+                    Features ftc = new Features();
+                    ftc.setFeatureID(Myfeatures.get(i));
+                    ListingFeature lf = new ListingFeature();
+                    lf.setListing(lst);
+                    lf.setFeature(ftc);
+
+                    em.persist(lf);
+                }
+
+                transaction.commit();
+            } catch (Exception e) {
+                if (transaction.isActive()) {
+                    transaction.rollback();
+                }
+                e.printStackTrace(); // Gérez l'exception de manière appropriée ici
+            } finally {
+                if (em.isOpen()) {
+                    em.close();
+                }
+            }
+
 
 
             //aploder les image au serveur et metre dans la base de donnee
@@ -687,25 +724,36 @@ public class CarController extends HttpServlet {
                 if (fileName != null)
                 {
                     String hashedFileName = hashFileName(fileName);
-                    String uploadDirectory = "C:\\Users\\MO KADI\\Desktop\\Nouveau dossier";
-                    Path uploadPath = Path.of(uploadDirectory, hashedFileName);
-                    try (InputStream fileContent = filePart.getInputStream())
-                    {
-                        Files.copy(fileContent, uploadPath);
-                        String imageUrl = uploadPath.toString();
 
-                        System.out.println(imageUrl);
-                        //inserer limage a la base de donnee
+// Obtenez le répertoire de votre application à partir du ServletContext
+                    ServletContext context = req.getServletContext();
+                    String uploadDirectory = context.getRealPath("/webapp/assets/upload/img/car");
+                    Path uploadPath = Paths.get(uploadDirectory, hashedFileName);
 
+                    try (InputStream fileContent = filePart.getInputStream()) {
+                        // Créez le répertoire s'il n'existe pas
+                        Files.createDirectories(uploadPath.getParent());
 
-                    } catch (FileAlreadyExistsException e)
-                    {
+                        // Vérifiez si le fichier existe déjà
+                        if (Files.notExists(uploadPath)) {
+                            Files.copy(fileContent, uploadPath);
+                            // Obtenez le chemin absolu du fichier téléchargé
+                            Path absolutePath = uploadPath.toAbsolutePath();
+                            String imageUrl = absolutePath.toString();
+                            System.out.println("Image téléchargée avec succès : " + imageUrl);
+                            // Insérer l'image dans la base de données
+                        } else {
+                            System.out.println("Une image avec le même nom existe déjà sur le serveur.");
+                            // Gérer le cas où le fichier existe déjà
+                        }
+                    } catch (FileAlreadyExistsException e) {
                         System.out.println("Une image avec le même nom existe déjà sur le serveur.");
-                    } catch (Exception e)
-                    {
+                    } catch (IOException e) {
                         System.out.println("Erreur lors du téléchargement de l'image '" + fileName + "'.");
-                        e.printStackTrace();
+                        e.printStackTrace(); // À des fins de débogage. Vous pouvez choisir de gérer l'exception de manière plus élégante.
                     }
+
+
                 }
             }
 
