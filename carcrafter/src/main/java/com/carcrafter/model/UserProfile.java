@@ -85,4 +85,8 @@ public class UserProfile {
     public String getRole() {
         return this.role;
     }
+
+    public Object getId() {
+        return this.id;
+    }
 }
