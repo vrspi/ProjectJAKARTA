@@ -139,8 +139,7 @@ public class Listing {
     @OneToMany(mappedBy = "listing")
     private List<ListingFeature> listingFeatures;
 
-    @OneToMany(mappedBy = "listing")
-    private List<ListingImage> listingImages;
+ 
 
     public int getListingID() {
         return listingID;
@@ -254,12 +253,17 @@ public class Listing {
         this.listingFeatures = listingFeatures;
     }
 
-    public List<ListingImage> getListingImages() {
-        return listingImages;
+    @OneToMany(mappedBy = "listing")
+    private List<Image> images;
+
+
+    public List<Image> getImages() {
+        return images;
     }
 
-    public void setListingImages(List<ListingImage> listingImages) {
-        this.listingImages = listingImages;
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
+   
 
 }

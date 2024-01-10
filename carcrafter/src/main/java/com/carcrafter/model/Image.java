@@ -17,6 +17,18 @@ public class Image {
 
     private String imagePath;
 
+    @ManyToOne
+    @JoinColumn(name = "ListingID")
+    private Listing listing;
+
+    public int getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(int imageID) {
+        this.imageID = imageID;
+    }
+
     public String getImagePath() {
         return imagePath;
     }
@@ -25,17 +37,12 @@ public class Image {
         this.imagePath = imagePath;
     }
 
-
-    @ManyToOne
-    @JoinColumn(name = "ListingID")
-    private Listing Listing;
-
     public Listing getListing() {
-        return Listing;
+        return listing;
     }
 
     public void setListing(Listing listing) {
-        Listing = listing;
+        this.listing = listing;
     }
 
 }
