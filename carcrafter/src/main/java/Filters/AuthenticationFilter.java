@@ -10,7 +10,6 @@ import java.io.IOException;
 public class AuthenticationFilter implements Filter {
 
     public void init(FilterConfig filterConfig) throws ServletException {
-        // Initialization code here
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -20,17 +19,19 @@ public class AuthenticationFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
 
         HttpSession session = req.getSession(false);
+        String requestedUri = req.getRequestURI();
 
-        if (session != null && session.getAttribute("Email") != null) {
-            // User is logged in, proceed with the request
+        if (session != null && session.getAttribute("id") != null) {
             chain.doFilter(request, response);
-        } else {
-            // User is not logged in, redirect to login page
+        }  else {
+            if (session == null) {
+                session = req.getSession(true);
+            }
+            session.setAttribute("redirectTo", requestedUri);
             res.sendRedirect("Login.jsp");
         }
     }
 
     public void destroy() {
-        // Cleanup code here
     }
 }

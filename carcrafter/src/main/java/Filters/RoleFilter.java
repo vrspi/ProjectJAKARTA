@@ -10,7 +10,6 @@ import java.io.IOException;
 public class RoleFilter implements Filter {
 
     public void init(FilterConfig filterConfig) throws ServletException {
-        // Initialization code here
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -20,13 +19,16 @@ public class RoleFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
 
         HttpSession session = req.getSession();
+        String requestedUri = req.getRequestURI();
 
-        // Corrected the string comparison
+        
         if (session.getAttribute("role") != null && "admin".equals(session.getAttribute("role"))) {
-            // User has admin role, proceed with the request
             chain.doFilter(request, response);
         } else {
-            // User does not have admin role, redirect to login page
+            if (session == null) {
+                session = req.getSession(true);
+            }
+            session.setAttribute("redirectTo", requestedUri);
             res.sendRedirect("Login.jsp");
         }
     }
