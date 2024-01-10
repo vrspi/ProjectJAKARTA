@@ -20,11 +20,17 @@ public class MessagesController extends HttpServlet {
         EntityManager em = JPAUtil.getEntityManager();
         try {
             em.getTransaction().begin();
-            List<Message> messages = em.createQuery("SELECT m FROM Message m", Message.class).getResultList();
+            int currentUserId = 2; // The ID of the currently logged-in user
+
+            String qlString = "SELECT m FROM Message m WHERE m.messageID IN (SELECT MAX(m2.messageID) FROM Message m2 WHERE m2.senderID = :currentUserId OR m2.receiverID = :currentUserId GROUP BY CASE WHEN m2.senderID = :currentUserId THEN m2.receiverID ELSE m2.senderID END)";
+            List<Message> conversations = em.createQuery(qlString, Message.class)
+                                            .setParameter("currentUserId", currentUserId)
+                                            .getResultList();
             em.getTransaction().commit();
-    
-            req.setAttribute("messages", messages);
+
+            req.setAttribute("conversations", conversations);
             req.getRequestDispatcher("/partials/Messages.jsp").forward(req, resp);
+
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback(); // Rollback only if the transaction is active

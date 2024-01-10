@@ -26,26 +26,30 @@
                     <div class="profile-message-wrapper">
                         <div class="profile-message-inbox">
                             <ul class="profile-message-list">
-                                <% 
-                                    List<Message> messages = (List<Message>) request.getAttribute("messages");
-                                    for(Message message : messages) {
+                                <%
+                                    List<Message> conversations = (List<Message>) request.getAttribute("conversations");
+                                    int currentUserId = 2; // The ID of the currently logged-in user
+
+                                    for(Message conversation : conversations) {
+                                        int otherUserId = (conversation.getSenderID() == currentUserId) ? conversation.getReceiverID() : conversation.getSenderID();
+                                        String displayMessage = (conversation.getSenderID() == currentUserId) ? "You: " : "Him/Her: ";
+                                        displayMessage += conversation.getContent();
                                 %>
-                                <li>
-                                    <a href="#">
-                                        <div class="message-avatar">
-                                            <!-- Replace with actual sender's avatar if available -->
-                                            <img src="assets/img/account/avatar_placeholder.jpg" alt="">
+                            <li>
+                                <a href="#">
+                                    <div class="message-avatar">
+                                        <img src="assets/img/account/avatar_placeholder.jpg" alt="">
+                                    </div>
+                                    <div class="message-by">
+                                        <div class="message-by-content">
+                                            <h5>Conversation with User ID: <%= otherUserId %></h5>
+                                            <p><%= displayMessage %></p>
                                         </div>
-                                        <div class="message-by">
-                                            <div class="message-by-content">
-                                                <h5>Sender ID: <%= message.getSenderID() %></h5>
-                                                <span><%= message.getTimestamp() %></span>
-                                            </div>
-                                            <p><%= message.getContent() %></p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <% } %>
+                                    </div>
+                                </a>
+                            </li>
+                            <% } %>
+                            
                             </ul>
                         </div>
                         <div class="message-content">
