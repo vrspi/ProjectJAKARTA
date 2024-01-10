@@ -18,6 +18,10 @@
         <url-pattern>/Profile</url-pattern>
     </filter-mapping>
     <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/AddListing</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
         <filter-name>RoleFilter</filter-name>
         <url-pattern>/AddListing</url-pattern>
     </filter-mapping>

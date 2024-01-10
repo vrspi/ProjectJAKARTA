@@ -20,11 +20,18 @@ public class AuthenticationFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
 
         HttpSession session = req.getSession(false);
+        String requestedUri = req.getRequestURI();
 
-        if (session != null && session.getAttribute("Email") != null) {
+        if (session != null && session.getAttribute("id") != null) {
             // User is logged in, proceed with the request
             chain.doFilter(request, response);
-        } else {
+        }  else {
+            // Save the requested URL for later use after successful login
+            if (session == null) {
+                session = req.getSession(true);
+            }
+            session.setAttribute("redirectTo", requestedUri);
+
             // User is not logged in, redirect to login page
             res.sendRedirect("Login.jsp");
         }

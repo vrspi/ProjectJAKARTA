@@ -27,6 +27,7 @@ public class UserController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         String errorMessage;
+
         if ("Login".equals(action)) {
 
             String email = request.getParameter("email");
@@ -63,12 +64,17 @@ public class UserController extends HttpServlet {
                     session.setAttribute("Phone", user.getPhone());
                     session.setAttribute("role", user.getRole());
 
-                    response.sendRedirect("index.jsp");
+                    String redirectTo = (String) session.getAttribute("redirectTo");
+                    if (redirectTo != null) {
+                        session.removeAttribute("redirectTo");
+                        response.sendRedirect(redirectTo);
+                    } else {
+                        response.sendRedirect("index.jsp");
+                    }
                 } else {
                     request.setAttribute("errorMessage", "Invalid username or password");
                     request.getRequestDispatcher("Login.jsp").forward(request, response);
                 }
-
                 em.getTransaction().commit();
             } catch (Exception e) {
                 e.printStackTrace();
