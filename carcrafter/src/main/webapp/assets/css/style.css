@@ -6057,6 +6057,7 @@ body.rtl-mode .price-wrapper {
 
 .message-content {
   padding-left: 30px;
+  padding-bottom: 200px;
   position: relative;
   overflow: hidden;
 }
