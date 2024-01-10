@@ -55,6 +55,7 @@ public class UserController extends HttpServlet {
                 if (!users.isEmpty()) {
                     UserProfile user = users.get(0);
                     HttpSession session = request.getSession();
+                    session.setAttribute("id", user.getId());
                     session.setAttribute("FullName", user.getFirstName() + " " + user.getLastName());
                     session.setAttribute("FirstName", user.getFirstName());
                     session.setAttribute("LastName", user.getLastName());
