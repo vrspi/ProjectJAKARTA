@@ -89,4 +89,8 @@ public class UserProfile {
     public Object getId() {
         return this.id;
     }
+
+    public String getImage() {
+        return this.image;
+    }
 }
