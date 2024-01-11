@@ -262,11 +262,15 @@
                     <div class="col-lg-3">
                         <div class="user-profile-sidebar">
                             <div class="user-profile-sidebar-top">
-                                <div class="user-profile-img">
-                                    <img src="assets/img/account/user.jpg" alt="">
-                                    <button type="button" class="profile-img-btn"><i class="far fa-camera"></i></button>
-                                    <input type="file" class="profile-img-file">
-                                </div>
+                                <form id="uploadForm" action="UserController" method="post" enctype="multipart/form-data">
+                                    <div class="user-profile-img">
+                                        <img id="previewImage" src="assets/img/account/user.jpg" alt="User Image">
+                                        <button type="button" id="chooseImageButton" class="profile-img-btn">
+                                            <i class="far fa-camera"></i>
+                                        </button>
+                                        <input type="file" id="fileInput" accept="image/*" class="profile-img-file" name="file" onchange="previewAndSubmit()">
+                                    </div>
+                                </form>
                                 <h5>Antoni Jonson</h5>
                                 <p>antoni@example.com</p>
                             </div>
@@ -394,6 +398,23 @@
 
 
     <!-- js -->
+    <script>
+        function previewAndSubmit() {
+            var fileInput = document.getElementById('fileInput');
+            var file = fileInput.files[0];
+
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('previewImage').src = e.target.result;
+                    // Soumettre le formulaire après l'affichage de l'aperçu
+                    document.getElementById('uploadForm').submit();
+                }
+
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="assets/js/modernizr.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
@@ -415,9 +436,9 @@
 
 
     <script>
-    
+
         function loadPartial(event, partialPath) {
-            event.preventDefault(); 
+            event.preventDefault();
              // Remove 'active' class from all similar elements
             document.querySelectorAll('.user-profile-sidebar-list a').forEach(function(element) {
                 element.classList.remove('active');
