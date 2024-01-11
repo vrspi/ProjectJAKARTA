@@ -37,9 +37,9 @@
                                     String displayMessage = (conversation.getSenderID() == currentUserId) ? "You: " : otherUserName + ": ";
                                     displayMessage += conversation.getContent();
                                 %>
-                                <li>
-                                    <a href="#">
-                                        <div class="message-avatar">
+                                <li data-other-user-id="<%= otherUserId %>" onclick="load(`<%= otherUserId %>`)" >
+                                    <a href="javascript:void(0);" class="conversation-link" >
+                                                <div class="message-avatar">
                                             <img src="assets/img/account/user.png" alt="">
                                         </div>
                                         <div class="message-by">
@@ -55,7 +55,7 @@
                             
                             </ul>
                         </div>
-                        <div class="message-content">
+                        <div class="message-content" style="padding-bottom: 200px;">
                             <div class="message-content-info">
                                 <div class="message-item">
                                     <div class="message-avatar">
@@ -139,4 +139,7 @@
             </div>
         </div>
     </div>
+    
+   
 </div>
+
