@@ -671,9 +671,6 @@ public class CarController extends HttpServlet {
                     em.getTransaction().rollback();
                 }
                 e.printStackTrace();
-            } finally {
-                //em.close();
-                //JPAUtil.close();
             }
 
 
@@ -709,64 +706,61 @@ public class CarController extends HttpServlet {
                     transaction.rollback();
                 }
                 e.printStackTrace(); // Gérez l'exception de manière appropriée ici
-            } finally {
+            }
+
+
+            EntityTransaction transaction2 = em.getTransaction();
+
+            try {
+                transaction.begin();
+
+                for (Part filePart : fileParts) {
+                    String fileName = getFileName(filePart);
+
+                    if (fileName != null) {
+                        String hashedFileName = hashFileName(fileName);
+
+                        // Définir le répertoire d'upload
+                        String uploadDirectory = "C:\\Users\\MO KADI\\Desktop\\ProjectJAKARTA\\carcrafter\\src\\main\\webapp\\assets\\upload\\img\\car";
+
+                        // Utilisez un chemin relatif pour éviter les problèmes de compatibilité entre les systèmes d'exploitation
+                        Path uploadPath = Paths.get(uploadDirectory, hashedFileName);
+
+                        try (InputStream fileContent = filePart.getInputStream()) {
+                            Files.createDirectories(uploadPath.getParent());
+
+                            // Vérifiez si le fichier existe déjà
+                            if (Files.notExists(uploadPath)) {
+                                Files.copy(fileContent, uploadPath);
+                                String imageUrl = "assets/upload/img/car/" + hashedFileName;
+                                System.out.println("Image téléchargée avec succès : " + imageUrl);
+
+                                // Insérer l'image dans la base de données
+                                Image img = new Image();
+                                img.setImagePath(hashedFileName);
+                                img.setListing(lst);
+                                em.persist(img);
+                            } else {
+                                System.out.println("Une image avec le même nom existe déjà dans le dossier d'upload.");
+                            }
+                        } catch (IOException e) {
+                            System.out.println("Erreur lors du téléchargement de l'image '" + fileName + "'.");
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+                transaction2.commit();
+            }
+            finally
+            {
                 if (em.isOpen()) {
                     em.close();
                 }
             }
 
-
-
-            //aploder les image au serveur et metre dans la base de donnee
-            for (Part filePart : fileParts)
-            {
-                String fileName = getFileName(filePart);
-                if (fileName != null)
-                {
-                    String hashedFileName = hashFileName(fileName);
-
-// Obtenez le répertoire de votre application à partir du ServletContext
-                    ServletContext context = req.getServletContext();
-                    String uploadDirectory = context.getRealPath("/webapp/assets/upload/img/car");
-                    Path uploadPath = Paths.get(uploadDirectory, hashedFileName);
-
-                    try (InputStream fileContent = filePart.getInputStream()) {
-                        // Créez le répertoire s'il n'existe pas
-                        Files.createDirectories(uploadPath.getParent());
-
-                        // Vérifiez si le fichier existe déjà
-                        if (Files.notExists(uploadPath)) {
-                            Files.copy(fileContent, uploadPath);
-                            // Obtenez le chemin absolu du fichier téléchargé
-                            Path absolutePath = uploadPath.toAbsolutePath();
-                            String imageUrl = absolutePath.toString();
-                            System.out.println("Image téléchargée avec succès : " + imageUrl);
-                            // Insérer l'image dans la base de données
-                        } else {
-                            System.out.println("Une image avec le même nom existe déjà sur le serveur.");
-                            // Gérer le cas où le fichier existe déjà
-                        }
-                    } catch (FileAlreadyExistsException e) {
-                        System.out.println("Une image avec le même nom existe déjà sur le serveur.");
-                    } catch (IOException e) {
-                        System.out.println("Erreur lors du téléchargement de l'image '" + fileName + "'.");
-                        e.printStackTrace(); // À des fins de débogage. Vous pouvez choisir de gérer l'exception de manière plus élégante.
-                    }
-
-
-                }
-            }
-
-
-
-
         }
     }
-
-
-
-
-
 
 
 
@@ -778,7 +772,6 @@ public class CarController extends HttpServlet {
         }
         return null;
     }
-
 
 
     private String hashFileName(String fileName) {
