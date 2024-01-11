@@ -75,6 +75,7 @@ public class UserController extends HttpServlet {
                         session.setAttribute("Email", user.getEmail());
                         session.setAttribute("Phone", user.getPhone());
                         session.setAttribute("role", user.getRole());
+                        session.setAttribute("Image", user.getImage());
 
                         String redirectTo = (String) session.getAttribute("redirectTo");
                         if (redirectTo != null) {
@@ -251,22 +252,52 @@ public class UserController extends HttpServlet {
             case null, default -> {
                 Part filePart = request.getPart("file");
                 HttpSession session = request.getSession();
-                String fileName = session.getAttribute("id") + "_" + filePart.getSubmittedFileName();
+                Integer userId = (Integer) session.getAttribute("id");
+                String fileName = userId + "_" + filePart.getSubmittedFileName();
                 String basePath = getServletContext().getRealPath("/");
                 String uploadPath = basePath + "assets/upload/img/user/" + fileName;
                 filePart.write(uploadPath);
 
-                // TODO : Chemin local de développement (Remplacez par votre chemin de développement)
-                String devPath = "C:\\Users\\jouj9\\OneDrive\\Bureau\\EHEI S3&S4\\Projet Java\\ProjectJAKARTA\\carcrafter\\target\\carcrafter\\assets\\upload\\img\\user\\" + fileName;
+                String devPath = "C:\\Users\\jouj9\\OneDrive\\Bureau\\EHEI S3&S4\\Projet Java\\ProjectJAKARTA\\carcrafter\\src\\main\\webapp\\assets\\upload\\img\\user\\" + fileName;
+
                 try (InputStream fileContent = filePart.getInputStream();
                      FileOutputStream fos = new FileOutputStream(devPath)) {
-                    byte[] buffer = new byte[1024];
+                    byte[] buffer = new byte[fileContent.available()];
                     int bytesRead;
                     while ((bytesRead = fileContent.read(buffer)) != -1) {
                         fos.write(buffer, 0, bytesRead);
                     }
                 }
-                request.setAttribute("successMessage", "Image ajoutée avec succès");
+                catch (Exception ex){
+                    ex.printStackTrace();
+                }
+                if (userId != null) {
+                    EntityManager em = JPAUtil.getEntityManager();
+
+                    try {
+                        em.getTransaction().begin();
+                        UserProfile user = em.find(UserProfile.class, userId);
+                        if (user != null) {
+                            user.setImage(fileName);
+                            em.persist(user);
+                            em.getTransaction().commit();
+                            session.setAttribute("Image",fileName);
+                            request.setAttribute("successMessage", "Image ajoutée avec succès");
+                            // TODO : achanger with ajax avec khayro avec un msg de succee
+                            request.getRequestDispatcher("index.jsp").forward(request, response);
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        if (em.getTransaction().isActive()) {
+                            em.getTransaction().rollback();
+                        }
+                    } finally {
+                        if (em.isOpen()) {
+                            em.close();
+                        }
+                    }
+                }
             }
         }
 

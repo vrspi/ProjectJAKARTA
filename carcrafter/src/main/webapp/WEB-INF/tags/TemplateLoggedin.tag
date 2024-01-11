@@ -29,7 +29,16 @@
 </head>
 
 <body>
+<%
+    String imagePath = "assets/img/account/user.jpg";
 
+    String sessionImagePath = (String) session.getAttribute("Image");
+    String FullName = (String) session.getAttribute("FullName");
+    String Email = (String) session.getAttribute("Email");
+    if (sessionImagePath != null && !sessionImagePath.isEmpty() ) {
+        imagePath = "assets/upload/img/user/" + sessionImagePath;
+    }
+%>
     <!-- preloader -->
     <div class="preloader" style="display: none;">
         <div class="loader-ripple">
@@ -83,7 +92,7 @@
                         <div class="nav-right-account">
                             <div class="dropdown">
                                 <div data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="assets/img/account/user.jpg" alt="">
+                                    <img src="<%= imagePath %>" alt="">
                                 </div>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li><a class="dropdown-item" href="dashboard.html"><i class="far fa-gauge-high"></i>
@@ -215,7 +224,7 @@
                             <div class="nav-right-account">
                                 <div class="dropdown">
                                     <div data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src="assets/img/account/user.jpg" alt="">
+                                        <img src="<%= imagePath %>" alt="">
                                     </div>
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li><a class="dropdown-item" href="dashboard.html"><i class="far fa-gauge-high"></i> Dashboard</a></li>
@@ -264,15 +273,20 @@
                             <div class="user-profile-sidebar-top">
                                 <form id="uploadForm" action="UserController" method="post" enctype="multipart/form-data">
                                     <div class="user-profile-img">
-                                        <img id="previewImage" src="assets/img/account/user.jpg" alt="User Image">
+                                        <img id="previewImage" src="<%= imagePath %>" alt="User Image">
                                         <button type="button" id="chooseImageButton" class="profile-img-btn">
                                             <i class="far fa-camera"></i>
                                         </button>
                                         <input type="file" id="fileInput" accept="image/*" class="profile-img-file" name="file" onchange="previewAndSubmit()">
                                     </div>
                                 </form>
-                                <h5>Antoni Jonson</h5>
-                                <p>antoni@example.com</p>
+                                <% if(!Email.isEmpty() && !FullName.isEmpty()) {%>
+                                <h5><%= FullName %></h5>
+                                <p><%= Email %></p>
+                                <% }else { %>
+                                <h5>test test</h5>
+                                <p>test@example.com</p>
+                                <%} %>
                             </div>
                             <ul class="user-profile-sidebar-list">
                                 <li><a href="#"  onclick="loadPartial(event, 'partials/Dashboard.jsp')"><i class="far fa-gauge-high"></i> Dashboard</a></li>
