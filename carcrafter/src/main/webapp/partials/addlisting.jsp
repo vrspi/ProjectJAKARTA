@@ -1,6 +1,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.carcrafter.model.*" %>
 <%@ page import="java.util.Map" %>
+
+
 <div class="user-profile-wrapper">
     <div class="user-profile-card">
         <h4 class="user-profile-card-title">Add New Listing</h4>
@@ -420,7 +422,8 @@
                                             <span><i class="far fa-images"></i> Upload Listing
                                                 Images</span>
                                     </div>
-                                    <input type="file" name="file" class="list-img-file" multiple="">
+                                    <input type="file" id="image-input" name="file" class="list-img-file" multiple onchange="previewImages(event)">
+                                    <div id="image-preview-container" style="display: flex;flex-wrap: wrap;align-items: center;justify-content:center "></div>
                                 </div>
                                 <!-- eror -->
                                 <%
@@ -525,3 +528,33 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    function previewImages(event) {
+        var input = event.target;
+        var previewContainer = document.getElementById('image-preview-container');
+        previewContainer.innerHTML = ""; // Efface les anciennes images avant d'ajouter les nouvelles
+
+        var files = input.files;
+        console.log(files);
+
+        for (var i = 0; i < files.length; i++) {
+            (function (file) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    var image = document.createElement('img');
+                    image.src = reader.result;
+
+                    // Ajoutez les styles directement ici
+                    image.style.maxWidth = '100%';
+                    image.style.maxHeight = '150px';
+                    image.style.margin = '5px';
+
+                    previewContainer.appendChild(image);
+                };
+                reader.readAsDataURL(file);
+            })(files[i]);
+        }
+    }
+</script>
