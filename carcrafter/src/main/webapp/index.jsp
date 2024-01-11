@@ -17,13 +17,12 @@
                                 Best Way To Find Your <span>Dream</span> Car
                             </h1>
                             <p class="wow fadeInLeft" data-wow-delay=".75s">
-                                There are many variations of passages orem psum available but the majority have
-                                suffered alteration in some form by injected humour.
+                                Ready to embark on your car-buying journey?<br>Click now to explore our diverse selection and experience a seamless and transparent process.<br>Your dream car awaits!
                             </p>
                             <div class="hero-btn wow fadeInUp" data-wow-delay="1s">
-                                <a href="#" class="theme-btn">About More<i
+                                <a href="shop" class="theme-btn">Find Your Dream Car<i
                                         class="fas fa-arrow-right-long"></i></a>
-                                <a href="#" class="theme-btn theme-btn2">Learn More<i
+                                <a href="about" class="theme-btn theme-btn2">Learn More<i
                                         class="fas fa-arrow-right-long"></i></a>
                             </div>
                         </div>
