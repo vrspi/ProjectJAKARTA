@@ -9,8 +9,8 @@
     <div class="container">
         <h2 class="breadcrumb-title">Frequently Asked Questions</h2>
         <ul class="breadcrumb-menu">
-            <li><a href="/">Home</a></li>
-            <li class="active">Faq</li>
+            <li><a href="/carcrafter/">Home</a></li>
+            <li class="active">FAQ</li>
         </ul>
     </div>
 </div>

@@ -9,7 +9,7 @@
     <div class="container">
         <h2 class="breadcrumb-title">404 Error</h2>
         <ul class="breadcrumb-menu">
-            <li><a href="/">Home</a></li>
+            <li><a href="/carcrafter/">Home</a></li>
             <li class="active">404 Error</li>
         </ul>
     </div>
