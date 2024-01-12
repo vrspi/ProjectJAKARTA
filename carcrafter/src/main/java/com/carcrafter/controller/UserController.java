@@ -74,6 +74,7 @@ public class UserController extends HttpServlet {
                     session.setAttribute("Phone", user.getPhone());
                     session.setAttribute("role", user.getRole());
                     session.setAttribute("Image", user.getImage());
+                    session.setAttribute("Adress", user.getAddress());
 
                     String redirectTo = (String) session.getAttribute("redirectTo");
                     if (redirectTo != null) {
@@ -241,6 +242,73 @@ public class UserController extends HttpServlet {
                     em.close();
                 }
             }
+        }else if ("updateProfile".equals(action)) {
+
+                Integer userId = (Integer) request.getSession().getAttribute("id");
+//gle3  rebhaa  remplacent d filter
+                if (userId == null) {
+                    // Handle the case where the user is not logged in or session is expired
+                    errorMessage = "User not logged in.";
+                    request.setAttribute("errorMessage", errorMessage);
+                    request.getRequestDispatcher("Login.jsp").forward(request, response);
+                    return;
+                }
+
+                String firstName = request.getParameter("firstName");
+                String lastName = request.getParameter("lastName");
+                String email = request.getParameter("email");
+                String phone = request.getParameter("phone");
+                String address = request.getParameter("address");
+
+                // Validate the input data here (omitted for brevity)
+
+                EntityManager em = JPAUtil.getEntityManager();
+                try {
+                    em.getTransaction().begin();
+
+                    UserProfile user = em.find(UserProfile.class, userId);
+                    if (user != null) {
+                        user.setFirstName(firstName);
+                        user.setLastName(lastName);
+                        user.setEmail(email);
+                        user.setPhone(phone);
+                        user.setAddress(address);
+
+                        em.persist(user);
+                        em.getTransaction().commit();
+
+                        HttpSession session = request.getSession();
+                        session.setAttribute("FullName", firstName + " " + lastName);
+                        session.setAttribute("FirstName", firstName);
+                        session.setAttribute("LastName", lastName);
+                        session.setAttribute("Email", email);
+                        session.setAttribute("Phone", phone);
+                        session.setAttribute("Adress", address);
+                        request.setAttribute("successMessage", "Profile updated successfully.");
+
+                        //KHAIROOOO   RAK TMENYEEEEK
+                        request.getRequestDispatcher("index.jsp").forward(request, response);
+
+
+
+                    } else {
+
+                        errorMessage = "User not found.";
+                        request.setAttribute("errorMessage", errorMessage);
+                        request.getRequestDispatcher("error.jsp").forward(request, response);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    if (em.getTransaction().isActive()) {
+                        em.getTransaction().rollback();
+                    }
+
+                } finally {
+                    if (em.isOpen()) {
+                        em.close();
+                    }
+                }
+
         } else {
             Part filePart = request.getPart("file");
             HttpSession session = request.getSession();

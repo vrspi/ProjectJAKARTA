@@ -93,4 +93,8 @@ public class UserProfile {
     public String getImage() {
         return this.image;
     }
+
+    public String getAddress() {
+        return this.address;
+    }
 }
