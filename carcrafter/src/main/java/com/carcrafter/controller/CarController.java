@@ -166,9 +166,9 @@ public class CarController extends HttpServlet {
 
         //verifier le tire listingTitle
         Map<String, String> errors = new HashMap<>();
-        String pattern = "^[a-zA-Z0-9]{5,20}$";
+        String pattern = "^[a-zA-Z0-9_.\\- ]{5,20}$";
         if (listingTitle == null || listingTitle.isEmpty() || !listingTitle.matches(pattern)) {
-            errors.put("listingTitle", "Le titre de l'annonce doit contenir entre 5 et 20 caractères et ne peut inclure que des lettres et des chiffres.");
+            errors.put("listingTitle", "Le titre de l'annonce doit contenir entre 5 et 20 caractères.");
         }
 
         //verifier le prix
@@ -198,9 +198,9 @@ public class CarController extends HttpServlet {
 
 
         //verifier les tags
-        String tagsPattern = "^[a-zA-Z0-9]+(?:,[a-zA-Z0-9]+)*$";
+        String tagsPattern = "^[a-zA-Z0-9_\\-. ]+(?:,[a-zA-Z0-9_\\-. ]+)*$";
         if (tags == null || tags.isEmpty() || !tags.matches(tagsPattern)) {
-            errors.put("tags", "Les tags doivent être séparés par des virgules et ne peuvent contenir que des lettres et des chiffres");
+            errors.put("tags", "Les tags doivent être séparés par des virgules.");
         }
 
 
