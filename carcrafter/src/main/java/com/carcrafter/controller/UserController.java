@@ -39,205 +39,246 @@ public class UserController extends HttpServlet {
         String action = request.getParameter("action");
         String errorMessage;
 
-        switch (action) {
-            case "Login" -> {
+        if ("Login".equals(action)) {
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
 
-                String email = request.getParameter("email");
-                String password = request.getParameter("password");
-
-                if (email.isEmpty() || password.isEmpty()) {
-                    errorMessage = "Missing required fields !!";
-                    request.setAttribute("errorMessage", errorMessage);
-                    request.getRequestDispatcher("Login.jsp").forward(request, response);
-                    return;
-                }
-
-                String hashedPassword = hashPassword(password);
-
-                EntityManager em = JPAUtil.getEntityManager();
-                try {
-                    em.getTransaction().begin();
-                    String jpql = "SELECT u FROM UserProfile u WHERE u.email = :email AND u.password = :hashedPassword";
-
-                    TypedQuery<UserProfile> query = em.createQuery(jpql, UserProfile.class);
-                    query.setParameter("email", email);
-                    query.setParameter("hashedPassword", hashedPassword);
-
-                    List<UserProfile> users = query.getResultList();
-
-                    if (!users.isEmpty()) {
-                        UserProfile user = users.get(0);
-                        HttpSession session = request.getSession();
-                        session.setAttribute("id", user.getId());
-                        session.setAttribute("FullName", user.getFirstName() + " " + user.getLastName());
-                        session.setAttribute("FirstName", user.getFirstName());
-                        session.setAttribute("LastName", user.getLastName());
-                        session.setAttribute("Email", user.getEmail());
-                        session.setAttribute("Phone", user.getPhone());
-                        session.setAttribute("role", user.getRole());
-                        session.setAttribute("Image", user.getImage());
-
-                        String redirectTo = (String) session.getAttribute("redirectTo");
-                        if (redirectTo != null) {
-                            session.removeAttribute("redirectTo");
-                            response.sendRedirect(redirectTo);
-                        } else {
-                            response.sendRedirect("index.jsp");
-                        }
-                    } else {
-                        request.setAttribute("errorMessage", "Invalid username or password");
-                        request.getRequestDispatcher("Login.jsp").forward(request, response);
-                    }
-                    em.getTransaction().commit();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    if (em.isOpen()) {
-                        em.close();
-                    }
-                }
-
+            if (email.isEmpty() || password.isEmpty()) {
+                errorMessage = "Missing required fields !!";
+                request.setAttribute("errorMessage", errorMessage);
+                request.getRequestDispatcher("Login.jsp").forward(request, response);
+                return;
             }
-            case "Register" -> {
-                String firstName = request.getParameter("firstName");
-                String lastName = request.getParameter("lastName");
-                String email = request.getParameter("email");
-                String phone = request.getParameter("phone");
-                String address = request.getParameter("address");
-                String password = request.getParameter("password");
-                String confirmPassword = request.getParameter("confirmPassword");
 
-                if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || phone.isEmpty() || address.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-                    errorMessage = "Missing required fields !!";
-                    request.setAttribute("errorMessage", errorMessage);
-                    request.getRequestDispatcher("Register.jsp").forward(request, response);
-                    return;
-                }
+            String hashedPassword = hashPassword(password);
 
-                // Validate email format
-                if (!isValidEmail(email)) {
-                    request.setAttribute("errorMessage", "Invalid email format !!");
-                    request.getRequestDispatcher("Register.jsp").forward(request, response);
-                    return;
-                }
-
-                // Validate password criteria and confirm password
-                if (!password.equals(confirmPassword)) {
-                    request.setAttribute("errorMessage", "Invalid password or passwords do not match !!");
-                    request.getRequestDispatcher("Register.jsp").forward(request, response);
-                    return;
-                }
-
-                String hashedPassword = hashPassword(password);
-
-                EntityManager em = JPAUtil.getEntityManager();
+            EntityManager em = JPAUtil.getEntityManager();
+            try {
                 em.getTransaction().begin();
+                String jpql = "SELECT u FROM UserProfile u WHERE u.email = :email AND u.password = :hashedPassword";
 
-                UserProfile newUser = new UserProfile();
-                newUser.setFirstName(firstName);
-                newUser.setLastName(lastName);
-                newUser.setEmail(email);
-                newUser.setPhone(phone);
-                newUser.setAddress(address);
-                newUser.setPassword(hashedPassword);
+                TypedQuery<UserProfile> query = em.createQuery(jpql, UserProfile.class);
+                query.setParameter("email", email);
+                query.setParameter("hashedPassword", hashedPassword);
 
-                em.persist(newUser);
+                List<UserProfile> users = query.getResultList();
+
+                if (!users.isEmpty()) {
+                    UserProfile user = users.get(0);
+                    HttpSession session = request.getSession();
+                    session.setAttribute("id", user.getId());
+                    session.setAttribute("FullName", user.getFirstName() + " " + user.getLastName());
+                    session.setAttribute("FirstName", user.getFirstName());
+                    session.setAttribute("LastName", user.getLastName());
+                    session.setAttribute("Email", user.getEmail());
+                    session.setAttribute("Phone", user.getPhone());
+                    session.setAttribute("role", user.getRole());
+                    session.setAttribute("Image", user.getImage());
+
+                    String redirectTo = (String) session.getAttribute("redirectTo");
+                    if (redirectTo != null) {
+                        session.removeAttribute("redirectTo");
+                        response.sendRedirect(redirectTo);
+                    } else {
+                        response.sendRedirect("index.jsp");
+                    }
+                } else {
+                    request.setAttribute("errorMessage", "Invalid username or password");
+                    request.getRequestDispatcher("Login.jsp").forward(request, response);
+                }
                 em.getTransaction().commit();
-                em.close();
-
-                request.setAttribute("successMessage", "Registration successful, you can log in now");
-                request.getRequestDispatcher("Login.jsp").forward(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (em.isOpen()) {
+                    em.close();
+                }
             }
-            case "Logout" -> {
-                HttpSession session = request.getSession();
-                session.invalidate();
-                request.getRequestDispatcher("Login.jsp").forward(request, response);
-            }
-            case "verifyEmail" -> {
-                String email = request.getParameter("email");
+        } else if ("Register".equals(action)) {
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            String email = request.getParameter("email");
+            String phone = request.getParameter("phone");
+            String address = request.getParameter("address");
+            String password = request.getParameter("password");
+            String confirmPassword = request.getParameter("confirmPassword");
 
-                if (email == null || email.isEmpty()) {
-                    errorMessage = "Please enter an email address.";
+            if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || phone.isEmpty() || address.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                errorMessage = "Missing required fields !!";
+                request.setAttribute("errorMessage", errorMessage);
+                request.getRequestDispatcher("Register.jsp").forward(request, response);
+                return;
+            }
+
+            // Validate email format
+            if (!isValidEmail(email)) {
+                request.setAttribute("errorMessage", "Invalid email format !!");
+                request.getRequestDispatcher("Register.jsp").forward(request, response);
+                return;
+            }
+
+            // Validate password criteria and confirm password
+            if (!password.equals(confirmPassword)) {
+                request.setAttribute("errorMessage", "Invalid password or passwords do not match !!");
+                request.getRequestDispatcher("Register.jsp").forward(request, response);
+                return;
+            }
+
+            String hashedPassword = hashPassword(password);
+
+            EntityManager em = JPAUtil.getEntityManager();
+            em.getTransaction().begin();
+
+            UserProfile newUser = new UserProfile();
+            newUser.setFirstName(firstName);
+            newUser.setLastName(lastName);
+            newUser.setEmail(email);
+            newUser.setPhone(phone);
+            newUser.setAddress(address);
+            newUser.setPassword(hashedPassword);
+
+            em.persist(newUser);
+            em.getTransaction().commit();
+            em.close();
+
+            request.setAttribute("successMessage", "Registration successful, you can log in now");
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
+        } else if ("Logout".equals(action)) {
+            HttpSession session = request.getSession();
+            session.invalidate();
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
+        } else if ("verifyEmail".equals(action)) {
+            String email = request.getParameter("email");
+
+            if (email == null || email.isEmpty()) {
+                errorMessage = "Please enter an email address.";
+                request.setAttribute("errorMessage", errorMessage);
+                request.getRequestDispatcher("forgot-password.jsp").forward(request, response);
+                return;
+            }
+
+            EntityManager em = JPAUtil.getEntityManager();
+            try {
+                em.getTransaction().begin();
+                String jpql = "SELECT COUNT(u) FROM UserProfile u WHERE u.email = :email";
+                TypedQuery<Long> query = em.createQuery(jpql, Long.class);
+                query.setParameter("email", email);
+                Long count = query.getSingleResult();
+                if (count > 0) {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("Email", email);
+                    request.getRequestDispatcher("reset-password.jsp").forward(request, response);
+                } else {
+                    errorMessage = "No account found with that email address.";
                     request.setAttribute("errorMessage", errorMessage);
                     request.getRequestDispatcher("forgot-password.jsp").forward(request, response);
-                    return;
                 }
 
-                EntityManager em = JPAUtil.getEntityManager();
-                try {
-                    em.getTransaction().begin();
-                    String jpql = "SELECT COUNT(u) FROM UserProfile u WHERE u.email = :email";
-                    TypedQuery<Long> query = em.createQuery(jpql, Long.class);
-                    query.setParameter("email", email);
-                    Long count = query.getSingleResult();
-                    if (count > 0) {
-                        HttpSession session = request.getSession();
-                        session.setAttribute("Email", email);
-                        request.getRequestDispatcher("reset-password.jsp").forward(request, response);
-                    } else {
-                        errorMessage = "No account found with that email address.";
-                        request.setAttribute("errorMessage", errorMessage);
-                        request.getRequestDispatcher("forgot-password.jsp").forward(request, response);
-                    }
-
-                    em.getTransaction().commit();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    if (em.isOpen()) {
-                        em.close();
-                    }
+                em.getTransaction().commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (em.isOpen()) {
+                    em.close();
                 }
             }
-            case "changePassword" -> {
-                String oldPassword = request.getParameter("oldPassword");
-                String newPassword = request.getParameter("newPassword");
-                String confirmPassword = request.getParameter("confirmPassword");
+        } else if ("changePassword".equals(action)) {
+            String oldPassword = request.getParameter("oldPassword");
+            String newPassword = request.getParameter("newPassword");
+            String confirmPassword = request.getParameter("confirmPassword");
 
-                HttpSession session = request.getSession();
-                String email = (String) session.getAttribute("Email");
+            HttpSession session = request.getSession();
+            String email = (String) session.getAttribute("Email");
 
-                if (oldPassword == null || newPassword == null || confirmPassword == null ||
-                        oldPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
-                    errorMessage = "All fields are required.";
+            if (oldPassword == null || newPassword == null || confirmPassword == null ||
+                    oldPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
+                errorMessage = "All fields are required.";
+                request.setAttribute("errorMessage", errorMessage);
+                request.getRequestDispatcher("reset-password.jsp").forward(request, response);
+                return;
+            }
+
+            if (!newPassword.equals(confirmPassword)) {
+                errorMessage = "New password and confirmation do not match.";
+                request.setAttribute("errorMessage", errorMessage);
+                request.getRequestDispatcher("reset-password.jsp").forward(request, response);
+                return;
+            }
+
+            EntityManager em = JPAUtil.getEntityManager();
+            try {
+                em.getTransaction().begin();
+                String hashedOldPassword = hashPassword(oldPassword);
+
+                String jpql = "SELECT u FROM UserProfile u WHERE u.email = :email AND u.password = :hashedOldPassword";
+                TypedQuery<UserProfile> query = em.createQuery(jpql, UserProfile.class);
+                query.setParameter("email", email);
+                query.setParameter("hashedOldPassword", hashedOldPassword);
+
+                List<UserProfile> users = query.getResultList();
+
+                if (!users.isEmpty()) {
+                    UserProfile user = users.get(0);
+                    String hashedNewPassword = hashPassword(newPassword);
+                    user.setPassword(hashedNewPassword);
+                    em.persist(user);
+
+                    em.getTransaction().commit();
+                    request.setAttribute("successMessage", "Password successfully changed.");
+                    request.getRequestDispatcher("Login.jsp").forward(request, response);
+                } else {
+                    errorMessage = "Invalid current password.";
                     request.setAttribute("errorMessage", errorMessage);
                     request.getRequestDispatcher("reset-password.jsp").forward(request, response);
-                    return;
                 }
-
-                if (!newPassword.equals(confirmPassword)) {
-                    errorMessage = "New password and confirmation do not match.";
-                    request.setAttribute("errorMessage", errorMessage);
-                    request.getRequestDispatcher("reset-password.jsp").forward(request, response);
-                    return;
+            } catch (Exception e) {
+                e.printStackTrace();
+                if (em.getTransaction().isActive()) {
+                    em.getTransaction().rollback();
                 }
+            } finally {
+                if (em.isOpen()) {
+                    em.close();
+                }
+            }
+        } else {
+            Part filePart = request.getPart("file");
+            HttpSession session = request.getSession();
+            Integer userId = (Integer) session.getAttribute("id");
+            String fileName = userId + "_" + filePart.getSubmittedFileName();
+            String basePath = getServletContext().getRealPath("/");
+            String uploadPath = basePath + "assets/upload/img/user/" + fileName;
+            filePart.write(uploadPath);
 
+            String devPath = "C:\\Users\\jouj9\\OneDrive\\Bureau\\EHEI S3&S4\\Projet Java\\ProjectJAKARTA\\carcrafter\\src\\main\\webapp\\assets\\upload\\img\\user\\" + fileName;
+
+            try (InputStream fileContent = filePart.getInputStream();
+                 FileOutputStream fos = new FileOutputStream(devPath)) {
+                byte[] buffer = new byte[fileContent.available()];
+                int bytesRead;
+                while ((bytesRead = fileContent.read(buffer)) != -1) {
+                    fos.write(buffer, 0, bytesRead);
+                }
+            }
+            catch (Exception ex){
+                ex.printStackTrace();
+            }
+            if (userId != null) {
                 EntityManager em = JPAUtil.getEntityManager();
+
                 try {
                     em.getTransaction().begin();
-                    String hashedOldPassword = hashPassword(oldPassword);
-
-                    String jpql = "SELECT u FROM UserProfile u WHERE u.email = :email AND u.password = :hashedOldPassword";
-                    TypedQuery<UserProfile> query = em.createQuery(jpql, UserProfile.class);
-                    query.setParameter("email", email);
-                    query.setParameter("hashedOldPassword", hashedOldPassword);
-
-                    List<UserProfile> users = query.getResultList();
-
-                    if (!users.isEmpty()) {
-                        UserProfile user = users.get(0);
-                        String hashedNewPassword = hashPassword(newPassword);
-                        user.setPassword(hashedNewPassword);
+                    UserProfile user = em.find(UserProfile.class, userId);
+                    if (user != null) {
+                        user.setImage(fileName);
                         em.persist(user);
-
                         em.getTransaction().commit();
-                        request.setAttribute("successMessage", "Password successfully changed.");
-                        request.getRequestDispatcher("Login.jsp").forward(request, response);
-                    } else {
-                        errorMessage = "Invalid current password.";
-                        request.setAttribute("errorMessage", errorMessage);
-                        request.getRequestDispatcher("reset-password.jsp").forward(request, response);
+                        session.setAttribute("Image",fileName);
+                        request.setAttribute("successMessage", "Image ajoutée avec succès");
+                        // TODO : achanger with ajax avec khayro avec un msg de succee
+                        request.getRequestDispatcher("index.jsp").forward(request, response);
                     }
+
                 } catch (Exception e) {
                     e.printStackTrace();
                     if (em.getTransaction().isActive()) {
@@ -249,60 +290,9 @@ public class UserController extends HttpServlet {
                     }
                 }
             }
-            case null, default -> {
-                Part filePart = request.getPart("file");
-                HttpSession session = request.getSession();
-                Integer userId = (Integer) session.getAttribute("id");
-                String fileName = userId + "_" + filePart.getSubmittedFileName();
-                String basePath = getServletContext().getRealPath("/");
-                String uploadPath = basePath + "assets/upload/img/user/" + fileName;
-                filePart.write(uploadPath);
-
-                String devPath = "C:\\Users\\jouj9\\OneDrive\\Bureau\\EHEI S3&S4\\Projet Java\\ProjectJAKARTA\\carcrafter\\src\\main\\webapp\\assets\\upload\\img\\user\\" + fileName;
-
-                try (InputStream fileContent = filePart.getInputStream();
-                     FileOutputStream fos = new FileOutputStream(devPath)) {
-                    byte[] buffer = new byte[fileContent.available()];
-                    int bytesRead;
-                    while ((bytesRead = fileContent.read(buffer)) != -1) {
-                        fos.write(buffer, 0, bytesRead);
-                    }
-                }
-                catch (Exception ex){
-                    ex.printStackTrace();
-                }
-                if (userId != null) {
-                    EntityManager em = JPAUtil.getEntityManager();
-
-                    try {
-                        em.getTransaction().begin();
-                        UserProfile user = em.find(UserProfile.class, userId);
-                        if (user != null) {
-                            user.setImage(fileName);
-                            em.persist(user);
-                            em.getTransaction().commit();
-                            session.setAttribute("Image",fileName);
-                            request.setAttribute("successMessage", "Image ajoutée avec succès");
-                            // TODO : achanger with ajax avec khayro avec un msg de succee
-                            request.getRequestDispatcher("index.jsp").forward(request, response);
-                        }
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        if (em.getTransaction().isActive()) {
-                            em.getTransaction().rollback();
-                        }
-                    } finally {
-                        if (em.isOpen()) {
-                            em.close();
-                        }
-                    }
-                }
-            }
         }
-
-
     }
+
     private boolean isValidEmail(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         Pattern pattern = Pattern.compile(emailRegex);
