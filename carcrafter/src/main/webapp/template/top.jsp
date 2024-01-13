@@ -53,6 +53,15 @@
 
 <body class="home-3">
 
+<%
+    String imagePath = "assets/img/account/user.jpg";
+
+    String sessionImagePath = (String) session.getAttribute("Image");
+    if (sessionImagePath != null && !sessionImagePath.isEmpty() ) {
+        imagePath = "assets/upload/img/user/" + sessionImagePath;
+    }
+%>
+
 <!-- preloader -->
 <div class="preloader">
     <div class="loader-ripple">
@@ -81,18 +90,10 @@
                 </div>
                 <div class="header-top-right">
                     <div class="header-top-link">
-                        <% if (session != null && session.getAttribute("Email") != null) { %>
-                        <form action="UserController" method="post">
-                            <input type="hidden" name="action" value="Logout">
-                            <button type="submit" class="theme-btn logout-button">
-                                <i class="far fa-sign-out-alt"></i> Logout
-                            </button>
-                        </form>
-                        <% } else { %>
+                        <% if (session.getAttribute("Email") == null) { %>
                         <a href="Login"><i class="far fa-arrow-right-to-arc"></i> Login</a>
                         <a href="Register"><i class="far fa-user-vneck"></i> Register</a>
                         <% } %>
-
                     </div>
                     <div class="header-top-social">
                         <span>Follow Us: </span>
@@ -114,6 +115,25 @@
                 <div class="mobile-menu-right">
                     <div class="search-btn">
                         <button type="button" class="nav-right-link"><i class="far fa-search"></i></button>
+                    </div>
+                    <div class="nav-right-account">
+                        <div class="dropdown">
+                            <div data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="<%= imagePath %>" alt="">
+                            </div>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="dashboard.html"><i class="far fa-gauge-high"></i>
+                                    Dashboard</a></li>
+                                <li><a class="dropdown-item" href="profile.html"><i class="far fa-user"></i> My
+                                    Profile</a></li>
+                                <li><a class="dropdown-item" href="profile-listing.html"><i class="far fa-layer-group"></i> My Listing</a></li>
+                                <li><a class="dropdown-item" href="profile-favorite.html"><i class="far fa-heart"></i> My Favorites</a></li>
+                                <li><a class="dropdown-item" href="profile-setting.html"><i class="far fa-cog"></i>
+                                    Settings</a></li>
+                                <li><a class="dropdown-item" href="logout"><i class="far fa-sign-out"></i> Log Out</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -143,9 +163,6 @@
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="faq">FAQ</a></li>
-                        <% if (session != null && "admin".equals(session.getAttribute("role"))) { %>
-                        <li class="nav-item"><a class="nav-link" href="#">Listing</a></li>
-                        <% } %>
                     </ul>
                     <div class="nav-right">
                         <div class="search-btn">
@@ -154,6 +171,25 @@
                         <div class="cart-btn">
                             <a href="cart" class="nav-right-link"><i class="far fa-cart-plus"></i><span>0</span></a>
                         </div>
+                        <% if (session != null && session.getAttribute("Email") != null) { %>
+                        <div class="nav-right-account">
+                            <div class="dropdown">
+                                <div data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="<%= imagePath %>" alt="">
+                                </div>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="dashboard.html"><i class="far fa-gauge-high"></i> Dashboard</a></li>
+                                    <li><a class="dropdown-item" href="profile.html"><i class="far fa-user"></i> My
+                                        Profile</a></li>
+                                    <li><a class="dropdown-item" href="profile-listing.html"><i class="far fa-layer-group"></i> My Listing</a></li>
+                                    <li><a class="dropdown-item" href="profile-favorite.html"><i class="far fa-heart"></i> My Favorites</a></li>
+                                    <li><a class="dropdown-item" href="profile-setting.html"><i class="far fa-cog"></i> Settings</a></li>
+                                    <li><a class="dropdown-item" href="logout"><i class="far fa-sign-out"></i> Log
+                                        Out</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <% } %>
                         <% if (session != null && "admin".equals(session.getAttribute("role"))) { %>
                         <div class="nav-right-btn mt-2">
                             <a href="AddListing" class="theme-btn"><span class="far fa-plus-circle"></span>Add Listing</a>

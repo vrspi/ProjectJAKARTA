@@ -144,10 +144,6 @@ public class UserController extends HttpServlet {
 
             request.setAttribute("successMessage", "Registration successful, you can log in now");
             request.getRequestDispatcher("Login.jsp").forward(request, response);
-        } else if ("Logout".equals(action)) {
-            HttpSession session = request.getSession();
-            session.invalidate();
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
         } else if ("verifyEmail".equals(action)) {
             String email = request.getParameter("email");
 
