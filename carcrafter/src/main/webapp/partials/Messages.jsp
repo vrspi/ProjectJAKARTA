@@ -1,7 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.carcrafter.model.*" %>
 <%@ page import="java.util.Map" %>
-<div class="col-lg-9">
+<div class="col-lg-9" style="width:1000px;">
     <div class="user-profile-wrapper">
         <div class="user-profile-card profile-message">
             <div class="user-profile-card-header">
@@ -26,33 +26,40 @@
                     <div class="profile-message-wrapper">
                         <div class="profile-message-inbox">
                             <ul class="profile-message-list">
-                                <% 
-                                    List<Message> messages = (List<Message>) request.getAttribute("messages");
-                                    for(Message message : messages) {
+                                <%
+                                List<Message> conversations = (List<Message>) request.getAttribute("conversations");
+                                    Map<Integer, String> userIdToNameMap = (Map<Integer, String>) request.getAttribute("userIdToNameMap");
+                                    int currentUserId = 2; // The ID of the currently logged-in user
+                                
+                                for(Message conversation : conversations) {
+                                    int otherUserId = (conversation.getSenderID() == currentUserId) ? conversation.getReceiverID() : conversation.getSenderID();
+                                    String otherUserName = userIdToNameMap.get(otherUserId);
+                                    String displayMessage = (conversation.getSenderID() == currentUserId) ? "You: " : otherUserName + ": ";
+                                    displayMessage += conversation.getContent();
                                 %>
-                                <li>
-                                    <a href="#">
-                                        <div class="message-avatar">
-                                            <!-- Replace with actual sender's avatar if available -->
-                                            <img src="assets/img/account/avatar_placeholder.jpg" alt="">
+                                <li data-other-user-id="<%= otherUserId %>" onclick="load(`<%= otherUserId %>`)" >
+                                    <a href="javascript:void(0);" class="conversation-link" >
+                                                <div class="message-avatar">
+                                            <img src="assets/img/account/user.png" alt="">
                                         </div>
                                         <div class="message-by">
                                             <div class="message-by-content">
-                                                <h5>Sender ID: <%= message.getSenderID() %></h5>
-                                                <span><%= message.getTimestamp() %></span>
+                                                <h5><%= otherUserName %></h5>
+                                                <p><%= displayMessage %></p>
                                             </div>
-                                            <p><%= message.getContent() %></p>
                                         </div>
                                     </a>
                                 </li>
-                                <% } %>
+                                
+                            <% } %>
+                            
                             </ul>
                         </div>
-                        <div class="message-content">
+                        <div class="message-content" style="padding-bottom: 200px;">
                             <div class="message-content-info">
                                 <div class="message-item">
                                     <div class="message-avatar">
-                                        <img src="assets/img/account/01.jpg" alt="">
+                                        <img src="assets/img/account/user.png" alt="">
                                     </div>
                                     <div class="message-description">
                                         <p>
@@ -132,4 +139,7 @@
             </div>
         </div>
     </div>
+    
+   
 </div>
+

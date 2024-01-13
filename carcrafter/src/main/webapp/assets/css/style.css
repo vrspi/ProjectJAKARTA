@@ -786,7 +786,6 @@ label {
   transition: var(--transition);
   opacity: 0;
   visibility: hidden;
-  z-index: 1;
 }
 
 #scroll-top.active{
@@ -1083,8 +1082,9 @@ label {
   }
 
   .navbar .nav-item .nav-link.active,
-  .navbar .nav-item:hover .nav-link {
-    color: var(--theme-color);
+  .navbar .nav-item:hover .nav-link, .dropdown-item.active {
+    color: var(--theme-color) !important;
+    background: #fff;
   }
 
   .navbar .nav-item:hover .dropdown-menu {
@@ -5303,7 +5303,7 @@ label {
   width: 100%;
   top: 0;
   left: 0;
-  /*background: var(--hero-overlay-color);*/
+  background: var(--hero-overlay-color);
   opacity: 0.8;
   z-index: -1;
 }
@@ -6057,6 +6057,7 @@ body.rtl-mode .price-wrapper {
 
 .message-content {
   padding-left: 30px;
+  padding-bottom: 200px;
   position: relative;
   overflow: hidden;
 }
@@ -6857,7 +6858,7 @@ body.rtl-mode .price-wrapper {
 }
 
 .home-3 .navbar{
-  background: transparent;
+  background: #fff;
   box-shadow: none;
 }
 
@@ -6871,7 +6872,6 @@ body.rtl-mode .price-wrapper {
 }
 
 .home-3 .hero-single{
-  padding-top: 180px;
   background: rgba(239, 29, 38, .05);
 }
 

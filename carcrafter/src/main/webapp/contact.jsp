@@ -10,7 +10,7 @@
     <div class="container">
         <h2 class="breadcrumb-title">Contact Us</h2>
         <ul class="breadcrumb-menu">
-            <li><a href="/">Home</a></li>
+            <li><a href="/carcrafter/">Home</a></li>
             <li class="active">Contact Us</li>
         </ul>
     </div>

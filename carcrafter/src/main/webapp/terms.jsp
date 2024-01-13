@@ -9,7 +9,7 @@
     <div class="container">
         <h2 class="breadcrumb-title">Terms Of Service</h2>
         <ul class="breadcrumb-menu">
-            <li><a href="/">Home</a></li>
+            <li><a href="/carcrafter/">Home</a></li>
             <li class="active">Terms Of Service</li>
         </ul>
     </div>

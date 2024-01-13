@@ -85,4 +85,16 @@ public class UserProfile {
     public String getRole() {
         return this.role;
     }
+
+    public Object getId() {
+        return this.id;
+    }
+
+    public String getImage() {
+        return this.image;
+    }
+
+    public String getAddress() {
+        return this.address;
+    }
 }

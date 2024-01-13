@@ -9,7 +9,7 @@
     <div class="container">
         <h2 class="breadcrumb-title">About Us</h2>
         <ul class="breadcrumb-menu">
-            <li><a href="/">Home</a></li>
+            <li><a href="/carcrafter/">Home</a></li>
             <li class="active">About Us</li>
         </ul>
     </div>

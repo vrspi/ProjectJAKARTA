@@ -5,45 +5,69 @@
                 <div class="user-profile-card">
                     <h4 class="user-profile-card-title">Profile Info</h4>
                     <div class="user-profile-form">
-                        <form action="#">
+                        <%
+                            String errorMessage = (String) request.getAttribute("errorMessage");
+                            if (errorMessage != null && !errorMessage.isEmpty()) {
+                        %>
+                        <div class="alert alert-danger" id="success-alert" role="alert">
+                            <%= errorMessage %>
+                        </div>
+                        <% } %>
+
+                        <%
+                            String successMessage = (String) request.getAttribute("successMessage");
+                            if (successMessage != null && !successMessage.isEmpty()) {
+                        %>
+                        <div class="alert alert-success" id="error-alert" role="alert">
+                            <%= successMessage %>
+                        </div>
+                        <% } %>
+                        <form action="UserController" method="post">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>First Name</label>
-                                        <input type="text" class="form-control" value="Antoni"
-                                            placeholder="First Name">
+                                        <input type="text" class="form-control" name="firstName"
+                                               value="<%= session.getAttribute("FirstName") != null ? session.getAttribute("FirstName") : "" %>"
+                                               placeholder="First Name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Last Name</label>
-                                        <input type="text" class="form-control" value="Jonson"
-                                            placeholder="Last Name">
+                                        <input type="text" class="form-control" name="lastName"
+                                               value="<%= session.getAttribute("LastName") != null ? session.getAttribute("LastName") : "" %>"
+                                               placeholder="Last Name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="text" class="form-control"
-                                            value="antoni@example.com" placeholder="Email">
+                                        <input type="text" class="form-control" name="email"
+                                               value="<%= session.getAttribute("Email") != null ? session.getAttribute("Email") : "" %>"
+                                               placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Phone</label>
-                                        <input type="text" class="form-control"
-                                            value="+2 134 562 458" placeholder="Phone">
+                                        <input type="text" class="form-control" name="phone"
+                                               value="<%= session.getAttribute("Phone") != null ? session.getAttribute("Phone") : "" %>"
+                                               placeholder="Phone">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Address</label>
-                                        <input type="text" class="form-control"
-                                            value="New York, USA" placeholder="Address">
+                                        <input type="text" class="form-control" name="address"
+                                               value="<%= session.getAttribute("Adress") != null ? session.getAttribute("Adress") : "" %>"
+                                               placeholder="Address">
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="theme-btn my-3"><span class="far fa-user"></span> Save Changes</button>
+                            <button type="submit" name="action" value="updateProfile" class="theme-btn my-3">
+                                <span class="far fa-user"></span> Save Changes
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -75,46 +99,20 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12">
-                <div class="user-profile-card profile-store">
-                    <h4 class="user-profile-card-title">Store Info</h4>
-                    <div class="col-lg-12">
-                        <div class="user-profile-form">
-                            <form action="#">
-                                <div class="form-group">
-                                    <div class="store-logo-preview">
-                                        <img src="assets/img/store/logo.jpg" alt="">
-                                    </div>
-                                    <input type="file" class="store-file">
-                                    <button type="button" class="theme-btn store-upload"><span class="far fa-upload"></span> Upload Logo</button>
-                                </div>
-                                <div class="form-group">
-                                    <div class="store-banner-preview">
-                                        <img src="assets/img/store/banner.jpg" alt="">
-                                    </div>
-                                    <input type="file" class="store-file">
-                                    <button type="button" class="theme-btn store-upload mb-4"><span class="far fa-upload"></span> Upload Banner</button>
-                                </div>
-                                <div class="form-group">
-                                    <label>Store Name</label>
-                                    <input type="text" class="form-control" value="Automotive Car"
-                                        placeholder="Store Name">
-                                </div>
-                                <div class="form-group">
-                                    <label>Contact Phone Number</label>
-                                    <input type="text" class="form-control" value="+2 123 654 7898"
-                                        placeholder="Contact Phone Number">
-                                </div>
-                                <div class="form-group">
-                                    <label>Contact Email</label>
-                                    <input type="text" class="form-control" value="antoni@example.com"
-                                        placeholder="Contact Email">
-                                </div>
-                                <button type="button" class="theme-btn my-3"><span class="far fa-save"></span> Save Changes</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
+
+    <script>
+        window.setTimeout(function () {
+            $("#error-alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 5000);
+
+        window.setTimeout(function () {
+            $("#success-alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 5000);
+    </script>
