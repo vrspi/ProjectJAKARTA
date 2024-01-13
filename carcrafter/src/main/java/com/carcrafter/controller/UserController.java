@@ -74,14 +74,14 @@ public class UserController extends HttpServlet {
                     session.setAttribute("Phone", user.getPhone());
                     session.setAttribute("role", user.getRole());
                     session.setAttribute("Image", user.getImage());
-                    session.setAttribute("Adress", user.getAddress());
+                    session.setAttribute("Address", user.getAddress());
 
                     String redirectTo = (String) session.getAttribute("redirectTo");
                     if (redirectTo != null) {
                         session.removeAttribute("redirectTo");
                         response.sendRedirect(redirectTo);
                     } else {
-                        response.sendRedirect("index.jsp");
+                        response.sendRedirect("Home");
                     }
                 } else {
                     request.setAttribute("errorMessage", "Invalid username or password");
@@ -241,9 +241,8 @@ public class UserController extends HttpServlet {
         }else if ("updateProfile".equals(action)) {
 
                 Integer userId = (Integer) request.getSession().getAttribute("id");
-//gle3  rebhaa  remplacent d filter
+                // TODO : a supprimer
                 if (userId == null) {
-                    // Handle the case where the user is not logged in or session is expired
                     errorMessage = "User not logged in.";
                     request.setAttribute("errorMessage", errorMessage);
                     request.getRequestDispatcher("Login.jsp").forward(request, response);
@@ -255,8 +254,6 @@ public class UserController extends HttpServlet {
                 String email = request.getParameter("email");
                 String phone = request.getParameter("phone");
                 String address = request.getParameter("address");
-
-                // Validate the input data here (omitted for brevity)
 
                 EntityManager em = JPAUtil.getEntityManager();
                 try {
@@ -279,11 +276,10 @@ public class UserController extends HttpServlet {
                         session.setAttribute("LastName", lastName);
                         session.setAttribute("Email", email);
                         session.setAttribute("Phone", phone);
-                        session.setAttribute("Adress", address);
+                        session.setAttribute("Address", address);
                         request.setAttribute("successMessage", "Profile updated successfully.");
 
-                        //KHAIROOOO   RAK TMENYEEEEK
-                        request.getRequestDispatcher("index.jsp").forward(request, response);
+                        request.getRequestDispatcher("Profile.jsp").forward(request, response);
 
 
 
@@ -291,7 +287,7 @@ public class UserController extends HttpServlet {
 
                         errorMessage = "User not found.";
                         request.setAttribute("errorMessage", errorMessage);
-                        request.getRequestDispatcher("error.jsp").forward(request, response);
+                        request.getRequestDispatcher("Profile.jsp").forward(request, response);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
