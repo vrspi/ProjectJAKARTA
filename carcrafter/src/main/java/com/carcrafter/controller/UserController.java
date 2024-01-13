@@ -301,7 +301,67 @@ public class UserController extends HttpServlet {
                     }
                 }
 
-        } else {
+        }
+        else if ("updatePassword".equals(action)) {
+            HttpSession session = request.getSession();
+            Integer userId = (Integer) session.getAttribute("id");
+            String oldPassword = request.getParameter("oldPassword");
+            String newPassword = request.getParameter("newPassword");
+            String confirmPassword = request.getParameter("confirmPassword");
+
+            if (userId == null) {
+                errorMessage = "User not logged in.";
+                request.setAttribute("errorMessage", errorMessage);
+                request.getRequestDispatcher("Login.jsp").forward(request, response);
+                return;
+            }
+
+            if (oldPassword == null || newPassword == null || confirmPassword == null ||
+                    oldPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
+                errorMessage = "All fields are required.";
+                request.setAttribute("errorMessage", errorMessage);
+                request.getRequestDispatcher("change-password.jsp").forward(request, response);
+                return;
+            }
+
+            if (!newPassword.equals(confirmPassword)) {
+                errorMessage = "New password and confirmation do not match.";
+                request.setAttribute("errorMessage", errorMessage);
+                request.getRequestDispatcher("change-password.jsp").forward(request, response);
+                return;
+            }
+
+            EntityManager em = JPAUtil.getEntityManager();
+            try {
+                em.getTransaction().begin();
+                UserProfile user = em.find(UserProfile.class, userId);
+                String hashedOldPassword = hashPassword(oldPassword);
+
+                if (user != null && user.getPassword().equals(hashedOldPassword)) {
+                    String hashedNewPassword = hashPassword(newPassword);
+                    user.setPassword(hashedNewPassword);
+                    em.persist(user);
+                    em.getTransaction().commit();
+                    request.setAttribute("successMessage", "Password successfully changed.");
+                    request.getRequestDispatcher("profile.jsp").forward(request, response);
+                } else {
+                    errorMessage = "Invalid old password.";
+                    request.setAttribute("errorMessage", errorMessage);
+                    request.getRequestDispatcher("databaseerror.jsp").forward(request, response);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                if (em.getTransaction().isActive()) {
+                    em.getTransaction().rollback();
+                }
+                // Handle other errors
+            } finally {
+                if (em.isOpen()) {
+                    em.close();
+                }
+            }
+        }
+        else{
             Part filePart = request.getPart("file");
             HttpSession session = request.getSession();
             Integer userId = (Integer) session.getAttribute("id");
