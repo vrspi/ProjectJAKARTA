@@ -110,5 +110,44 @@
 <script src="assets/js/jquery.nice-select.min.js"></script>
 <script src="assets/js/wow.min.js"></script>
 <script src="assets/js/main.js"></script>
+
+<script src="assets/js/messages.js"></script>
+<script>
+    function previewAndSubmit() {
+        var fileInput = document.getElementById('fileInput');
+        var file = fileInput.files[0];
+
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('previewImage').src = e.target.result;
+                // Soumettre le formulaire après l'affichage de l'aperçu
+                document.getElementById('uploadForm').submit();
+            }
+
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function loadPartial(event, partialPath) {
+        event.preventDefault();
+        // Remove 'active' class from all similar elements
+        document.querySelectorAll('.user-profile-sidebar-list a').forEach(function(element) {
+            element.classList.remove('active');
+        });
+
+        // Add 'active' class to the clicked element
+        event.target.classList.add('active');
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                document.getElementById('partialContainer').innerHTML = xhr.responseText;
+            }
+        };
+        xhr.open('GET', '/carcrafter/RouterController?partial=' + partialPath, true);
+        xhr.send();
+    }
+</script>
+
 </body>
 </html>

@@ -786,7 +786,6 @@ label {
   transition: var(--transition);
   opacity: 0;
   visibility: hidden;
-  z-index: 1;
 }
 
 #scroll-top.active{
@@ -6873,7 +6872,6 @@ body.rtl-mode .price-wrapper {
 }
 
 .home-3 .hero-single{
-  padding-top: 180px;
   background: rgba(239, 29, 38, .05);
 }
 
