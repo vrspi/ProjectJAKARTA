@@ -457,7 +457,7 @@
             document.querySelectorAll('.user-profile-sidebar-list a').forEach(function(element) {
                 element.classList.remove('active');
             });
-
+7
             // Add 'active' class to the clicked element
             event.target.classList.add('active');
             var xhr = new XMLHttpRequest();
