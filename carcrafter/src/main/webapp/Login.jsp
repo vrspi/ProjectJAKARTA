@@ -108,12 +108,12 @@
             <input type="password" class="form-control" name="password" placeholder="Your Password"required>
           </div>
           <div class="d-flex justify-content-between mb-4">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="remember">
-              <label class="form-check-label" for="remember">
-                Remember Me
-              </label>
-            </div>
+<%--            <div class="form-check">--%>
+<%--              <input class="form-check-input" type="checkbox" value="" name="remember" id="remember">--%>
+<%--              <label class="form-check-label" for="remember">--%>
+<%--                Remember Me--%>
+<%--              </label>--%>
+<%--            </div>--%>
             <a href="ForgotPassword" class="forgot-pass">Forgot Password?</a>
           </div>
           <div class="d-flex align-items-center">

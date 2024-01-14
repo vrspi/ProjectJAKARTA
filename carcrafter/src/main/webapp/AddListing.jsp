@@ -40,15 +40,17 @@
                         <%} %>
                     </div>
                     <ul class="user-profile-sidebar-list">
-                        <li><a href="#"  onclick="loadPartial(event, 'partials/Dashboard.jsp')"><i class="far fa-gauge-high"></i> Dashboard</a></li>
-                        <li><a href="#"  onclick="loadPartial(event, 'partials/profile.jsp')"><i class="far fa-user"></i> My Profile</a></li>
+                        <%--                        <li><a href="#"  onclick="loadPartial(event, 'partials/Dashboard.jsp')"><i class="far fa-gauge-high"></i> Dashboard</a></li>--%>
+                        <li><a href="#" onclick="loadPartial(event, 'partials/profile.jsp')"><i class="far fa-user"></i> My Profile</a></li>
+                            <% if ("admin".equals(session.getAttribute("role"))) { %>
                         <li><a href="#"  onclick="loadPartial(event, 'partials/Listing.jsp')"><i class="far fa-layer-group"></i> My Listing</a>
                         </li>
-                        <li><a class="active" href="#"  onclick="loadPartial(event, '/addlisting')"><i class="far fa-plus-circle"></i> Add
+                        <li><a href="#"  class="active" onclick="loadPartial(event, '/addlisting')"><i class="far fa-plus-circle"></i> Add
                             Listing</a></li>
-                        <li><a href="#"  onclick="loadPartial(event, 'partials/Favorites.jsp')"><i class="far fa-heart"></i> My Favorites</a></li>
-                        <li><a href="#"  onclick="loadPartial(event, 'partials/Messages.jsp')"><i class="far fa-envelope"></i> Messages <span class="badge badge-danger">02</span></a></li>
-                        <li><a href="#"  onclick="loadPartial(event, 'partials/Settings.jsp')"><i class="far fa-gear"></i> Settings</a></li>
+                            <% } %>
+                        <%--                        <li><a href="#"  onclick="loadPartial(event, 'partials/Favorites.jsp')"><i class="far fa-heart"></i> My Favorites</a></li>--%>
+                        <li><a href="#"  onclick="loadPartial(event, 'partials/Messages.jsp')"><i class="far fa-envelope"></i> Messages</a></li>
+                        <%--                        <li><a href="#"  onclick="loadPartial(event, 'partials/Settings.jsp')"><i class="far fa-gear"></i> Settings</a></li>--%>
                         <li><a href="logout"><i class="far fa-sign-out"></i> Log Out</a></li>
                     </ul>
                 </div>
