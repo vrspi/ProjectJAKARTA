@@ -118,6 +118,30 @@ public class UserService {
         }
         return null;
     }
+    public boolean updatePhotoProfile(int userId, String fileName) {
+        EntityManager em = JPAUtil.getEntityManager();
+        try {
+            em.getTransaction().begin();
+            UserProfile user = em.find(UserProfile.class, userId);
+            if (user != null) {
+                user.setImage(fileName);
+                em.merge(user);
+                em.getTransaction().commit();
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            return false;
+        } finally {
+            if (em.isOpen()) {
+                em.close();
+            }
+        }
+    }
     private String hashPassword(String password) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");

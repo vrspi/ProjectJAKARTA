@@ -40,8 +40,9 @@
                             </li>
                         </ul>
                     </div>
-                    <a href="about" class="theme-btn mt-4">Discover More<i
-                            class="fas fa-arrow-right-long"></i></a>
+                    <% if (request.getAttribute("is in about page") == null) { %>
+                        <a href="about" class="theme-btn mt-4">Discover More<i class="fas fa-arrow-right-long"></i></a>
+                    <% } %>
                 </div>
             </div>
         </div>

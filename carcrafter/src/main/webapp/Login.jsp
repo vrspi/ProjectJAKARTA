@@ -78,7 +78,7 @@
         </div>
         <form action="UserController" method="post">
           <%
-            String errorMessage = (String) request.getAttribute("errorMessage");
+            String errorMessage = (String) session.getAttribute("errorMessage");
             if (errorMessage != null && !errorMessage.isEmpty()) {
           %>
           <div class="alert alert-danger" id="success-alert" role="alert">
@@ -87,13 +87,16 @@
           <% } %>
 
           <%
-            String successMessage = (String) request.getAttribute("successMessage");
+            String successMessage = (String) session.getAttribute("successMessage");
             if (successMessage != null && !successMessage.isEmpty()) {
           %>
           <div class="alert alert-success" id="error-alert" role="alert">
             <%= successMessage %>
           </div>
-          <% } %>
+          <% }
+          session.removeAttribute("successMessage");
+          session.removeAttribute("errorMessage");
+          %>
           <div class="form-group">
             <label>Email Address</label>
             <input type="email" class="form-control" name="email" placeholder="Your Email"required
@@ -105,12 +108,12 @@
             <input type="password" class="form-control" name="password" placeholder="Your Password"required>
           </div>
           <div class="d-flex justify-content-between mb-4">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="remember">
-              <label class="form-check-label" for="remember">
-                Remember Me
-              </label>
-            </div>
+<%--            <div class="form-check">--%>
+<%--              <input class="form-check-input" type="checkbox" value="" name="remember" id="remember">--%>
+<%--              <label class="form-check-label" for="remember">--%>
+<%--                Remember Me--%>
+<%--              </label>--%>
+<%--            </div>--%>
             <a href="ForgotPassword" class="forgot-pass">Forgot Password?</a>
           </div>
           <div class="d-flex align-items-center">

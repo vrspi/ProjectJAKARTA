@@ -39,110 +39,7 @@
         </div>
     </div>
     <!-- hero area end -->
-    
-    
-    <!-- find car form -->
-    <div class="find-car">
-        <div class="container">
-            <div class="find-car-form">
-                <h4 class="find-car-title">Let's Find Your Perfect Car</h4>
-                <form action="#">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <label>Car Condition</label>
-                                <select class="select">
-                                    <option value="1">All Status</option>
-                                    <option value="2">New Car</option>
-                                    <option value="3">Used Car</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <label>Brand Name</label>
-                                <select class="select">
-                                    <option value="1">All Brand</option>
-                                    <option value="2">BMW</option>
-                                    <option value="3">Ferrari</option>
-                                    <option value="4">Marcediz Benz</option>
-                                    <option value="5">Hyundai</option>
-                                    <option value="6">Nissan</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <label>Car Model</label>
-                                <select class="select">
-                                    <option value="1">All Model</option>
-                                    <option value="2">3-Series </option>
-                                    <option value="3">Carrera</option>
-                                    <option value="4">G-TR</option>
-                                    <option value="3">Macan</option>
-                                    <option value="3">N-Series</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <label>Choose Year</label>
-                                <select class="select">
-                                    <option value="1">All Year</option>
-                                    <option value="2">2023</option>
-                                    <option value="3">2022</option>
-                                    <option value="4">2021</option>
-                                    <option value="5">2020</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <label>Choose Milieage</label>
-                                <select class="select">
-                                    <option value="1">All Milieage</option>
-                                    <option value="2">2000 Miles</option>
-                                    <option value="3">3000 Miles</option>
-                                    <option value="4">4000 Miles</option>
-                                    <option value="5">5000 Miles</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <label>Price Range</label>
-                                <select class="select">
-                                    <option value="1">All Price</option>
-                                    <option value="2">$1,000 - $5,000</option>
-                                    <option value="3">$5,000 - $10,000</option>
-                                    <option value="4">$15,000 - $20,000</option>
-                                    <option value="5">$20,000 - $25,000</option>
-                                    <option value="6">$25,000 - $30,000</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <label>Body Type</label>
-                                <select class="select">
-                                    <option value="1">All Body Type</option>
-                                    <option value="2">Sedan</option>
-                                    <option value="5">Compact</option>
-                                    <option value="3">Coupe</option>
-                                    <option value="4">Wagon</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 align-self-end">
-                            <button class="theme-btn" type="submit"><span class="far fa-search"></span> Find Your
-                                Car</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- findcar form end -->
+
     
     
     <!-- car brand -->
@@ -446,7 +343,7 @@
                 </div>
             </div>
             <div class="text-center mt-4">
-                <a href="#" class="theme-btn">Load More <i class="far fa-arrow-rotate-right"></i> </a>
+                <a href="shop" class="theme-btn">See More <i class="fas fa-arrow-right-long"></i> </a>
             </div>
         </div>
     </div>
@@ -580,7 +477,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-12">
                         <div class="video-wrapper">
-                            <a class="play-btn popup-youtube" href="https://www.youtube.com/watch?v=ckHzmP1evNU">
+                            <a class="play-btn popup-youtube" href="https://www.youtube.com/watch?v=fkk211tx07Q">
                                 <i class="fas fa-play"></i>
                             </a>
                         </div>
@@ -590,10 +487,15 @@
         </div>
     </div>
     <!-- video area end -->
-    
-    
+
+
+    <!-- testimonial area -->
+    <%@ include file="partials/testimonials.jsp" %>
+    <!-- testimonial area end -->
+
+
     <!-- car dealer -->
-    <div class="car-dealer pb-120">
+    <!--<div class="car-dealer pb-120">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mx-auto">
@@ -727,10 +629,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- car dealer end-->
-    
-    
+
+
     <!-- choose area -->
     <div class="choose-area py-120">
         <div class="container">
@@ -738,12 +640,12 @@
                 <div class="col-lg-6">
                     <div class="choose-content">
                         <div class="site-heading wow fadeInDown" data-wow-delay=".25s">
-                            <span class="site-title-tagline text-white justify-content-start">
-                                <i class="flaticon-drive"></i> Why Choose Us
-                            </span>
+            <span class="site-title-tagline text-white justify-content-start">
+                <i class="flaticon-drive"></i> Why Choose Us
+            </span>
                             <h2 class="site-title text-white mb-10">We are dedicated <span>to provide</span> quality service</h2>
                             <p class="text-white">
-                                There are many variations of passages available but the majority have suffered alteration in some form going to use a passage by injected humour randomised words which don't look even slightly believable. 
+                                At <strong>Motex</strong>, we are committed to delivering exceptional service with integrity. Our mission is to provide top-notch automotive solutions, ensuring your journey with us is reliable and worry-free.
                             </p>
                         </div>
                         <div class="choose-img wow fadeInUp" data-wow-delay=".25s">
@@ -751,6 +653,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-6">
                     <div class="choose-content-wrapper wow fadeInRight" data-wow-delay=".25s">
                         <div class="row">
@@ -762,8 +665,7 @@
                                     </div>
                                     <div class="choose-item-info">
                                         <h3>Best Quality Cars</h3>
-                                        <p>There are many variations of the passages available but the
-                                            majo have suffered fact that reader will be dist alteration.</p>
+                                        <p>Explore our curated selection of high-quality cars, ensuring you drive away with the best-in-class vehicles that meet your standards.</p>
                                     </div>
                                 </div>
                                 <div class="choose-item mb-lg-0">
@@ -773,8 +675,7 @@
                                     </div>
                                     <div class="choose-item-info">
                                         <h3>Popular Brands</h3>
-                                        <p>There are many variations of the passages available but the
-                                            majo have suffered fact that reader will be dist alteration.</p>
+                                        <p>Discover renowned automotive brands in our collection, providing you with a wide range of options from trusted manufacturers.</p>
                                     </div>
                                 </div>
                             </div>
@@ -786,8 +687,7 @@
                                     </div>
                                     <div class="choose-item-info">
                                         <h3>Certified Mechanics</h3>
-                                        <p>There are many variations of the passages available but the
-                                            majo have suffered fact that reader will be dist alteration.</p>
+                                        <p>Trust our certified mechanics for expert care and maintenance, ensuring your vehicle operates at peak performance.</p>
                                     </div>
                                 </div>
                                 <div class="choose-item mb-lg-0">
@@ -797,8 +697,7 @@
                                     </div>
                                     <div class="choose-item-info">
                                         <h3>Reasonable Price</h3>
-                                        <p>There are many variations of the passages available but the
-                                            majo have suffered fact that reader will be dist alteration.</p>
+                                        <p>Enjoy competitive and reasonable prices on our services, providing you with value for your investment in automotive excellence.</p>
                                     </div>
                                 </div>
                             </div>
@@ -809,13 +708,34 @@
         </div>
     </div>
     <!-- choose area end -->
-    
-    
-    <!-- testimonial area -->
-    <%@ include file="partials/testimonials.jsp" %>
-    <!-- testimonial area end -->
-    
-    
+
+
+    <!-- cta-area -->
+    <div class="cta-area pt-20">
+        <div class="container">
+            <div class="cta-wrapper" style="background-image: url(assets/img/cta/01.jpg);">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 text-center text-lg-start">
+                        <div class="cta-text cta-divider">
+                            <h1>Discover Your Dream Car It's Simple and Affordable</h1>
+                            <p>At <strong>Motex</strong>, we make car ownership easy and affordable. Explore a curated selection of quality vehicles that fit your lifestyle. Your dream car is just a click away!</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 text-center text-lg-end">
+                        <div class="mb-20">
+                            <a href="tel:<%@ include file="/info/phone.jsp" %>" class="cta-number"><i class="far fa-headset"></i><%@ include file="/info/phone.jsp" %></a>
+                        </div>
+                        <div class="cta-btn">
+                            <a href="shop" class="theme-btn">Buy Your Car<i class="fas fa-arrow-right-long"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- cta-area end -->
+
+
     <!-- blog area -->
     <div class="blog-area py-120">
         <div class="container">
@@ -934,8 +854,6 @@
         </div>
     </div>
     <!-- download area end -->
-    
-    
     
 
 <jsp:include page="template/bottom.jsp" />

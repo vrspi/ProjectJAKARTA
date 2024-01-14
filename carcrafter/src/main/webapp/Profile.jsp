@@ -17,6 +17,26 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="user-profile-sidebar">
+                    <%
+                        String errorMessage = (String) session.getAttribute("errorMessage");
+                        if (errorMessage != null && !errorMessage.isEmpty()) {
+                    %>
+                    <div class="alert alert-danger" id="success-alert" role="alert">
+                        <%= errorMessage %>
+                    </div>
+                    <% } %>
+
+                    <%
+                        String successMessage = (String) session.getAttribute("successMessage");
+                        if (successMessage != null && !successMessage.isEmpty()) {
+                    %>
+                    <div class="alert alert-success" id="error-alert" role="alert">
+                        <%= successMessage %>
+                    </div>
+                    <% }
+                        session.removeAttribute("successMessage");
+                        session.removeAttribute("errorMessage");
+                    %>
                     <div class="user-profile-sidebar-top">
                         <form id="uploadForm" action="UserController" method="post" enctype="multipart/form-data">
                             <div class="user-profile-img">
@@ -36,15 +56,17 @@
                         <%} %>
                     </div>
                     <ul class="user-profile-sidebar-list">
-                        <li><a href="#"  onclick="loadPartial(event, 'partials/Dashboard.jsp')"><i class="far fa-gauge-high"></i> Dashboard</a></li>
-                        <li><a href="#"  onclick="loadPartial(event, 'partials/profile.jsp')"><i class="far fa-user"></i> My Profile</a></li>
+                        <%--                        <li><a href="#"  onclick="loadPartial(event, 'partials/Dashboard.jsp')"><i class="far fa-gauge-high"></i> Dashboard</a></li>--%>
+                        <li><a href="#" class="active" onclick="loadPartial(event, 'partials/profile.jsp')"><i class="far fa-user"></i> My Profile</a></li>
+                        <% if ("admin".equals(session.getAttribute("role"))) { %>
                         <li><a href="#"  onclick="loadPartial(event, 'partials/Listing.jsp')"><i class="far fa-layer-group"></i> My Listing</a>
                         </li>
-                        <li><a class="active" href="#"  onclick="loadPartial(event, '/addlisting')"><i class="far fa-plus-circle"></i> Add
+                        <li><a href="#"  onclick="loadPartial(event, '/addlisting')"><i class="far fa-plus-circle"></i> Add
                             Listing</a></li>
-                        <li><a href="#"  onclick="loadPartial(event, 'partials/Favorites.jsp')"><i class="far fa-heart"></i> My Favorites</a></li>
-                        <li><a href="#"  onclick="loadPartial(event, 'partials/Messages.jsp')"><i class="far fa-envelope"></i> Messages <span class="badge badge-danger">02</span></a></li>
-                        <li><a href="#"  onclick="loadPartial(event, 'partials/Settings.jsp')"><i class="far fa-gear"></i> Settings</a></li>
+                        <% } %>
+                        <%--                        <li><a href="#"  onclick="loadPartial(event, 'partials/Favorites.jsp')"><i class="far fa-heart"></i> My Favorites</a></li>--%>
+                        <li><a href="#"  onclick="loadPartial(event, 'partials/Messages.jsp')"><i class="far fa-envelope"></i> Messages</a></li>
+                        <%--                        <li><a href="#"  onclick="loadPartial(event, 'partials/Settings.jsp')"><i class="far fa-gear"></i> Settings</a></li>--%>
                         <li><a href="logout"><i class="far fa-sign-out"></i> Log Out</a></li>
                     </ul>
                 </div>
