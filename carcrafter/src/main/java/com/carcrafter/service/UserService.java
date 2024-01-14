@@ -13,16 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserService {
-    private static UserService instance;
 
-    private UserService() {}
-
-    public static synchronized UserService getInstance() {
-        if (instance == null) {
-            instance = new UserService();
-        }
-        return instance;
-    }
     public UserProfile login(String email, String password){
         String hashedPassword = hashPassword(password);
         try (EntityManager em = JPAUtil.getEntityManager()){
