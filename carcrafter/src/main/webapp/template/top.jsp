@@ -113,6 +113,7 @@
                     <img src="assets/img/logo/logo.png" alt="logo">
                 </a>
                 <div class="mobile-menu-right">
+                    <% if (session != null && session.getAttribute("Email") != null) {%>
                     <div class="nav-right-account">
                         <div class="dropdown">
                             <div data-bs-toggle="dropdown" aria-expanded="false">
@@ -133,6 +134,9 @@
                             </ul>
                         </div>
                     </div>
+                    <% } else { %>
+                    <a href="Login"><i class="far fa-arrow-right-to-arc"></i> Login</a>
+                    <% } %>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-mobile-icon"><i class="far fa-bars"></i></span>
@@ -197,15 +201,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- search area -->
-                <div class="search-area">
-                    <form action="#">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Type Keyword...">
-                        </div>
-                    </form>
-                </div>
-                <!-- search area end -->
             </div>
         </nav>
     </div>

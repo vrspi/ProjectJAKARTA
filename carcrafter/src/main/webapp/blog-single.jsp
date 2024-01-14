@@ -87,7 +87,7 @@
                                     <p>It is a long established fact that a reader will be distracted by the abcd readable content of a page when looking at its layout  that more less.</p>
                                     <div class="author-social">
                                         <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fab fa-x-twitter"></i></a>
                                         <a href="#"><i class="fab fa-instagram"></i></a>
                                         <a href="#"><i class="fab fa-whatsapp"></i></a>
                                         <a href="#"><i class="fab fa-youtube"></i></a>
@@ -210,7 +210,7 @@
                         <h5 class="widget-title">Follow Us</h5>
                         <div class="social-share-link">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-x-twitter"></i></a>
                             <a href="#"><i class="fab fa-dribbble"></i></a>
                             <a href="#"><i class="fab fa-whatsapp"></i></a>
                             <a href="#"><i class="fab fa-youtube"></i></a>

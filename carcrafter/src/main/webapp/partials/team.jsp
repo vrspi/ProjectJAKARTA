@@ -32,13 +32,13 @@
             <div class="col-md-6 col-lg-3">
                 <div class="team-item wow fadeInUp" data-wow-delay=".50s">
                     <div class="team-img">
-                        <img src="assets/img/team/02.jpg" alt="thumb">
+                        <img src="assets/img/team/MEZIANI Youssef.jpg" alt="MEZIANI Youssef">
                     </div>
                     <div class="team-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/youssef.meziani/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/YoussefMeziani" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/youssef-meziani/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/channel/UC6JqKvVPHIuMEab-td9IeHw" target="_blank"><i class="fab fa-youtube"></i></a>
                     </div>
                     <div class="team-content">
                         <div class="team-bio">
