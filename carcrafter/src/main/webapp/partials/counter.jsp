@@ -29,7 +29,7 @@
                         <i class="flaticon-screwdriver"></i>
                     </div>
                     <div>
-                        <span class="counter" data-count="+" data-to="1500" data-speed="3000">1500</span>
+                        <span class="counter" data-count="+" data-to="50" data-speed="3000">50</span>
                         <h6 class="title">+ Team Workers</h6>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                         <i class="flaticon-review"></i>
                     </div>
                     <div>
-                        <span class="counter" data-count="+" data-to="30" data-speed="3000">30</span>
+                        <span class="counter" data-count="+" data-to="15" data-speed="3000">15</span>
                         <h6 class="title">+ Years Of Experience</h6>
                     </div>
                 </div>
