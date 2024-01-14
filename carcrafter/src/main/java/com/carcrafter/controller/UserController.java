@@ -1,5 +1,6 @@
 package com.carcrafter.controller;
 
+import Factory.UserServiceFactory;
 import com.carcrafter.service.UserService;
 import jakarta.persistence.TypedQuery;
 import jakarta.servlet.ServletException;
@@ -30,7 +31,7 @@ public class UserController extends HttpServlet {
 
     private final UserService userService;
     public UserController() {
-        this.userService = UserService.getInstance();
+        this.userService = UserServiceFactory.createUserService();
     }
     private static final long serialVersionUID = 1L;
 
