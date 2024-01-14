@@ -1,4 +1,4 @@
-package Factory;
+package com.carcrafter.Factory;
 
 import com.carcrafter.service.UserService;
 
