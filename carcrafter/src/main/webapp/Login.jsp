@@ -78,7 +78,7 @@
         </div>
         <form action="UserController" method="post">
           <%
-            String errorMessage = (String) request.getAttribute("errorMessage");
+            String errorMessage = (String) session.getAttribute("errorMessage");
             if (errorMessage != null && !errorMessage.isEmpty()) {
           %>
           <div class="alert alert-danger" id="success-alert" role="alert">
@@ -87,13 +87,16 @@
           <% } %>
 
           <%
-            String successMessage = (String) request.getAttribute("successMessage");
+            String successMessage = (String) session.getAttribute("successMessage");
             if (successMessage != null && !successMessage.isEmpty()) {
           %>
           <div class="alert alert-success" id="error-alert" role="alert">
             <%= successMessage %>
           </div>
-          <% } %>
+          <% }
+          session.removeAttribute("successMessage");
+          session.removeAttribute("errorMessage");
+          %>
           <div class="form-group">
             <label>Email Address</label>
             <input type="email" class="form-control" name="email" placeholder="Your Email"required

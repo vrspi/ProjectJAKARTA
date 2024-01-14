@@ -113,9 +113,6 @@
                     <img src="assets/img/logo/logo.png" alt="logo">
                 </a>
                 <div class="mobile-menu-right">
-                    <div class="search-btn">
-                        <button type="button" class="nav-right-link"><i class="far fa-search"></i></button>
-                    </div>
                     <div class="nav-right-account">
                         <div class="dropdown">
                             <div data-bs-toggle="dropdown" aria-expanded="false">
@@ -165,9 +162,6 @@
                         <li class="nav-item"><a class="nav-link" href="faq">FAQ</a></li>
                     </ul>
                     <div class="nav-right">
-                        <div class="search-btn">
-                            <button type="button" class="nav-right-link"><i class="far fa-search"></i></button>
-                        </div>
                         <div class="cart-btn">
                             <a href="cart" class="nav-right-link"><i class="far fa-cart-plus"></i><span>0</span></a>
                         </div>
@@ -205,7 +199,6 @@
                     <form action="#">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Type Keyword...">
-                            <button type="submit" class="search-icon-btn"><i class="far fa-search"></i></button>
                         </div>
                     </form>
                 </div>
