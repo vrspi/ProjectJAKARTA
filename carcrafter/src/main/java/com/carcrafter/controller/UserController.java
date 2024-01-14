@@ -27,10 +27,10 @@ import jakarta.servlet.http.HttpServletResponse;
         maxFileSize = 1024 * 1024 * 50,
         maxRequestSize = 1024 * 1024 * 100)
 public class UserController extends HttpServlet {
-    private final UserService userService;
 
+    private final UserService userService;
     public UserController() {
-        this.userService = new UserService();
+        this.userService = UserService.getInstance();
     }
     private static final long serialVersionUID = 1L;
 
