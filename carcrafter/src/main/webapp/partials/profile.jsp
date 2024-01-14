@@ -6,7 +6,7 @@
                     <h4 class="user-profile-card-title">Profile Info</h4>
                     <div class="user-profile-form">
                         <%
-                            String errorMessage = (String) request.getAttribute("errorMessage");
+                            String errorMessage = (String) session.getAttribute("errorMessage");
                             if (errorMessage != null && !errorMessage.isEmpty()) {
                         %>
                         <div class="alert alert-danger" id="success-alert" role="alert">
@@ -15,13 +15,15 @@
                         <% } %>
 
                         <%
-                            String successMessage = (String) request.getAttribute("successMessage");
+                            String successMessage = (String) session.getAttribute("successMessage");
                             if (successMessage != null && !successMessage.isEmpty()) {
                         %>
                         <div class="alert alert-success" id="error-alert" role="alert">
                             <%= successMessage %>
                         </div>
-                        <% } %>
+                        <% }
+                            session.removeAttribute("successMessage");
+                            session.removeAttribute("errorMessage");%>
                         <form action="UserController" method="post">
                             <div class="row">
                                 <div class="col-md-6">

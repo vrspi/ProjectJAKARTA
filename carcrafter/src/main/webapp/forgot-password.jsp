@@ -78,13 +78,14 @@
                 </div>
                 <form action="UserController" method="post">
                     <%
-                        String errorMessage = (String) request.getAttribute("errorMessage");
+                        String errorMessage = (String) session.getAttribute("errorMessage");
                         if (errorMessage != null && !errorMessage.isEmpty()) {
                     %>
                     <div class="alert alert-danger" id="error-alert" role="alert">
                         <%= errorMessage %>
                     </div>
-                    <% } %>
+                    <% }
+                        session.removeAttribute("errorMessage");%>
                     <div class="form-group">
                         <label>Email Address</label>
                         <input type="email" class="form-control" placeholder="Your Email" name="email">
