@@ -43,9 +43,9 @@
                             </ul>
                         </div>
                         <h4 class="blog-title">
-                            <a href="#">There are many variations of passage available.</a>
+                            <a href="blog?s=test">There are many variations of passage available.</a>
                         </h4>
-                        <a class="theme-btn" href="#">Read More<i class="fas fa-arrow-right-long"></i></a>
+                        <a class="theme-btn" href="blog?s=test">Read More<i class="fas fa-arrow-right-long"></i></a>
                     </div>
                 </div>
             </div>
@@ -62,9 +62,9 @@
                             </ul>
                         </div>
                         <h4 class="blog-title">
-                            <a href="#">There are many variations of passage available.</a>
+                            <a href="blog?s=test">There are many variations of passage available.</a>
                         </h4>
-                        <a class="theme-btn" href="#">Read More<i class="fas fa-arrow-right-long"></i></a>
+                        <a class="theme-btn" href="blog?s=test">Read More<i class="fas fa-arrow-right-long"></i></a>
                     </div>
                 </div>
             </div>
@@ -81,9 +81,9 @@
                             </ul>
                         </div>
                         <h4 class="blog-title">
-                            <a href="#">There are many variations of passage available.</a>
+                            <a href="blog?s=test">There are many variations of passage available.</a>
                         </h4>
-                        <a class="theme-btn" href="#">Read More<i class="fas fa-arrow-right-long"></i></a>
+                        <a class="theme-btn" href="blog?s=test">Read More<i class="fas fa-arrow-right-long"></i></a>
                     </div>
                 </div>
             </div>
@@ -100,9 +100,9 @@
                             </ul>
                         </div>
                         <h4 class="blog-title">
-                            <a href="#">There are many variations of passage available.</a>
+                            <a href="blog?s=test">There are many variations of passage available.</a>
                         </h4>
-                        <a class="theme-btn" href="#">Read More<i class="fas fa-arrow-right-long"></i></a>
+                        <a class="theme-btn" href="blog?s=test">Read More<i class="fas fa-arrow-right-long"></i></a>
                     </div>
                 </div>
             </div>
@@ -119,9 +119,9 @@
                             </ul>
                         </div>
                         <h4 class="blog-title">
-                            <a href="#">There are many variations of passage available.</a>
+                            <a href="blog?s=test">There are many variations of passage available.</a>
                         </h4>
-                        <a class="theme-btn" href="#">Read More<i class="fas fa-arrow-right-long"></i></a>
+                        <a class="theme-btn" href="blog?s=test">Read More<i class="fas fa-arrow-right-long"></i></a>
                     </div>
                 </div>
             </div>
@@ -138,9 +138,9 @@
                             </ul>
                         </div>
                         <h4 class="blog-title">
-                            <a href="#">There are many variations of passage available.</a>
+                            <a href="blog?s=test">There are many variations of passage available.</a>
                         </h4>
-                        <a class="theme-btn" href="#">Read More<i class="fas fa-arrow-right-long"></i></a>
+                        <a class="theme-btn" href="blog?s=test">Read More<i class="fas fa-arrow-right-long"></i></a>
                     </div>
                 </div>
             </div>

@@ -13,7 +13,7 @@
             <div class="col-md-6 col-lg-3">
                 <div class="team-item wow fadeInUp" data-wow-delay=".25s">
                     <div class="team-img">
-                        <img src="assets/img/team/01.jpg" alt="thumb">
+                        <img src="assets/img/team/CHIBANI Mohammed Amine.jpg" alt="CHIBANI Mohammed Amine">
                     </div>
                     <div class="team-social">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -51,7 +51,7 @@
             <div class="col-md-6 col-lg-3">
                 <div class="team-item wow fadeInUp" data-wow-delay=".75s">
                     <div class="team-img">
-                        <img src="assets/img/team/03.jpg" alt="thumb">
+                        <img src="assets/img/team/BENNANI DOSSE Omar.jpg" alt="BENNANI DOSSE Omar">
                     </div>
                     <div class="team-social">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -70,7 +70,7 @@
             <div class="col-md-6 col-lg-3">
                 <div class="team-item wow fadeInUp" data-wow-delay="1s">
                     <div class="team-img">
-                        <img src="assets/img/team/04.jpg" alt="thumb">
+                        <img src="assets/img/team/DAALA Khaireddine.jpg" alt="DAALA Khaireddine">
                     </div>
                     <div class="team-social">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -89,7 +89,7 @@
             <div class="col-md-6 col-lg-3">
                 <div class="team-item wow fadeInUp" data-wow-delay=".25s">
                     <div class="team-img">
-                        <img src="assets/img/team/01.jpg" alt="thumb">
+                        <img src="assets/img/team/KADI Mohammed.jpg" alt="KADI Mohammed">
                     </div>
                     <div class="team-social">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -108,7 +108,7 @@
             <div class="col-md-6 col-lg-3">
                 <div class="team-item wow fadeInUp" data-wow-delay=".50s">
                     <div class="team-img">
-                        <img src="assets/img/team/02.jpg" alt="thumb">
+                        <img src="assets/img/team/ABBAOUI Khalil.jpg" alt="ABBAOUI Khalil">
                     </div>
                     <div class="team-social">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -127,7 +127,7 @@
             <div class="col-md-6 col-lg-3">
                 <div class="team-item wow fadeInUp" data-wow-delay=".75s">
                     <div class="team-img">
-                        <img src="assets/img/team/03.jpg" alt="thumb">
+                        <img src="assets/img/team/HASHAS Jad El Mawla.jpg" alt="HASHAS Jad El Mawla">
                     </div>
                     <div class="team-social">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -146,7 +146,7 @@
             <div class="col-md-6 col-lg-3">
                 <div class="team-item wow fadeInUp" data-wow-delay="1s">
                     <div class="team-img">
-                        <img src="assets/img/team/04.jpg" alt="thumb">
+                        <img src="assets/img/team/BAZHAR Ayoub.jpg" alt="BAZHAR Ayoub">
                     </div>
                     <div class="team-social">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>

@@ -9,7 +9,7 @@
             <div class="row footer-widget-wrapper pt-100 pb-70">
                 <div class="col-md-6 col-lg-4">
                     <div class="footer-widget-box about-us">
-                        <a href="#" class="footer-logo">
+                        <a href="/carcrafter/" class="footer-logo">
                             <img src="assets/img/logo/logo-light.png" alt="">
                         </a>
                         <p class="mb-3">
@@ -31,7 +31,7 @@
                             <li><a href="blog"><i class="fas fa-caret-right"></i> Blog</a></li>
                             <li><a href="shop"><i class="fas fa-caret-right"></i> Shop</a></li>
                             <li><a href="team"><i class="fas fa-caret-right"></i> Our Team</a></li>
-                            <li><a href="#"><i class="fas fa-caret-right"></i> Sitemap</a></li>
+                            <li><a href="calculator"><i class="fas fa-caret-right"></i> Calculator</a></li>
                         </ul>
                     </div>
                 </div>
@@ -109,6 +109,7 @@
 <script src="assets/js/jquery-ui.min.js"></script>
 <script src="assets/js/jquery.nice-select.min.js"></script>
 <script src="assets/js/wow.min.js"></script>
+<script src="assets/js/flex-slider.js"></script>
 <script src="assets/js/main.js"></script>
 
 <script src="assets/js/messages.js"></script>
@@ -148,6 +149,57 @@
         xhr.send();
     }
 </script>
+
+<% if (request.getAttribute("is in calculator page") != null) { %>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Function to calculate the monthly payment
+        function calculateMonthlyPayment(price, rate, period, downPayment) {
+            // Convert rate to decimal
+            rate = rate / 100.0;
+
+            // Monthly interest rate
+            var monthlyRate = rate / 12.0;
+
+            // Number of monthly payments
+            var numberOfPayments = period * 12;
+
+            // Calculate monthly payment using the formula
+            var monthlyPayment =
+                (price - downPayment) *
+                (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) /
+                (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+
+            return monthlyPayment;
+        }
+
+        // Function to handle form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            // Get form values
+            var price = parseFloat(document.getElementById('price').value);
+            var rate = parseFloat(document.getElementById('rate').value);
+            var period = parseFloat(document.getElementById('period').value);
+            var downPayment = parseFloat(document.getElementById('downPayment').value);
+
+            // Calculate monthly payment
+            if (price == null || isNaN(price) || rate == null || isNaN(rate) || period == null || isNaN(period) || downPayment == null || isNaN(downPayment)){
+                alert('All the fields are required !');
+            } else {
+                var monthlyPayment = calculateMonthlyPayment(price, rate, period, downPayment);
+
+                // Display the result (you can customize this part)
+                alert('Your monthly payment : ' + monthlyPayment.toFixed(2) + ' MAD');
+            }
+        }
+
+        // Attach form submit event listener
+        var form = document.querySelector('.calculator-form form');
+        form.addEventListener('submit', handleFormSubmit);
+    });
+</script>
+<% } %>
 
 </body>
 </html>
