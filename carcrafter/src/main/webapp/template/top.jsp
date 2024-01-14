@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
     <link rel="stylesheet" href="assets/css/nice-select.min.css">
+    <link rel="stylesheet" href="assets/css/flex-slider.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         .logout-button {
@@ -81,10 +82,10 @@
                 <div class="header-top-left">
                     <div class="header-top-contact">
                         <ul>
-                            <li><a href="mailto:<%@ include file="/info/email.jsp" %>"><i class="far fa-envelopes dark-icon"></i><%@ include file="/info/email.jsp" %></a></li>
-                            <li><a href="tel:<%@ include file="/info/phone.jsp" %>"><i class="far fa-phone-volume"></i><%@ include file="/info/phone.jsp" %></a>
+                            <li><a href="mailto:<%@ include file="/info/email.jsp" %>"><i class="far fa-envelopes dark-icon"></i> <%@ include file="/info/email.jsp" %></a></li>
+                            <li><a href="tel:<%@ include file="/info/phone.jsp" %>"><i class="far fa-phone-volume"></i> <%@ include file="/info/phone.jsp" %></a>
                             </li>
-                            <li><a href="#"><i class="far fa-alarm-clock"></i><%@ include file="/info/open time.jsp" %></a></li>
+                            <li><a href="#"><i class="far fa-alarm-clock"></i> <%@ include file="/info/open time.jsp" %></a></li>
                         </ul>
                     </div>
                 </div>
@@ -158,6 +159,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Others</a>
                             <ul class="dropdown-menu fade-down">
+                                <li><a class="dropdown-item" href="calculator">Calculator</a></li>
                                 <li><a class="dropdown-item" href="testimonials">Testimonials</a></li>
                                 <li><a class="dropdown-item" href="team">Our Team</a></li>
                                 <li><a class="dropdown-item" href="terms">Terms Of Service</a></li>
