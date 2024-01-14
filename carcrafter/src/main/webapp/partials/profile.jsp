@@ -7,7 +7,9 @@
                     <div class="user-profile-form">
                         <%
                             String errorMessage = (String) session.getAttribute("errorMessage");
-                            if (errorMessage != null && !errorMessage.isEmpty()) {
+                            String successMessage = (String) session.getAttribute("successMessage");%>
+
+                        <% if (errorMessage != null && !errorMessage.isEmpty()) {
                         %>
                         <div class="alert alert-danger" id="success-alert" role="alert">
                             <%= errorMessage %>
@@ -15,7 +17,6 @@
                         <% } %>
 
                         <%
-                            String successMessage = (String) session.getAttribute("successMessage");
                             if (successMessage != null && !successMessage.isEmpty()) {
                         %>
                         <div class="alert alert-success" id="error-alert" role="alert">
@@ -77,6 +78,25 @@
             <div class="col-lg-5">
                 <div class="user-profile-card">
                     <h4 class="user-profile-card-title">Change Password</h4>
+                    <%
+                        String errorMessageD = (String) session.getAttribute("errorMessageD");
+                        String successMessageD = (String) session.getAttribute("successMessageD");%>
+                    <% if (errorMessageD != null && !errorMessageD.isEmpty()) {
+                    %>
+                    <div class="alert alert-danger" id="success-alert" role="alert">
+                        <%= errorMessageD %>
+                    </div>
+                    <% } %>
+
+                    <%
+                        if (successMessageD != null && !successMessageD.isEmpty()) {
+                    %>
+                    <div class="alert alert-success" id="error-alert" role="alert">
+                        <%= successMessageD %>
+                    </div>
+                    <% }
+                        session.removeAttribute("successMessageD");
+                        session.removeAttribute("errorMessageD");%>
                     <div class="col-lg-12">
                         <div class="user-profile-form">
 
@@ -84,19 +104,19 @@
                                 <div class="form-group">
                                     <label>Old Password</label>
                                     <input name="oldPassword"type="password" class="form-control"
-                                        placeholder="Old Password">
+                                        placeholder="oldPassword">
                                 </div>
                                 <div class="form-group">
                                     <label>New Password</label>
                                     <input  name="newPassword" type="password" class="form-control"
-                                        placeholder="New Password">
+                                        placeholder="newPassword">
                                 </div>
                                 <div class="form-group">
                                     <label>Re-Type Password</label>
                                     <input name="confirmPassword" type="password" class="form-control"
                                         placeholder="Re-Type Password">
                                 </div>
-                                <button type="submit"  name="action" value="updatePassword" class="theme-btn my-3"><span class="far fa-key"></span> Change Password</button>
+                                <button type="submit"  name="action" value="changePasswordInDashboard" class="theme-btn my-3"><span class="far fa-key"></span> Change Password</button>
                             </form>
                         </div>
                     </div>

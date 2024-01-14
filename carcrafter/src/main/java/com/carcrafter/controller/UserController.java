@@ -46,10 +46,16 @@ public class UserController extends HttpServlet {
             handleUserExistByEmail(request,response);
         }
         else if("changePassword".equals(action)){
-            handleChangePassword(request,response);
+            handleChangePassword(request,response,"reset-password.jsp","Login","errorMessage","successMessage");
         }
         else if("updateProfile".equals(action)){
             handleUpdateProfile(request,response);
+        }
+        else if("changePasswordInDashboard".equals(action)){
+            handleChangePassword(request,response,"Profile","Profile","errorMessageD","successMessageD");
+        }
+        else{
+            handleUpdatePhotoProfile(request,response);
         }
     }
 
@@ -58,6 +64,7 @@ public class UserController extends HttpServlet {
     private void handleLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        boolean rememberMe = request.getParameter("remember") != null;
         HttpSession session = request.getSession();
         if (email == null || email.isEmpty() || password == null || password.isEmpty()) {
             session.setAttribute("errorMessage", "Email and password must not be empty");
@@ -117,7 +124,7 @@ public class UserController extends HttpServlet {
         response.sendRedirect("Login");
     }
 
-    private void handleChangePassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void handleChangePassword(HttpServletRequest request, HttpServletResponse response,String redirictionError,String redirictionSucces,String nameMessageError,String nameMessageSuccess) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String email = (String) session.getAttribute("Email");
         String oldPassword = request.getParameter("oldPassword");
@@ -126,23 +133,22 @@ public class UserController extends HttpServlet {
 
         if (oldPassword == null || newPassword == null || confirmPassword == null ||
                 oldPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
-            session.setAttribute("errorMessage", "All fields are required.");
-            response.sendRedirect("reset-password.jsp");
+            session.setAttribute(nameMessageError, "All fields are required.");
+            response.sendRedirect(redirictionError);
             return;
         }
         if (!newPassword.equals(confirmPassword)) {
-            session.setAttribute("errorMessage", "New password and confirmation do not match.");
-            response.sendRedirect("reset-password.jsp");
+            session.setAttribute(nameMessageError, "New password and confirmation do not match.");
+            response.sendRedirect(redirictionError);
             return;
         }
         if(userService.changePassword(email, oldPassword, newPassword)){
-            session.setAttribute("successMessage", "Password successfully changed.");
-            session.removeAttribute("Email");
-            response.sendRedirect("Login");
+            session.setAttribute(nameMessageSuccess, "Password successfully changed.");
+            response.sendRedirect(redirictionSucces);
         }
         else{
-            session.setAttribute("errorMessage", "Invalid current password.");
-            response.sendRedirect("reset-password.jsp");
+            session.setAttribute(nameMessageError, "Invalid current password.");
+            response.sendRedirect(redirictionError);
         }
     }
     private void handleUserExistByEmail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -175,13 +181,51 @@ public class UserController extends HttpServlet {
             if (updatedUser != null) {
                 session.setAttribute("user",updatedUser);
                 session.setAttribute("successMessage", "Profile updated successfully.");
-                response.sendRedirect("Profile.jsp");
+                response.sendRedirect("Profile");
             } else {
                 session.setAttribute("errorMessage", "User not found or update failed.");
-                response.sendRedirect("Profile.jsp");
+                response.sendRedirect("Profile");
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    private void handleUpdatePhotoProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Part filePart = request.getPart("file");
+        HttpSession session = request.getSession();
+        Integer userId = (Integer) session.getAttribute("id");
+        String fileName = userId + "_" + filePart.getSubmittedFileName();
+        String basePath = getServletContext().getRealPath("/");
+        String uploadPath = basePath + "assets/upload/img/user/" + fileName;
+        filePart.write(uploadPath);
+
+        String devPath = "C:\\Users\\jouj9\\OneDrive\\Bureau\\EHEI S3&S4\\Projet Java\\ProjectJAKARTA\\carcrafter\\src\\main\\webapp\\assets\\upload\\img\\user\\" + fileName;
+
+        try (InputStream fileContent = filePart.getInputStream();
+             FileOutputStream fos = new FileOutputStream(devPath)) {
+            byte[] buffer = new byte[fileContent.available()];
+            int bytesRead;
+            while ((bytesRead = fileContent.read(buffer)) != -1) {
+                fos.write(buffer, 0, bytesRead);
+            }
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+        if (userId != null) {
+            try {
+                boolean success = userService.updatePhotoProfile(userId, fileName);
+                if (success) {
+                    session.setAttribute("Image", fileName);
+                    session.setAttribute("successMessage", "Image ajoutée avec succès");
+                    response.sendRedirect("Profile");
+                } else {
+                    session.setAttribute("errorMessage", "Failed to update image or user not found.");
+                    response.sendRedirect("Profile");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
     private boolean isValidEmail(String email) {

@@ -119,14 +119,15 @@
                                 <img src="<%= imagePath %>" alt="">
                             </div>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="dashboard.html"><i class="far fa-gauge-high"></i>
-                                    Dashboard</a></li>
-                                <li><a class="dropdown-item" href="profile.html"><i class="far fa-user"></i> My
+<%--                                <li><a class="dropdown-item" href="dashboard.html"><i class="far fa-gauge-high"></i>--%>
+<%--                                    Dashboard</a></li>--%>
+                                <li><a class="dropdown-item" href="Profile"><i class="far fa-user"></i> My
                                     Profile</a></li>
+                                <% if ("admin".equals(session.getAttribute("role"))) { %>
                                 <li><a class="dropdown-item" href="profile-listing.html"><i class="far fa-layer-group"></i> My Listing</a></li>
-                                <li><a class="dropdown-item" href="profile-favorite.html"><i class="far fa-heart"></i> My Favorites</a></li>
-                                <li><a class="dropdown-item" href="profile-setting.html"><i class="far fa-cog"></i>
-                                    Settings</a></li>
+                                <% } %>
+<%--                                <li><a class="dropdown-item" href="profile-favorite.html"><i class="far fa-heart"></i> My Favorites</a></li>--%>
+<%--                                <li><a class="dropdown-item" href="profile-setting.html"><i class="far fa-cog"></iSettings</a></li>>--%>
                                 <li><a class="dropdown-item" href="logout"><i class="far fa-sign-out"></i> Log Out</a>
                                 </li>
                             </ul>
@@ -172,12 +173,14 @@
                                     <img src="<%= imagePath %>" alt="">
                                 </div>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="dashboard.html"><i class="far fa-gauge-high"></i> Dashboard</a></li>
-                                    <li><a class="dropdown-item" href="profile.html"><i class="far fa-user"></i> My
+<%--                                    <li><a class="dropdown-item" href="dashboard.html"><i class="far fa-gauge-high"></i> Dashboard</a></li>--%>
+                                    <li><a class="dropdown-item" href="Profile"><i class="far fa-user"></i> My
                                         Profile</a></li>
+                                    <% if ("admin".equals(session.getAttribute("role"))) { %>
                                     <li><a class="dropdown-item" href="profile-listing.html"><i class="far fa-layer-group"></i> My Listing</a></li>
-                                    <li><a class="dropdown-item" href="profile-favorite.html"><i class="far fa-heart"></i> My Favorites</a></li>
-                                    <li><a class="dropdown-item" href="profile-setting.html"><i class="far fa-cog"></i> Settings</a></li>
+                                    <% } %>
+<%--                                    <li><a class="dropdown-item" href="profile-favorite.html"><i class="far fa-heart"></i> My Favorites</a></li>--%>
+<%--                                    <li><a class="dropdown-item" href="profile-setting.html"><i class="far fa-cog"></i> Settings</a></li>--%>
                                     <li><a class="dropdown-item" href="logout"><i class="far fa-sign-out"></i> Log
                                         Out</a></li>
                                 </ul>
