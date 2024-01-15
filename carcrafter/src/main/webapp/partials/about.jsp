@@ -10,7 +10,7 @@
                         <div class="about-experience-icon">
                             <i class="flaticon-car"></i>
                         </div>
-                        <b>30 Years Of <br> Quality Service</b>
+                        <b>15 Years Of <br> Quality Service</b>
                     </div>
                 </div>
             </div>
