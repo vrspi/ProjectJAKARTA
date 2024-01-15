@@ -31,40 +31,40 @@
                                     <div class="form-group">
                                         <label>First Name</label>
                                         <input type="text" class="form-control" name="firstName"
-                                               value="<%= session.getAttribute("FirstName") != null ? session.getAttribute("FirstName") : "" %>"
-                                               placeholder="First Name">
+                                               placeholder="<%= session.getAttribute("FirstName") != null ? session.getAttribute("FirstName") : "" %>"
+                                              >
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Last Name</label>
                                         <input type="text" class="form-control" name="lastName"
-                                               value="<%= session.getAttribute("LastName") != null ? session.getAttribute("LastName") : "" %>"
-                                               placeholder="Last Name">
+                                               placeholder=<%= session.getAttribute("LastName") != null ? session.getAttribute("LastName") : "" %>
+                                               >
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Email</label>
                                         <input type="text" class="form-control" name="email"
-                                               value="<%= session.getAttribute("Email") != null ? session.getAttribute("Email") : "" %>"
-                                               placeholder="Email">
+                                               placeholder="<%= session.getAttribute("Email") != null ? session.getAttribute("Email") : "" %>"
+                                              >
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Phone</label>
                                         <input type="text" class="form-control" name="phone"
-                                               value="<%= session.getAttribute("Phone") != null ? session.getAttribute("Phone") : "" %>"
-                                               placeholder="Phone">
+                                               placeholder="<%= session.getAttribute("Phone") != null ? session.getAttribute("Phone") : "" %>"
+                                               >
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Address</label>
                                         <input type="text" class="form-control" name="address"
-                                               value="<%= session.getAttribute("Address") != null ? session.getAttribute("Address") : "" %>"
-                                               placeholder="Address">
+                                               placeholder="<%= session.getAttribute("Address") != null ? session.getAttribute("Address") : "" %>"
+                                               >
                                     </div>
                                 </div>
                             </div>
