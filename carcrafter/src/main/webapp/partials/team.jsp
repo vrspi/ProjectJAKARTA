@@ -149,10 +149,10 @@
                         <img src="assets/img/team/BAZHAR Ayoub.jpg" alt="BAZHAR Ayoub">
                     </div>
                     <div class="team-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/saw.ayoub.5/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/AYB_BZ/" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/ayoub-bazhar-0097a624a/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/channel/UC34ZF2kuk_WA-bRL3KLEp7Q/" target="_blank"><i class="fab fa-youtube"></i></a>
                     </div>
                     <div class="team-content">
                         <div class="team-bio">
