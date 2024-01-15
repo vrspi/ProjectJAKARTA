@@ -1,12 +1,11 @@
 package com.carcrafter.controller;
 
+import com.carcrafter.Factory.UserServiceFactory;
 import com.carcrafter.service.UserService;
-import jakarta.persistence.TypedQuery;
 import jakarta.servlet.ServletException;
 
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.*;
-import com.carcrafter.model.JPAUtil;
 import com.carcrafter.model.UserProfile;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Part;
@@ -14,10 +13,9 @@ import jakarta.servlet.http.Part;
 import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import jakarta.persistence.EntityManager;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -27,10 +25,10 @@ import jakarta.servlet.http.HttpServletResponse;
         maxFileSize = 1024 * 1024 * 50,
         maxRequestSize = 1024 * 1024 * 100)
 public class UserController extends HttpServlet {
-    private final UserService userService;
 
+    private final UserService userService;
     public UserController() {
-        this.userService = new UserService();
+        this.userService = UserServiceFactory.createUserService();
     }
     private static final long serialVersionUID = 1L;
 
