@@ -27,7 +27,7 @@ public class ConversationController extends HttpServlet {
         EntityManager em = JPAUtil.getEntityManager();
         try {
             int otherUserId = Integer.parseInt(request.getParameter("otherUserId"));
-            int currentUserId = 2; // Implement this to get the current user's ID
+            int currentUserId = Integer.parseInt(request.getParameter("CurrentUserId")); // Implement this to get the current user's ID
 
             em.getTransaction().begin();
             String qlString = "SELECT m FROM Message m WHERE (m.senderID = :currentUserId AND m.receiverID = :otherUserId) OR (m.senderID = :otherUserId AND m.receiverID = :currentUserId) ORDER BY m.timestamp";
