@@ -10,15 +10,24 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 function load(element) {
-    var otherUserId = element;
+    console.log("Function load called with element: ", element);
+
+    var splitArray = element.split("-"); 
+    var secondElement = splitArray[1]; 
+
+    var otherUserId = secondElement;
+    console.log("Other Users ID: ", otherUserId);
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var messages = JSON.parse(this.responseText);
-            updateMessageDiv(messages);
+            console.log(messages);
+
+            updateMessageDiv(messages,splitArray[0]);
         }
     };
-    xhttp.open("GET", "FetchMessages?otherUserId=" + otherUserId, true);
+    xhttp.open("GET", "FetchMessages?otherUserId=" + otherUserId + "&CurrentUserId="+ splitArray[0], true);
     xhttp.send();
 
 }
@@ -37,14 +46,14 @@ function load(element) {
 // }
 
 
-function updateMessageDiv(messages) {
+function updateMessageDiv(messages,currentUserId) {
   var messageContentDiv = document.querySelector('.message-content-info');
   messageContentDiv.innerHTML = ''; // Clear existing messages
-
+    console.log(currentUserId);
   messages.forEach(function(message) {
     
       var messageItemDiv = document.createElement('div');
-      messageItemDiv.className = message.senderId === 2 ? 'message-item me' : 'message-item';
+      messageItemDiv.className = message.senderId ===  currentUserId? 'message-item me' : 'message-item';
       
       var avatarDiv = document.createElement('div');
       avatarDiv.className = 'message-avatar';
