@@ -15,9 +15,12 @@ public class Listing {
     private String title;
 
     @ManyToOne
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "UserID", insertable=false, updatable=false)
     private UserProfile userProfile;
 
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
+    }
 
     public UserProfile getUserProfile() {
         return userProfile;

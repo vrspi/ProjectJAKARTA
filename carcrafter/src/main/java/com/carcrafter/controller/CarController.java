@@ -723,7 +723,9 @@ public class CarController extends HttpServlet {
                         // Définir le répertoire d'upload
                         String uploadDirectory = "C:\\Users\\MO KADI\\Desktop\\ProjectJAKARTA\\carcrafter\\src\\main\\webapp\\assets\\upload\\img\\car";
 
-                        // Utilisez un chemin relatif pour éviter les problèmes de compatibilité entre les systèmes d'exploitation
+                        // chemin server
+                        //String uploadDirectory = getServletContext().getRealPath("/assets/upload/img/car");
+
                         Path uploadPath = Paths.get(uploadDirectory, hashedFileName);
 
                         try (InputStream fileContent = filePart.getInputStream()) {
@@ -757,6 +759,7 @@ public class CarController extends HttpServlet {
                 if (em.isOpen()) {
                     em.close();
                 }
+                resp.sendRedirect("ProfileListing");
             }
 
         }
