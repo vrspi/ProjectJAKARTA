@@ -757,6 +757,7 @@ public class CarController extends HttpServlet {
                 if (em.isOpen()) {
                     em.close();
                 }
+                resp.sendRedirect("ProfileListing");
             }
 
         }

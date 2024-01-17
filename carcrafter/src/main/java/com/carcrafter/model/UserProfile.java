@@ -101,4 +101,8 @@ public class UserProfile {
     public String getPassword() {
         return this.password;
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
