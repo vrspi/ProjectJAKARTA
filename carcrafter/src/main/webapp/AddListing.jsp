@@ -43,7 +43,7 @@
                         <%--                        <li><a href="#"  onclick="loadPartial(event, 'partials/Dashboard.jsp')"><i class="far fa-gauge-high"></i> Dashboard</a></li>--%>
                         <li><a href="#" onclick="loadPartial(event, 'partials/profile.jsp')"><i class="far fa-user"></i> My Profile</a></li>
                             <% if ("admin".equals(session.getAttribute("role"))) { %>
-                        <li><a href="#"  onclick="loadPartial(event, 'partials/Listing.jsp')"><i class="far fa-layer-group"></i> My Listing</a>
+                        <li><a href="#"  onclick="loadPartial(event, 'partials/profilelisting.jsp')"><i class="far fa-layer-group"></i> My Listing</a>
                         </li>
                         <li><a href="#"  class="active" onclick="loadPartial(event, '/addlisting')"><i class="far fa-plus-circle"></i> Add
                             Listing</a></li>

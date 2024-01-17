@@ -64,12 +64,12 @@
 %>
 
 <!-- preloader -->
-<div class="preloader">
-    <div class="loader-ripple">
-        <div></div>
-        <div></div>
-    </div>
-</div>
+<%--<div class="preloader">--%>
+<%--    <div class="loader-ripple">--%>
+<%--        <div></div>--%>
+<%--        <div></div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 <!-- preloader end -->
 
 
@@ -126,7 +126,7 @@
                                 <li><a class="dropdown-item" href="Profile"><i class="far fa-user"></i> My
                                     Profile</a></li>
                                 <% if ("admin".equals(session.getAttribute("role"))) { %>
-                                <li><a class="dropdown-item" href="profile-listing.html"><i class="far fa-layer-group"></i> My Listing</a></li>
+                                <li><a class="dropdown-item" href="MyListing"><i class="far fa-layer-group"></i> My Listing</a></li>
                                 <% } %>
 <%--                                <li><a class="dropdown-item" href="profile-favorite.html"><i class="far fa-heart"></i> My Favorites</a></li>--%>
 <%--                                <li><a class="dropdown-item" href="profile-setting.html"><i class="far fa-cog"></iSettings</a></li>>--%>
@@ -183,7 +183,7 @@
                                     <li><a class="dropdown-item" href="Profile"><i class="far fa-user"></i> My
                                         Profile</a></li>
                                     <% if ("admin".equals(session.getAttribute("role"))) { %>
-                                    <li><a class="dropdown-item" href="profile-listing.html"><i class="far fa-layer-group"></i> My Listing</a></li>
+                                    <li><a class="dropdown-item" href="ProfileListing"><i class="far fa-layer-group"></i> My Listing</a></li>
                                     <% } %>
 <%--                                    <li><a class="dropdown-item" href="profile-favorite.html"><i class="far fa-heart"></i> My Favorites</a></li>--%>
 <%--                                    <li><a class="dropdown-item" href="profile-setting.html"><i class="far fa-cog"></i> Settings</a></li>--%>

@@ -23,6 +23,21 @@ public class RouterController extends HttpServlet {
             request.getRequestDispatcher("/Messages").forward(request, response);
 
         }
+        else if(partialPath.contains("profilelisting.jsp")){
+            EntityManager em = JPAUtil.getEntityManager();
+            try {
+                em.getTransaction().begin();
+                TypedQuery<Listing> query = em.createQuery("SELECT L FROM Listing L", Listing.class);
+                List<Listing> listings = query.getResultList();
+                request.setAttribute("Cars", listings);
+                request.getRequestDispatcher("/partials/profilelisting.jsp").forward(request, response);
+                em.getTransaction().commit();
+            } finally {
+                if (em.isOpen()) {
+                    em.close();
+                }
+            }
+        }
         else if(partialPath.contains("addlist")){
             EntityManager em = JPAUtil.getEntityManager();
         try{
