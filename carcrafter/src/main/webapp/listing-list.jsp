@@ -150,7 +150,7 @@
                         %>
 
                         <div class="car-sort-list-grid">
-                            <a class="car-sort-grid" href="ListingGrid"><i
+                            <a class="car-sort-grid" href="Shop"><i
                                     class="far fa-grid-2"></i></a>
                             <a class="car-sort-list active" href="ListingList"><i class="far fa-list-ul"></i></a>
                         </div>

@@ -12,7 +12,7 @@
 
 
   <!-- breadcrumb -->
-<div class="site-breadcrumb" style="background: url('../assets/img/breadcrumb/01.jpg');">
+<!--<div class="site-breadcrumb" style="background: url('../assets/img/breadcrumb/01.jpg');">
 
     <div class="container">
       <h2 class="breadcrumb-title">Listing Grid</h2>
@@ -21,7 +21,7 @@
         <li class="active">Listing Grid</li>
       </ul>
     </div>
-  </div>
+  </div>-->
   <!-- breadcrumb end -->
 
 
@@ -202,7 +202,7 @@
                     <li><i class="far fa-gas-pump"></i><%=car.getFuelType().getFuelType()%></li>
                   </ul>
                   <div class="car-footer">
-                    <span class="car-price"><%=car.getPrice()%></span>
+                    <span class="car-price"><%=car.getPrice()%>MAD</span>
                     <a href="#" class="theme-btn"><span class="far fa-eye"></span>Details</a>
                   </div>
                 </div>
