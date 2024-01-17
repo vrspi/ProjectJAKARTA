@@ -12,7 +12,7 @@
                     <div class="col-md-12 col-lg-6">
                         <div class="hero-content">
                             <h6 class="hero-sub-title wow fadeInUp" data-wow-delay=".25s">Welcome To
-                                Motex!</h6>
+                                Car Crafter!</h6>
                             <h1 class="hero-title wow fadeInRight" data-wow-delay=".50s">
                                 Best Way To Find Your <span>Dream</span> Car
                             </h1>
@@ -645,7 +645,7 @@
             </span>
                             <h2 class="site-title text-white mb-10">We are dedicated <span>to provide</span> quality service</h2>
                             <p class="text-white">
-                                At <strong>Motex</strong>, we are committed to delivering exceptional service with integrity. Our mission is to provide top-notch automotive solutions, ensuring your journey with us is reliable and worry-free.
+                                At <strong>Car Crafter</strong>, we are committed to delivering exceptional service with integrity. Our mission is to provide top-notch automotive solutions, ensuring your journey with us is reliable and worry-free.
                             </p>
                         </div>
                         <div class="choose-img wow fadeInUp" data-wow-delay=".25s">
@@ -718,7 +718,7 @@
                     <div class="col-lg-7 text-center text-lg-start">
                         <div class="cta-text cta-divider">
                             <h1>Discover Your Dream Car It's Simple and Affordable</h1>
-                            <p>At <strong>Motex</strong>, we make car ownership easy and affordable. Explore a curated selection of quality vehicles that fit your lifestyle. Your dream car is just a click away!</p>
+                            <p>At <strong>Car Crafter</strong>, we make car ownership easy and affordable. Explore a curated selection of quality vehicles that fit your lifestyle. Your dream car is just a click away!</p>
                         </div>
                     </div>
                     <div class="col-lg-5 text-center text-lg-end">
@@ -823,7 +823,7 @@
                                 <span class="site-title-tagline justify-content-start">
                                     <i class="flaticon-drive"></i> Get Our App
                                 </span>
-                                <h2 class="site-title mb-10">Download <span>Our Motex</span> App For Free</h2>
+                                <h2 class="site-title mb-10">Download <span>Our Car Crafter</span> App For Free</h2>
                                 <p>
                                     There are many variations of passages available but the majority have suffered in some form going to use a passage by injected humour. 
                                 </p>

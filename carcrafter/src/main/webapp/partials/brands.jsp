@@ -11,7 +11,7 @@
         </div>
         <div class="row">
             <div class="col-6 col-md-3 col-lg-2">
-                <a href="#" class="brand-item wow fadeInUp" data-wow-delay=".25s">
+                <a class="brand-item wow fadeInUp" data-wow-delay=".25s">
                     <div class="brand-img p-4">
                         <img src="assets/img/brand/ferrari.png" alt="Ferrari">
                     </div>
@@ -19,7 +19,7 @@
                 </a>
             </div>
             <div class="col-6 col-md-3 col-lg-2">
-                <a href="#" class="brand-item wow fadeInUp" data-wow-delay=".50s">
+                <a class="brand-item wow fadeInUp" data-wow-delay=".50s">
                     <div class="brand-img p-4">
                         <img src="assets/img/brand/hyundai.png" alt="Hyundai">
                     </div>
@@ -27,7 +27,7 @@
                 </a>
             </div>
             <div class="col-6 col-md-3 col-lg-2">
-                <a href="#" class="brand-item wow fadeInUp" data-wow-delay=".75s">
+                <a class="brand-item wow fadeInUp" data-wow-delay=".75s">
                     <div class="brand-img p-4">
                         <img src="assets/img/brand/mercedes benz.png" alt="Mercedes Benz">
                     </div>
@@ -35,7 +35,7 @@
                 </a>
             </div>
             <div class="col-6 col-md-3 col-lg-2">
-                <a href="#" class="brand-item wow fadeInUp" data-wow-delay="1s">
+                <a class="brand-item wow fadeInUp" data-wow-delay="1s">
                     <div class="brand-img p-4">
                         <img src="assets/img/brand/toyota.png" alt="Toyota">
                     </div>
@@ -43,7 +43,7 @@
                 </a>
             </div>
             <div class="col-6 col-md-3 col-lg-2">
-                <a href="#" class="brand-item wow fadeInUp" data-wow-delay="1.25s">
+                <a class="brand-item wow fadeInUp" data-wow-delay="1.25s">
                     <div class="brand-img p-4">
                         <img src="assets/img/brand/bmw.png" alt="BMW">
                     </div>
@@ -51,7 +51,7 @@
                 </a>
             </div>
             <div class="col-6 col-md-3 col-lg-2">
-                <a href="#" class="brand-item wow fadeInUp" data-wow-delay="1.50s">
+                <a class="brand-item wow fadeInUp" data-wow-delay="1.50s">
                     <div class="brand-img p-4">
                         <img src="assets/img/brand/nissan.png" alt="Nissan">
                     </div>
