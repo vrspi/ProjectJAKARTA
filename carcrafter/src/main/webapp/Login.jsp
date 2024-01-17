@@ -167,21 +167,7 @@
 <body class="home-3">
 <!-- Body content -->
 
-<script type="text/javascript">
-  // This script attempts to prevent users from going back to the previous page after logging out
-  function noBack() {
-    window.history.forward();
-  }
 
-  // Ensure the function is called when the page is loaded and when the page is shown after navigation
-  window.onload = noBack;
-  window.onpageshow = function(event) {
-    if (event.persisted) {
-      noBack();
-    }
-  };
-  window.onunload = function() {}; // Needed for certain browsers
-</script>
 </body>
 </html>
 
