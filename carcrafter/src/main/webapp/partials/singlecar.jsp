@@ -221,7 +221,9 @@
                                     for(ListingFeature features : featureList) {
                                         if (counter % 4 == 0) {
                                             if (counter > 0) {
-                                                %></ul></div><%
+                                                %>
+                                    </ul></div>
+                                <%
                                             }
                                             %><div class="col-lg-4"><ul class="car-single-list"><%
                                         }
