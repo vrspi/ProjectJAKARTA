@@ -120,6 +120,7 @@ if (event.persisted) {
 
 window.location.reload(true);
 }
+<%session.removeAttribute("redirectTo");%>
 });
 </script>
 <script>
