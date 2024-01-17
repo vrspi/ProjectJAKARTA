@@ -60,7 +60,7 @@
                         <td><%=loto.getYear().getYear()%></td>
                         <td><%=loto.getPrice()%></td>
                         <td>
-                            <a href="#" class="btn btn-outline-secondary btn-sm rounded-2" data-bs-toggle="tooltip" aria-label="Details"><i class="far fa-eye"></i></a>
+                            <a href="singlecar?id=<%=loto.getListingID()%>" class="btn btn-outline-secondary btn-sm rounded-2" data-bs-toggle="tooltip" aria-label="Details"><i class="far fa-eye"></i></a>
                             <a href="UpdateListing?listingId=<%=loto.getListingID()%>" class="btn btn-outline-secondary btn-sm rounded-2" data-bs-toggle="tooltip" aria-label="Edit"><i class="far fa-pen"></i></a>
                             <a href="DeleteListing?listingId=<%=loto.getListingID()%>" class="btn btn-outline-danger btn-sm rounded-2" data-bs-toggle="tooltip" aria-label="Delete">
                                 <i class="far fa-trash-can"></i>
