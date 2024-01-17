@@ -15,6 +15,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/Messages")
 public class MessagesController extends HttpServlet {
@@ -23,8 +24,10 @@ public class MessagesController extends HttpServlet {
         EntityManager em = JPAUtil.getEntityManager();
         try {
             em.getTransaction().begin();
-            int currentUserId = 2; // The ID of the currently logged-in user
+            HttpSession session = req.getSession();
 
+            int currentUserId = (int)session.getAttribute("id");
+            req.setAttribute("id", currentUserId);
             // Query to fetch messages
             String qlString = "SELECT m FROM Message m WHERE m.messageID IN (SELECT MAX(m2.messageID) FROM Message m2 WHERE m2.senderID = :currentUserId OR m2.receiverID = :currentUserId GROUP BY CASE WHEN m2.senderID = :currentUserId THEN m2.receiverID ELSE m2.senderID END)";
             List<Message> conversations = em.createQuery(qlString, Message.class)

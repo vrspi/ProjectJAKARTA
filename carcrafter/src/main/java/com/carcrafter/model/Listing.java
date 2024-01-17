@@ -14,6 +14,15 @@ public class Listing {
     private int userID; 
     private String title;
 
+    @ManyToOne
+    @JoinColumn(name = "UserID")
+    private UserProfile userProfile;
+
+
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
     public int getUserID() {
         return userID;
     }
