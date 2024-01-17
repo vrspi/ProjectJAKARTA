@@ -13,7 +13,7 @@
                         <i class="far fa-search"></i>
                     </div>
                 </div>
-                <a href="AddListing" class="theme-btn"><span class="far fa-plus-circle"></span>Add Listing</a>
+                <a href="AddListing" class="theme-btn"><span class="far fa-plus-circle"></span>New</a>
             </div>
         </div>
         <div class="col-lg-12">
