@@ -96,6 +96,7 @@
           <% }
           session.removeAttribute("successMessage");
           session.removeAttribute("errorMessage");
+
           %>
           <div class="form-group">
             <label>Email Address</label>
@@ -155,6 +156,35 @@
 <script src="assets/js/jquery.nice-select.min.js"></script>
 <script src="assets/js/wow.min.js"></script>
 <script src="assets/js/main.js"></script>
+
+
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+  <!-- Head content -->
+</head>
+<body class="home-3">
+<!-- Body content -->
+
+<script type="text/javascript">
+  // This script attempts to prevent users from going back to the previous page after logging out
+  function noBack() {
+    window.history.forward();
+  }
+
+  // Ensure the function is called when the page is loaded and when the page is shown after navigation
+  window.onload = noBack;
+  window.onpageshow = function(event) {
+    if (event.persisted) {
+      noBack();
+    }
+  };
+  window.onunload = function() {}; // Needed for certain browsers
+</script>
+</body>
+</html>
+
 </body>
 <!-- login area end -->
 <%--<jsp:include page="template/bottom.jsp" />--%>
