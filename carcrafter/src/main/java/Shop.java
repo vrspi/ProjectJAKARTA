@@ -5,9 +5,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/shop")
+@WebServlet("/Shop")
 public class Shop extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("shop.jsp").forward(request, response);
+        request.getRequestDispatcher("ShopListing").forward(request, response);
     }
 }

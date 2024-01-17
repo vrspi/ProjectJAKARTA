@@ -24,8 +24,8 @@ public class ProfileListingController extends HttpServlet {
             TypedQuery<Listing> query = em.createQuery("SELECT L FROM Listing L", Listing.class);
             List<Listing> listings = query.getResultList();
             req.setAttribute("Cars", listings);
-            req.getRequestDispatcher("ProfileListing.jsp").forward(req, resp);
             em.getTransaction().commit();
+            req.getRequestDispatcher("ProfileListing.jsp").forward(req, resp);
         } finally {
             if (em.isOpen()) {
                 em.close();
