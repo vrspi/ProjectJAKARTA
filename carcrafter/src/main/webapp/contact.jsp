@@ -82,7 +82,7 @@
                             <h2>Get In Touch</h2>
                             <p>Ready to take the next step? Reach out to us and let's start the conversation. Your inquiries matter, and we're here to help. Get in touch today!</p>
                         </div>
-                        <form method="post" action="https://www.pickuptrucks.co.tz/motex/assets/php/contact.php" id="contact-form">
+                        <form method="post" action="#" id="contact-form">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">

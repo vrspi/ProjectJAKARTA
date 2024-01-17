@@ -25,7 +25,7 @@
                         </h2>
                     </div>
                     <p class="about-text">
-                        Welcome to Motex, where excellence meets innovation in the automotive industry. Our commitment to providing top-notch vehicles and services sets us apart. We take pride in delivering a seamless car-buying experience, ensuring your journey with us is nothing short of exceptional.
+                        Welcome to <strong>Car Crafter</strong>, where excellence meets innovation in the automotive industry. Our commitment to providing top-notch vehicles and services sets us apart. We take pride in delivering a seamless car-buying experience, ensuring your journey with us is nothing short of exceptional.
                     </p>
                     <div class="about-list-wrapper">
                         <ul class="about-list list-unstyled">

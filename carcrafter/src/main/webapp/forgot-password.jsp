@@ -9,10 +9,10 @@
     <meta name="keywords" content="">
 
     <!-- title -->
-    <title>Motex - Forgot Password</title>
+    <title>Car Crafter - Forgot Password</title>
 
     <!-- favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/img/logo/favicon.png">
+    <link rel="icon" type="image/x-icon" href="assets/img/logo/favicon.svg">
 
     <!-- css -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -73,8 +73,8 @@
         <div class="col-md-5 mx-auto">
             <div class="login-form">
                 <div class="login-header">
-                    <img src="assets/img/logo/logo.png" alt="">
-                    <p>Reset your motex account password</p>
+                    <img src="assets/img/logo/logo.svg" alt="">
+                    <p>Reset your Car Crafter account password</p>
                 </div>
                 <form action="UserController" method="post">
                     <%

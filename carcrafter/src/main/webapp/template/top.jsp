@@ -11,10 +11,10 @@
     <meta name="keywords" content="">
 
     <!-- title -->
-    <title>Motex <%= request.getParameter("title") %></title>
+    <title>Car Crafter <%= request.getParameter("title") %></title>
 
     <!-- favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/img/logo/favicon.png">
+    <link rel="icon" type="image/x-icon" href="assets/img/logo/favicon.svg" id="favicon">
 
     <!-- css -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -39,22 +39,32 @@
 
     <!-- check this script if it works -->
     <script>
+        function updateFavicon() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.getElementById('favicon').setAttribute('href', "assets/img/logo/favicon-light.svg");
+            } else {
+                document.getElementById('favicon').setAttribute('href', "assets/img/logo/favicon.svg");
+            }
+        }
+
+        updateFavicon();
+        window.matchMedia('(prefers-color-scheme: dark)').addListener(updateFavicon);
+
         document.addEventListener("DOMContentLoaded", function () {
             var path = window.location.pathname.replace(/^\/carcrafter\//, '');
             document.querySelectorAll(".navbar-nav .nav-link, .navbar-nav .dropdown-item").forEach(function (element) {
-                var elementPath = element.getAttribute("href").replace(/^\/carcrafter\//, '');
-                element.classList.toggle("active", elementPath === path);
+            var elementPath = element.getAttribute("href").replace(/^\/carcrafter\//, '');
+            element.classList.toggle("active", elementPath === path);
             });
         });
     </script>
-
 
 
 </head>
 
 <body class="home-3">
 
-<%
+    <%
     String imagePath = "assets/img/account/user.jpg";
 
     String sessionImagePath = (String) session.getAttribute("Image");
@@ -111,7 +121,7 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container position-relative">
                 <a class="navbar-brand" href="/carcrafter/">
-                    <img src="assets/img/logo/logo.png" alt="logo">
+                    <img src="assets/img/logo/logo.svg" alt="logo">
                 </a>
                 <div class="mobile-menu-right">
                     <% if (session != null && session.getAttribute("Email") != null) {%>
@@ -216,7 +226,7 @@
         <div class="sidebar-content">
             <button type="button" class="close-sidebar-popup"><i class="far fa-xmark"></i></button>
             <div class="sidebar-logo">
-                <img src="assets/img/logo/logo.png" alt="">
+                <img src="assets/img/logo/logo.svg" alt="">
             </div>
             <div class="sidebar-about">
                 <h4>About Us</h4>
