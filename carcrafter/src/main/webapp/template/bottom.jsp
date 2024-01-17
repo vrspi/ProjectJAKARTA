@@ -114,6 +114,15 @@
 
 <script src="assets/js/messages.js"></script>
 <script>
+window.addEventListener('pageshow', function(event) {
+
+if (event.persisted) {
+
+window.location.reload(true);
+}
+});
+</script>
+<script>
     function previewAndSubmit() {
         var fileInput = document.getElementById('fileInput');
         var file = fileInput.files[0];

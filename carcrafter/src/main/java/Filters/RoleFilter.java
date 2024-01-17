@@ -29,7 +29,8 @@ public class RoleFilter implements Filter {
                 session = req.getSession(true);
             }
             session.setAttribute("redirectTo", requestedUri);
-            res.sendRedirect("Login.jsp");
+            session.setAttribute("errorMessage", "You are not authorized to access this page");
+            res.sendRedirect("Login");
         }
     }
 

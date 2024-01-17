@@ -81,7 +81,11 @@ public class UserController extends HttpServlet {
                 session.setAttribute("role", user.getRole());
                 session.setAttribute("Image", user.getImage());
                 session.setAttribute("Address", user.getAddress());
-                response.sendRedirect("Home");
+                String aa= (String) session.getAttribute("redirectTo");
+                if(aa !=null){
+                response.sendRedirect(aa);}else{
+                    response.sendRedirect("Home");
+                }
             } else {
                 session.setAttribute("errorMessage", "Invalid email or password");
                 response.sendRedirect("Login");
