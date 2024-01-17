@@ -4,6 +4,11 @@
 
 <web-app>
     <display-name>Car Crafter</display-name>
+
+    <welcome-file-list>
+        <welcome-file>Home</welcome-file>
+    </welcome-file-list>
+
     <filter>
         <filter-name>AuthenticationFilter</filter-name>
         <filter-class>Filters.AuthenticationFilter</filter-class>
