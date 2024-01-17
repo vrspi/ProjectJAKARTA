@@ -1,7 +1,3 @@
-<%@ page import="com.carcrafter.model.Listing" %>
-<%@ page import="java.util.List" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="mt" tagdir="/WEB-INF/tags" %>
 <jsp:include page="template/top.jsp">
     <jsp:param name="title" value="- Profile listing" />
 </jsp:include>

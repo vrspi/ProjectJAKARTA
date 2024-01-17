@@ -8,15 +8,15 @@
 </jsp:include>
 
 <!-- breadcrumb -->
-<div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/01.jpg)">
-    <div class="container">
-        <h2 class="breadcrumb-title">Listing List</h2>
-        <ul class="breadcrumb-menu">
-            <li><a href="Home">Home</a></li>
-            <li class="active">Listing List</li>
-        </ul>
-    </div>
-</div>
+<%--<div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/01.jpg)">--%>
+<%--    <div class="container">--%>
+<%--        <h2 class="breadcrumb-title">Listing List</h2>--%>
+<%--        <ul class="breadcrumb-menu">--%>
+<%--            <li><a href="Home">Home</a></li>--%>
+<%--            <li class="active">Listing List</li>--%>
+<%--        </ul>--%>
+<%--    </div>--%>
+<%--</div>--%>
 <!-- breadcrumb end -->
 
 
@@ -150,7 +150,7 @@
                         %>
 
                         <div class="car-sort-list-grid">
-                            <a class="car-sort-grid" href="ListingGrid"><i
+                            <a class="car-sort-grid" href="Shop"><i
                                     class="far fa-grid-2"></i></a>
                             <a class="car-sort-list active" href="ListingList"><i class="far fa-list-ul"></i></a>
                         </div>
@@ -213,8 +213,8 @@
                                     <%=loto.getDescription()%>
                                 </p>
                                 <div class="car-footer">
-                                    <span class="car-price"><%=loto.getPrice()%></span>
-                                    <a href="#" class="theme-btn"><span class="far fa-eye"></span>Details</a>
+                                    <span class="car-price"><%=loto.getPrice()%>MAD</span>
+                                    <a href="singlecar?id=<%=loto.getListingID()%>" class="theme-btn"><span class="far fa-eye"></span>Details</a>
                                 </div>
                             </div>
                         </div>
@@ -229,25 +229,25 @@
                 <div>
 
                 <!-- pagination -->
-                <div class="pagination-area">
-                    <div aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true"><i class="far fa-arrow-left"></i></span>
-                                </a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true"><i class="far fa-arrow-right"></i></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+<%--                <div class="pagination-area">--%>
+<%--                    <div aria-label="Page navigation example">--%>
+<%--                        <ul class="pagination">--%>
+<%--                            <li class="page-item">--%>
+<%--                                <a class="page-link" href="#" aria-label="Previous">--%>
+<%--                                    <span aria-hidden="true"><i class="far fa-arrow-left"></i></span>--%>
+<%--                                </a>--%>
+<%--                            </li>--%>
+<%--                            <li class="page-item active"><a class="page-link" href="#">1</a></li>--%>
+<%--                            <li class="page-item"><a class="page-link" href="#">2</a></li>--%>
+<%--                            <li class="page-item"><a class="page-link" href="#">3</a></li>--%>
+<%--                            <li class="page-item">--%>
+<%--                                <a class="page-link" href="#" aria-label="Next">--%>
+<%--                                    <span aria-hidden="true"><i class="far fa-arrow-right"></i></span>--%>
+<%--                                </a>--%>
+<%--                            </li>--%>
+<%--                        </ul>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
                 <!-- pagination end -->
             </div>
         </div>

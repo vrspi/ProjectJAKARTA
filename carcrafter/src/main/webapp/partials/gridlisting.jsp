@@ -12,7 +12,7 @@
 
 
   <!-- breadcrumb -->
-<div class="site-breadcrumb" style="background: url('../assets/img/breadcrumb/01.jpg');">
+<!--<div class="site-breadcrumb" style="background: url('../assets/img/breadcrumb/01.jpg');">
 
     <div class="container">
       <h2 class="breadcrumb-title">Listing Grid</h2>
@@ -21,7 +21,7 @@
         <li class="active">Listing Grid</li>
       </ul>
     </div>
-  </div>
+  </div>-->
   <!-- breadcrumb end -->
 
 
@@ -139,7 +139,7 @@
         <div class="col-lg-9">
           <div class="col-md-12">
             <div class="car-sort">
-              <h6>Showing 1-10 of <%= request.getAttribute("carsnumber") %> Results</h6>
+              <h6>Showing 1 of <%= request.getAttribute("carsnumber") %> Results</h6>
               <div class="car-sort-list-grid">
                 <a class="car-sort-grid active" href="ListingList"><i
                         class="far fa-grid-2"></i></a>
@@ -165,7 +165,7 @@
             <div class="col-md-6 col-lg-4">
               <div class="car-item">
                 <div class="car-img">
-                  <span class="car-status status-1">Used</span>
+<%--                  <span class="car-status status-1">Used</span>--%>
                     <%
                         if (car.getImages() != null && car.getImages().size() > 0 && car.getImages().get(0).getImagePath() != null) {
                     %>
@@ -202,8 +202,8 @@
                     <li><i class="far fa-gas-pump"></i><%=car.getFuelType().getFuelType()%></li>
                   </ul>
                   <div class="car-footer">
-                    <span class="car-price"><%=car.getPrice()%></span>
-                    <a href="#" class="theme-btn"><span class="far fa-eye"></span>Details</a>
+                    <span class="car-price"><%=car.getPrice()%>MAD</span>
+                    <a href="singlecar?id=<%=car.getListingID()%>" class="theme-btn"><span class="far fa-eye"></span>Details</a>
                   </div>
                 </div>
               </div>
@@ -214,25 +214,25 @@
             %>
           </div>
           <!-- pagination -->
-          <div class="pagination-area">
-            <div aria-label="Page navigation example">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true"><i class="far fa-arrow-left"></i></span>
-                  </a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true"><i class="far fa-arrow-right"></i></span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+<%--          <div class="pagination-area">--%>
+<%--            <div aria-label="Page navigation example">--%>
+<%--              <ul class="pagination">--%>
+<%--                <li class="page-item">--%>
+<%--                  <a class="page-link" href="#" aria-label="Previous">--%>
+<%--                    <span aria-hidden="true"><i class="far fa-arrow-left"></i></span>--%>
+<%--                  </a>--%>
+<%--                </li>--%>
+<%--                <li class="page-item active"><a class="page-link" href="#">1</a></li>--%>
+<%--                <li class="page-item"><a class="page-link" href="#">2</a></li>--%>
+<%--                <li class="page-item"><a class="page-link" href="#">3</a></li>--%>
+<%--                <li class="page-item">--%>
+<%--                  <a class="page-link" href="#" aria-label="Next">--%>
+<%--                    <span aria-hidden="true"><i class="far fa-arrow-right"></i></span>--%>
+<%--                  </a>--%>
+<%--                </li>--%>
+<%--              </ul>--%>
+<%--            </div>--%>
+<%--          </div>--%>
           <!-- pagination end -->
         </div>
       </div>
