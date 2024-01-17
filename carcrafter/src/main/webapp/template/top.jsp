@@ -154,7 +154,7 @@
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href="shop">Shop</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Shop">Shop</a></li>
                         <li class="nav-item"><a class="nav-link" href="blog">Blog</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Others</a>
@@ -169,9 +169,9 @@
                         <li class="nav-item"><a class="nav-link" href="faq">FAQ</a></li>
                     </ul>
                     <div class="nav-right">
-                        <div class="cart-btn">
-                            <a href="cart" class="nav-right-link"><i class="far fa-cart-plus"></i><span>0</span></a>
-                        </div>
+<%--                        <div class="cart-btn">--%>
+<%--                            <a href="cart" class="nav-right-link"><i class="far fa-cart-plus"></i><span>0</span></a>--%>
+<%--                        </div>--%>
                         <% if (session != null && session.getAttribute("Email") != null) { %>
                         <div class="nav-right-account">
                             <div class="dropdown">

@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/Shop")
+@WebServlet("/ShopListing")
 public class GridController extends HttpServlet{
    
     @Override

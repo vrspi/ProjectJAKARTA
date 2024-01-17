@@ -20,7 +20,7 @@
                                 Ready to embark on your car-buying journey?<br>Click now to explore our diverse selection and experience a seamless and transparent process.<br>Your dream car awaits!
                             </p>
                             <div class="hero-btn wow fadeInUp" data-wow-delay="1s">
-                                <a href="shop" class="theme-btn">Find Your Dream Car<i
+                                <a href="Shop" class="theme-btn">Find Your Dream Car<i
                                         class="fas fa-arrow-right-long"></i></a>
                                 <a href="about" class="theme-btn theme-btn2">Learn More<i
                                         class="fas fa-arrow-right-long"></i></a>
@@ -343,7 +343,7 @@
                 </div>
             </div>
             <div class="text-center mt-4">
-                <a href="shop" class="theme-btn">See More <i class="fas fa-arrow-right-long"></i> </a>
+                <a href="Shop" class="theme-btn">See More <i class="fas fa-arrow-right-long"></i> </a>
             </div>
         </div>
     </div>
@@ -726,7 +726,7 @@
                             <a href="tel:<%@ include file="/info/phone.jsp" %>" class="cta-number"><i class="far fa-headset"></i><%@ include file="/info/phone.jsp" %></a>
                         </div>
                         <div class="cta-btn">
-                            <a href="shop" class="theme-btn">Buy Your Car<i class="fas fa-arrow-right-long"></i></a>
+                            <a href="Shop" class="theme-btn">Find Your Dream Car<i class="fas fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 </div>
