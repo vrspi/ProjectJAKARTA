@@ -165,8 +165,13 @@
             <div class="col-md-6 col-lg-4">
               <div class="car-item">
                 <div class="car-img">
-<%--                  <span class="car-status status-1">Used</span>--%>
-                    <%
+                  <% if(car.getCondition().getConditionTType().equals("New")) {%>
+                      <span class="car-status status-2">New</span>
+                  <% } else if(car.getCondition().getConditionTType().equals("Used")) {%>
+                  <span class="car-status status-1">Used</span>
+                  <% } else if(car.getCondition().getConditionTType().equals("Certified Pre-Owned")) {%>
+                  <span class="car-status status-2 bg-primary">Certified Pre-Owned</span>
+                    <% }
                         if (car.getImages() != null && car.getImages().size() > 0 && car.getImages().get(0).getImagePath() != null) {
                     %>
                     <img src="assets/upload/img/car/<%= car.getImages().get(0).getImagePath() %>" alt="ImageCar">
