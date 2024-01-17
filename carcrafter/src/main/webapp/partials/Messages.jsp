@@ -10,7 +10,18 @@
                     <div class="header-account">
                         <div class="dropdown">
                             <div data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="assets/img/account/01.jpg" alt="">
+                                <%
+                                List<Message> conversations = (List<Message>) request.getAttribute("conversations");
+                                    Map<Integer, String> userIdToNameMap = (Map<Integer, String>) request.getAttribute("userIdToNameMap");
+                                    int currentUserId = (int) request.getAttribute("id"); // The ID of the currently logged-in user
+                                for(Message conversation : conversations) {
+                                   
+                                %>
+                                <img src='<%= conversation.getReceiver().getImage() != null && !conversation.getReceiver().getImage().isEmpty() ? "assets/upload/img/user/" + conversation.getReceiver().getImage() : "assets/img/account/user.png" %>' alt="">
+                                <%
+                                break;
+                                }
+                                %>
                             </div>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="#"><i class="far fa-ban"></i> Block Chat</a></li>
@@ -27,22 +38,19 @@
                         <div class="profile-message-inbox">
                             <ul class="profile-message-list">
                                 <%
-                                List<Message> conversations = (List<Message>) request.getAttribute("conversations");
-                                    Map<Integer, String> userIdToNameMap = (Map<Integer, String>) request.getAttribute("userIdToNameMap");
-                                    int currentUserId = (int) request.getAttribute("id"); // The ID of the currently logged-in user
-                                for(Message conversation : conversations) {
+                              for(Message conversation : conversations) {
                                     int otherUserId = (conversation.getSenderID() == currentUserId) ? conversation.getReceiverID() : conversation.getSenderID();
                                     String otherUserName = userIdToNameMap.get(otherUserId);
                                     String displayMessage = (conversation.getSenderID() == currentUserId) ? "You: " : otherUserName + ": ";
                                     String All=""+currentUserId+"-"+otherUserId;
-
+                                    
                                     displayMessage += conversation.getContent();
                                 %>
                                 <li data-other-user-id="<%= otherUserId %>" onclick="load('<%= All %>')">
                                     <a href="javascript:void(0);" class="conversation-link" >
                                                 <div class="message-avatar">
-                                            <img src="assets/img/account/user.png" alt="">
-                                        </div>
+                                                    <img src='<%= conversation.getSender().getImage() != null && !conversation.getSender().getImage().isEmpty() ? "assets/upload/img/user/" + conversation.getSender().getImage() : "assets/img/account/user.png" %>' alt="">
+                                                </div>
                                         <div class="message-by">
                                             <div class="message-by-content">
                                                 <h5><%= otherUserName %></h5>
