@@ -193,7 +193,7 @@
                             </div>
                             <div class="car-content">
                                 <div class="car-top">
-                                    <h4><a href="#"><%=loto.getTitle()%></a></h4>
+                                    <h4><a href="singlecar?id=<%=loto.getListingID()%>"><%=loto.getTitle()%></a></h4>
                                     <div class="car-rate">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -205,7 +205,7 @@
                                 </div>
                                 <ul class="car-list">
                                     <li><i class="far fa-steering-wheel"></i><%=loto.getTransmission().getTransmissionType()%></li>
-                                    <li><i class="far fa-road"></i><%=loto.getMileage()%>km / 1-litre</li>
+                                    <li><i class="far fa-road"></i><%=loto.getMileage()%>km</li>
                                     <li><i class="far fa-car"></i>Model: <%=loto.getYear().getYear()%></li>
                                     <li><i class="far fa-gas-pump"></i><%=loto.getFuelType().getFuelType()%></li>
                                 </ul>
@@ -213,7 +213,7 @@
                                     <%=loto.getDescription()%>
                                 </p>
                                 <div class="car-footer">
-                                    <span class="car-price"><%=loto.getPrice()%>MAD</span>
+                                    <span class="car-price"><%=loto.getPrice()%> MAD</span>
                                     <a href="singlecar?id=<%=loto.getListingID()%>" class="theme-btn"><span class="far fa-eye"></span>Details</a>
                                 </div>
                             </div>

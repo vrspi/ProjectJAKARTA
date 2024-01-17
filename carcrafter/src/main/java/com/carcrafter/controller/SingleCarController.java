@@ -43,6 +43,14 @@ public class SingleCarController extends HttpServlet {
         Listing Listing = queryListing.getSingleResult();
         request.setAttribute("Car", Listing);
 
+
+        TypedQuery<Listing> queryRandomListings = em.createQuery("SELECT c FROM Listing c ORDER BY RAND()", Listing.class);
+        queryRandomListings.setMaxResults(4);
+        List<Listing> randomListings = queryRandomListings.getResultList();
+        request.setAttribute("RandomListings", randomListings);
+
+
+
         // TypedQuery<BodyType> queryBodyType = em.createQuery("SELECT f FROM BodyType f", BodyType.class);
         // List<BodyType> BodytypeList = queryBodyType.getResultList();
         // request.setAttribute("BodytypeList", BodytypeList);
