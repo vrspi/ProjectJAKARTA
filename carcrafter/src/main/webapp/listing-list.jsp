@@ -8,15 +8,15 @@
 </jsp:include>
 
 <!-- breadcrumb -->
-<div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/01.jpg)">
-    <div class="container">
-        <h2 class="breadcrumb-title">Listing List</h2>
-        <ul class="breadcrumb-menu">
-            <li><a href="Home">Home</a></li>
-            <li class="active">Listing List</li>
-        </ul>
-    </div>
-</div>
+<%--<div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/01.jpg)">--%>
+<%--    <div class="container">--%>
+<%--        <h2 class="breadcrumb-title">Listing List</h2>--%>
+<%--        <ul class="breadcrumb-menu">--%>
+<%--            <li><a href="Home">Home</a></li>--%>
+<%--            <li class="active">Listing List</li>--%>
+<%--        </ul>--%>
+<%--    </div>--%>
+<%--</div>--%>
 <!-- breadcrumb end -->
 
 
