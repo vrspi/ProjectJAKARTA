@@ -379,6 +379,132 @@ public class CarService {
     }
 
 
+    public Long SelectcConditionCount(String condition)
+    {
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM ConditionT c WHERE c.conditionTID = :conditionID", Long.class);
+        countQuery.setParameter("conditionID", condition);
+        Long countResult = countQuery.getSingleResult();
+        em.close();
+        return countResult;
+    }
+
+
+    public Long SelectcBodyTypeCount(String bodyType)
+    {
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Long> countQuer = em.createQuery("SELECT COUNT(c) FROM BodyType c WHERE c.bodyTypeID = :bodyTypeID", Long.class);
+        countQuer.setParameter("bodyTypeID", bodyType);
+        Long countResult = countQuer.getSingleResult();
+        em.close();
+        return countResult;
+    }
+
+
+
+    public Long SelectcBrandCount(String makeBrand)
+    {
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM MakeBrand c WHERE c.makeID = :makeID", Long.class);
+        countQuery.setParameter("makeID", makeBrand);
+        Long countResult = countQuery.getSingleResult();
+        em.close();
+        return countResult;
+    }
+
+    public Long SelectcModelCount(String model)
+    {
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM Model c WHERE c.modelID = :modelID", Long.class);
+        countQuery.setParameter("modelID", model);
+        Long countResult = countQuery.getSingleResult();
+        em.close();
+        return countResult;
+    }
+
+
+    public Long SelectDriveTypeCount(String driveType)
+    {
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM DriveType c WHERE c.driveTypeID = :driveTypeID", Long.class);
+        countQuery.setParameter("driveTypeID", driveType);
+        Long countResult = countQuery.getSingleResult();
+        em.close();
+        return countResult;
+    }
+
+    public Long SelectYearTypeCount(String year)
+    {
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM Year c WHERE c.yearID = :yearID", Long.class);
+        countQuery.setParameter("yearID", year);
+        Long countResult = countQuery.getSingleResult();
+        em.close();
+        return countResult;
+    }
+
+    public Long SelectTransmissionCount(String transmission)
+    {
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM Transmission c WHERE c.transmissionID = :transmissionID", Long.class);
+        countQuery.setParameter("transmissionID", transmission);
+        Long countResult = countQuery.getSingleResult();
+        em.close();
+        return countResult;
+    }
+
+    public Long SelecFuelTypeCount(String fuelType)
+    {
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM FuelType c WHERE c.fuelTypeID = :fuelTypeID", Long.class);
+        countQuery.setParameter("fuelTypeID", fuelType);
+        Long countResult = countQuery.getSingleResult();
+        em.close();
+        return countResult;
+    }
+
+    public Long SelectCylindersCount(String cylinders)
+    {
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM Cylinders c WHERE c.cylindersID = :cylindersID", Long.class);
+        countQuery.setParameter("cylindersID", cylinders);
+        Long countResult = countQuery.getSingleResult();
+        em.close();
+        return countResult;
+    }
+
+
+    public Long SelectColorCount(String color)
+    {
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM Color c WHERE c.colorID = :colorID", Long.class);
+        countQuery.setParameter("colorID", color);
+        Long countResult = countQuery.getSingleResult();
+        em.close();
+        return countResult;
+    }
+
+    public Long SelectDoorsCount(String doors)
+    {
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM Doors c WHERE c.doorsID = :doorsID", Long.class);
+        countQuery.setParameter("doorsID", doors);
+        Long countResult = countQuery.getSingleResult();
+        em.close();
+        return countResult;
+    }
+
 
 
 }
