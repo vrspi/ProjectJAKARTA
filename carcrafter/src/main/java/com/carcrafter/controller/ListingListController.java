@@ -1,6 +1,6 @@
 package com.carcrafter.controller;
 
-import com.carcrafter.Factory.UserServiceFactory;
+import com.carcrafter.Factory.ServiceFactory;
 import com.carcrafter.model.*;
 import com.carcrafter.service.CarService;
 import jakarta.persistence.EntityManager;
@@ -19,7 +19,7 @@ public class ListingListController extends HttpServlet {
 
     private final CarService carService;
     public ListingListController() throws IllegalAccessException, InstantiationException {
-        this.carService = UserServiceFactory.createService(CarService.class);
+        this.carService = ServiceFactory.createService(CarService.class);
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

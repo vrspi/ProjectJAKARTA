@@ -3,6 +3,7 @@ import java.io.IOException;
 import com.carcrafter.Factory.ServiceFactory;
 import com.carcrafter.model.JPAUtil;
 import com.carcrafter.service.HomeService;
+import com.carcrafter.service.UserService;
 import jakarta.persistence.EntityManager;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,12 +14,12 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/Home")
 public class Home extends HttpServlet {
 
-	private HomeService homeService;
+	private final HomeService homeService;
 
-	@Override
-	public void init() throws ServletException {
-		homeService = ServiceFactory.createHomeService();
+	public Home() throws IllegalAccessException, InstantiationException {
+		this.homeService = ServiceFactory.createService(HomeService.class);
 	}
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		EntityManager em = JPAUtil.getEntityManager();
