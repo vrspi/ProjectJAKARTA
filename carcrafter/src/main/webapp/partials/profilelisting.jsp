@@ -37,7 +37,7 @@
                     <tr>
                         <td>
                             <div class="table-list-info">
-                                <a href="#">
+                                <a href="singlecar?id=<%=loto.getListingID()%>">
                                     <%
                                         if (loto.getImages() != null && loto.getImages().size() > 0 && loto.getImages().get(0).getImagePath() != null) {
                                     %>
