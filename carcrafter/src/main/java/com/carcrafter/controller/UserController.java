@@ -82,11 +82,23 @@ public class UserController extends HttpServlet {
                 session.setAttribute("role", user.getRole());
                 session.setAttribute("Image", user.getImage());
                 session.setAttribute("Address", user.getAddress());
-                String lINK= (String) session.getAttribute("redirectTo");
-                if(lINK !=null){
-                response.sendRedirect(lINK);}else{
-                    response.sendRedirect("Home");
 
+                String referers = (String) session.getAttribute("URLCARLISTING");
+
+                if (referers != null) {
+                    // Step 2: Check if the referer URL is from '/carcrafter/singlecar'
+                    if (referers.contains("http://localhost:8080/carcrafter/partials/singlecar.jsp?id=")) {
+                        String modifiedUrl = referers.replace("/partials/singlecar.jsp", "/singlecar");
+                        session.removeAttribute("URLCARLISTING");
+                        response.sendRedirect(modifiedUrl);
+                    }
+                }else{
+                    String lINK = (String) session.getAttribute("redirectTo");
+                    if (lINK != null) {
+                        response.sendRedirect(lINK);
+                    } else {
+                        response.sendRedirect("Home");
+                    }
                 }
             } else {
                 session.setAttribute("errorMessage", "Invalid email or password");

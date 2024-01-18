@@ -43,7 +43,19 @@
 
                                                 <%
                                                 List<Image> ImageList = (List<Image>) car.getImages();
-                                                
+
+
+                                                    StringBuffer urlBuffer = request.getRequestURL();
+
+                                                    // Get the query string (e.g., "id=32")
+                                                    String queryString = request.getQueryString();
+
+                                                    if (queryString != null) {
+                                                        urlBuffer.append("?").append(queryString);
+                                                        String fullUrl = urlBuffer.toString();
+                                                        // String referer = request.getHeader("referer");
+                                                        session.setAttribute("URLCARLISTING", fullUrl);
+                                                    }
             
                                                 for(Image image : ImageList) {
                                                     
