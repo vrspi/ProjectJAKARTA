@@ -94,13 +94,9 @@ public class UserProfile {
         return this.image;
     }
 
-    public String getAddress() {
-        return this.address;
-    }
+    public String getAddress() {return this.address;}
 
-    public String getPassword() {
-        return this.password;
-    }
+    public String getPassword() {return this.password;}
 
     public void setId(Integer id) {
         this.id = id;

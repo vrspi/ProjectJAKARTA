@@ -304,8 +304,10 @@
                             <%
                             }else{
                                 %>
+                            <div class="alert alert-danger" id="success-alert" role="alert">
+                                <h2>You have to login first</h2>
+                            </div>
 
-                                    <h2>You have to login first</h2> 
 
                                 <%
                             }
