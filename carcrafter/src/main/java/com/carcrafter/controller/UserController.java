@@ -27,8 +27,9 @@ import jakarta.servlet.http.HttpServletResponse;
 public class UserController extends HttpServlet {
 
     private final UserService userService;
-    public UserController() {
-        this.userService = UserServiceFactory.createUserService();
+
+    public UserController() throws IllegalAccessException, InstantiationException {
+        this.userService = UserServiceFactory.createService(UserService.class);
     }
     private static final long serialVersionUID = 1L;
 
