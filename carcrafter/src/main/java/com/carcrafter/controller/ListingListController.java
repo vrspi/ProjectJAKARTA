@@ -24,30 +24,22 @@ public class ListingListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        EntityManager em = JPAUtil.getEntityManager();
-        em.getTransaction().begin();
         try {
-
             //select voitures
-            TypedQuery<Listing> query = em.createQuery("SELECT L FROM Listing L", Listing.class);
-            List<Listing> listings = query.getResultList();
+            List<Listing> listings = carService.SelectAllListings();
 
-
+            System.out.println(listings.size());
             //select brands
-            TypedQuery<MakeBrand> queryBrands = em.createQuery("SELECT L FROM MakeBrand L", MakeBrand.class);
-            List<MakeBrand> Brands = queryBrands.getResultList();
+            List<MakeBrand> Brands = carService.SelectMakeBrand();
 
             //select transmission
-            TypedQuery<Transmission> querytransmission = em.createQuery("SELECT L FROM Transmission L", Transmission.class);
-            List<Transmission> transmissions = querytransmission.getResultList();
+            List<Transmission> transmissions = carService.SelectTransmission();
 
             //select FuelType
-            TypedQuery<FuelType> queryFuelType = em.createQuery("SELECT f FROM FuelType f", FuelType.class);
-            List<FuelType> fuelTypes = queryFuelType.getResultList();
+            List<FuelType> fuelTypes = carService.SelectFuelType();
 
             //select Features
-            TypedQuery<Features> querFeatures = em.createQuery("SELECT f FROM Features f", Features.class);
-            List<Features> featureList = querFeatures.getResultList();
+            List<Features> featureList = carService.SelectFeatures();
 
             req.setAttribute("Cars", listings);
             req.setAttribute("CountCar", listings.size());
@@ -57,11 +49,9 @@ public class ListingListController extends HttpServlet {
             req.setAttribute("featureList", featureList);
             req.getRequestDispatcher("listing-list.jsp").forward(req, resp);
 
-            em.getTransaction().commit();
-        } finally {
-            if (em.isOpen()) {
-                em.close();
-            }
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
     }
 
