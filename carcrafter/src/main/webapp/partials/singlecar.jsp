@@ -326,8 +326,13 @@
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="car-item">
                             <div class="car-img">
-                                <span class="car-status status-1"><%=loto.getCondition().getConditionTType()%></span>
-                                <%
+                                <% if(loto.getCondition().getConditionTType().equals("New")) {%>
+                                <span class="car-status status-2">New</span>
+                                <% } else if(loto.getCondition().getConditionTType().equals("Used")) {%>
+                                <span class="car-status status-1">Used</span>
+                                <% } else if(loto.getCondition().getConditionTType().equals("Certified Pre-Owned")) {%>
+                                <span class="car-status status-2 bg-primary">Certified Pre-Owned</span>
+                                <% }
                                     if (loto.getImages() != null && loto.getImages().size() > 0 && loto.getImages().get(0).getImagePath() != null) {
                                 %>
                                 <img src="assets/upload/img/car/<%= loto.getImages().get(0).getImagePath() %>" alt="ImageCar">
