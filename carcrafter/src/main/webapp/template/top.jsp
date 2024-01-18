@@ -35,6 +35,20 @@
         .logout-button:hover {
             color: red;
         }
+        #chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            background-color: var(--theme-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            border-radius: 13px;
+            font-size: 1.8rem;
+            font-weight: bolder;
+        }
     </style>
 
     <!-- check this script if it works -->
@@ -121,14 +135,14 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container position-relative">
                 <a class="navbar-brand" href="/carcrafter/">
-                    <img src="assets/img/logo/logo.svg" alt="logo">
+                    <img loading="lazy" src="assets/img/logo/logo.svg" alt="logo">
                 </a>
                 <div class="mobile-menu-right">
                     <% if (session != null && session.getAttribute("Email") != null) {%>
                     <div class="nav-right-account">
                         <div class="dropdown">
                             <div data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="<%= imagePath %>" alt="">
+                                <img loading="lazy" src="<%= imagePath %>" alt="">
                             </div>
                             <ul class="dropdown-menu dropdown-menu-end">
 <%--                                <li><a class="dropdown-item" href="dashboard.html"><i class="far fa-gauge-high"></i>--%>
@@ -186,7 +200,7 @@
                         <div class="nav-right-account">
                             <div class="dropdown">
                                 <div data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="<%= imagePath %>" alt="">
+                                    <img loading="lazy" src="<%= imagePath %>" alt="">
                                 </div>
                                 <ul class="dropdown-menu dropdown-menu-end">
 <%--                                    <li><a class="dropdown-item" href="dashboard.html"><i class="far fa-gauge-high"></i> Dashboard</a></li>--%>
@@ -226,7 +240,7 @@
         <div class="sidebar-content">
             <button type="button" class="close-sidebar-popup"><i class="far fa-xmark"></i></button>
             <div class="sidebar-logo">
-                <img src="assets/img/logo/logo.svg" alt="">
+                <img loading="lazy" src="assets/img/logo/logo.svg" alt="">
             </div>
             <div class="sidebar-about">
                 <h4>About Us</h4>

@@ -10,7 +10,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="footer-widget-box about-us">
                         <a href="/carcrafter/" class="footer-logo">
-                            <img src="assets/img/logo/logo-light.svg" alt="">
+                            <img src="assets/img/logo/logo-light.svg" loading="lazy" alt="">
                         </a>
                         <p class="mb-3">
                             Explore possibilities with us. Our commitment to authenticity defines our journey. Join us where every word is heard and believed.
@@ -93,6 +93,7 @@
 <!-- scroll-top -->
 <a href="#" id="scroll-top"><i class="far fa-arrow-up"></i></a>
 <!-- scroll-top end -->
+<a href="AIContact" id="chatbot-button">IA</a>
 
 
 <!-- js -->
@@ -114,6 +115,14 @@
 
 <script src="assets/js/messages.js"></script>
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var currentUrl = window.location.href;
+        var chatbotButton = document.getElementById('chatbot-button');
+
+        if(currentUrl === 'http://localhost:8080/carcrafter/AIContact' && chatbotButton) {
+            chatbotButton.style.display = 'none';
+        }
+    });
 window.addEventListener('pageshow', function(event) {
 
 if (event.persisted) {
