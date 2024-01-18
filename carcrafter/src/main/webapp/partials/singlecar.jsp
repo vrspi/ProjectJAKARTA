@@ -52,10 +52,10 @@
 
                                                     if (queryString != null) {
                                                         urlBuffer.append("?").append(queryString);
+                                                        String fullUrl = urlBuffer.toString();
+                                                        // String referer = request.getHeader("referer");
+                                                        session.setAttribute("URLCARLISTING", fullUrl);
                                                     }
-                                                    String fullUrl = urlBuffer.toString();
-                                                   // String referer = request.getHeader("referer");
-                                                    session.setAttribute("URLCARLISTING", fullUrl);
             
                                                 for(Image image : ImageList) {
                                                     

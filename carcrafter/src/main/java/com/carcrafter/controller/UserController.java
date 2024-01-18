@@ -91,14 +91,13 @@ public class UserController extends HttpServlet {
                         String modifiedUrl = referers.replace("/partials/singlecar.jsp", "/singlecar");
                         session.removeAttribute("URLCARLISTING");
                         response.sendRedirect(modifiedUrl);
+                    }
+                }else{
+                    String lINK = (String) session.getAttribute("redirectTo");
+                    if (lINK != null) {
+                        response.sendRedirect(lINK);
                     } else {
-
-                        String lINK = (String) session.getAttribute("redirectTo");
-                        if (lINK != null) {
-                            response.sendRedirect(lINK);
-                        } else {
-                            response.sendRedirect("Home");
-                        }
+                        response.sendRedirect("Home");
                     }
                 }
             } else {
