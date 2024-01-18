@@ -278,7 +278,7 @@
                         <h5 class="mb-3">Contact Details</h5>
                         <div class="car-single-form">
                             <% if(request.getAttribute("id") != null){
-                                String id = request.getParameter("id");
+                                int id = (int)request.getAttribute("id");
                                 int AdminID = car.getUserID();
 
                                 %>
