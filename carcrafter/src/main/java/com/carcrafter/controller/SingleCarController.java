@@ -1,8 +1,9 @@
 package com.carcrafter.controller;
 
-import com.carcrafter.model.*;
+import com.carcrafter.model.JPAUtil;
+import com.carcrafter.model.Listing;
+import com.carcrafter.model.Message;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.Id;
 import jakarta.persistence.TypedQuery;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -41,7 +42,6 @@ public class SingleCarController extends HttpServlet {
         TypedQuery<Listing> queryListing = em.createQuery("SELECT c FROM Listing c where c.listingID = " + ID, Listing.class);
         Listing Listing = queryListing.getSingleResult();
         request.setAttribute("Car", Listing);
-
 
         TypedQuery<Listing> queryRandomListings = em.createQuery("SELECT c FROM Listing c ORDER BY RAND()", Listing.class);
         queryRandomListings.setMaxResults(4);
