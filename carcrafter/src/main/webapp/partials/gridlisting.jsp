@@ -190,7 +190,7 @@
                 </div>
                 <div class="car-content">
                   <div class="car-top">
-                    <h4><a href="#"><%=car.getTitle()%></a></h4>
+                    <h4><a href="singlecar?id=<%=car.getListingID()%>"><%=car.getTitle()%></a></h4>
                     <div class="car-rate">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>

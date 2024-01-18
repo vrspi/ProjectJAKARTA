@@ -340,23 +340,43 @@ public class CarService {
         EntityManager em = JPAUtil.getEntityManager();
         TypedQuery<Listing> query = em.createQuery("SELECT L FROM Listing L", Listing.class);
         List<Listing> listings = query.getResultList();
-        em.close();
         return listings;
     }
 
 
+    public Boolean DeleteListing(long listingId)
+    {
+        EntityManager em = JPAUtil.getEntityManager();
+        try {
+            em.getTransaction().begin();
+            Listing listing = em.find(Listing.class, listingId);
 
-
-
-
-
-
-
-
-
-
-
-
+            if (listing != null)
+            {
+                em.remove(listing);
+                em.getTransaction().commit();
+                return  true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        catch (Exception e)
+        {
+            if (em.getTransaction().isActive())
+            {
+                em.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }
+        finally {
+            if (em.isOpen()) {
+                em.close();
+            }
+        }
+    }
 
 
 
