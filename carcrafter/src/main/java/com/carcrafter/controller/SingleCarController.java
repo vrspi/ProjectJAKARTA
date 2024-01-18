@@ -10,7 +10,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -48,24 +47,6 @@ public class SingleCarController extends HttpServlet {
         queryRandomListings.setMaxResults(4);
         List<Listing> randomListings = queryRandomListings.getResultList();
         request.setAttribute("RandomListings", randomListings);
-
-
-
-        // TypedQuery<BodyType> queryBodyType = em.createQuery("SELECT f FROM BodyType f", BodyType.class);
-        // List<BodyType> BodytypeList = queryBodyType.getResultList();
-        // request.setAttribute("BodytypeList", BodytypeList);
-
-        // TypedQuery<Transmission> queryTransmission = em.createQuery("SELECT f FROM Transmission f", Transmission.class);
-        // List<Transmission> TransmissionList = queryTransmission.getResultList();
-        // request.setAttribute("TransmissionList", TransmissionList);
-
-        // TypedQuery<FuelType> queryFuelType = em.createQuery("SELECT f FROM FuelType f", FuelType.class);
-        // List<FuelType> FuelTypeList = queryFuelType.getResultList();
-        // request.setAttribute("FuelTypeList", FuelTypeList);
-
-        // TypedQuery<Features> queryFeatures = em.createQuery("SELECT f FROM Features f", Features.class);
-        // List<Features> FeaturesList = queryFeatures.getResultList();
-        // request.setAttribute("FeaturesList", FeaturesList);
 
         request.getRequestDispatcher("/partials/singlecar.jsp").forward(request, response);
     }

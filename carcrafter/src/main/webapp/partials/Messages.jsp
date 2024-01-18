@@ -11,9 +11,12 @@
                         <div class="dropdown">
                             <div data-bs-toggle="dropdown" aria-expanded="false">
                                 <%
+                                // Initialize variables and set them to null
+                                Integer currentUserId = null; 
+                                Integer otherUserId = null;
                                 List<Message> conversations = (List<Message>) request.getAttribute("conversations");
                                     Map<Integer, String> userIdToNameMap = (Map<Integer, String>) request.getAttribute("userIdToNameMap");
-                                    int currentUserId = (int) request.getAttribute("id"); // The ID of the currently logged-in user
+                                     currentUserId = (int) request.getAttribute("id"); 
                                 for(Message conversation : conversations) {
                                    
                                 %>
@@ -39,7 +42,7 @@
                             <ul class="profile-message-list">
                                 <%
                               for(Message conversation : conversations) {
-                                    int otherUserId = (conversation.getSenderID() == currentUserId) ? conversation.getReceiverID() : conversation.getSenderID();
+                                    otherUserId = (conversation.getSenderID() == currentUserId) ? conversation.getReceiverID() : conversation.getSenderID();
                                     String otherUserName = userIdToNameMap.get(otherUserId);
                                     String displayMessage = (conversation.getSenderID() == currentUserId) ? "You: " : otherUserName + ": ";
                                     String All=""+currentUserId+"-"+otherUserId;
@@ -66,81 +69,22 @@
                         </div>
                         <div class="message-content" style="padding-bottom: 200px;">
                             <div class="message-content-info">
-                                <!-- <div class="message-item">
-                                    <div class="message-avatar">
-                                        <img src="assets/img/account/user.png" alt="">
-                                    </div>
-                                    <div class="message-description">
-                                        <p>
-                                            Hello, It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="message-item me">
-                                    <div class="message-avatar">
-                                        <img src="assets/img/account/02.jpg" alt="">
-                                        </div>
-                                    <div class="message-description">
-                                        <p>
-                                            There are many variations of passages available but the majority have suffered alteration in some form by injected humour.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="message-item">
-                                    <div class="message-avatar">
-                                        <img src="assets/img/account/01.jpg" alt="">
-                                    </div>
-                                    <div class="message-description">
-                                        <p>
-                                            We denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="message-item me">
-                                    <div class="message-avatar">
-                                        <img src="assets/img/account/02.jpg" alt="">
-                                    </div>
-                                    <div class="message-description">
-                                        <p>
-                                            So blinded by desire that they cannot foresee the pain and trouble that are bound to ensue.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="message-item">
-                                    <div class="message-avatar">
-                                        <img src="assets/img/account/01.jpg" alt="">
-                                    </div>
-                                    <div class="message-description">
-                                        <p>
-                                            In a free hour when our power of choice is untra and when nothing prevents our being able.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="message-item me">
-                                    <div class="message-avatar">
-                                        <img src="assets/img/account/02.jpg" alt="">
-                                    </div>
-                                    <div class="message-description">
-                                        <p>
-                                            We like best every pleasure is to be welcomed and every pain avoided in certain circums and owing to the claims of duty.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="message-item">
-                                    <div class="message-avatar">
-                                        <img src="assets/img/account/01.jpg" alt="">
-                                    </div>
-                                    <div class="message-description">
-                                        <p>
-                                            The obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted.
-                                        </p>
-                                    </div>
-                                </div> -->
+                               
                             </div>
                             <div class="message-reply">
-                                <textarea cols="40" rows="3" class="form-control"
-                                    placeholder="Your Message"></textarea>
-                                <button type="submit" class="theme-btn"><span class="far fa-paper-plane"></span> Send Message</button>
+                                <form action="Messages" method="post">
+                                    <% if(currentUserId != null) { %>
+                                        <input type="hidden" name="currentUserId" value='<%= currentUserId.toString() %>'>
+                                    <% } %>
+                                    
+                                    <% if(otherUserId != null) { %>
+                                        <input type="hidden" name="otherUserId" value='<%= otherUserId.toString() %>'>
+                                    <% } %>
+                                    <textarea cols="40" rows="3" class="form-control" name="message"
+                                        placeholder="Your Message"></textarea>
+                                    <button type="submit" class="theme-btn"><span class="far fa-paper-plane"></span> Send Message</button>
+                                </form>
+                               
                             </div>
                         </div>
                     </div>
