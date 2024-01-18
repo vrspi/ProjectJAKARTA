@@ -1,30 +1,16 @@
 package com.carcrafter.controller;
 
-import java.io.Console;
 import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigDecimal;
-import java.nio.file.FileAlreadyExistsException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
-import com.carcrafter.Factory.UserServiceFactory;
+import com.carcrafter.Factory.ServiceFactory;
 import com.carcrafter.FileUtility.FileService;
 import com.carcrafter.model.JPAUtil;
 import com.carcrafter.model.*;
 
 import com.carcrafter.service.CarService;
-import com.carcrafter.service.UserService;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -41,7 +27,7 @@ public class CarController extends HttpServlet {
 
     private final CarService carService;
     public CarController() throws IllegalAccessException, InstantiationException {
-        this.carService = UserServiceFactory.createService(CarService.class);
+        this.carService = ServiceFactory.createService(CarService.class);
     }
 
 
