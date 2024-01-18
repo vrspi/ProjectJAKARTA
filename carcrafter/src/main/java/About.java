@@ -13,13 +13,12 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/about")
 public class About extends HttpServlet {
 
-    private HomeService homeService;
+    private final HomeService homeService;
 
-    @Override
-    public void init() throws ServletException {
-        homeService = ServiceFactory.createHomeService();
+    public About() throws IllegalAccessException, InstantiationException {
+        this.homeService = ServiceFactory.createService(HomeService.class);
     }
-
+    //get
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = JPAUtil.getEntityManager();
         try {

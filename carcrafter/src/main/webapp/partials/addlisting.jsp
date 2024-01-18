@@ -486,19 +486,19 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input disabled value="<%= request.getAttribute("Name") %>" type="text" class="form-control" placeholder="Enter name">
+                                <input disabled value="<%= session.getAttribute("FullName") %>" type="text" class="form-control" placeholder="Enter name">
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input disabled value="<%= request.getAttribute("Email") %>" type="text" class="form-control" placeholder="Enter email">
+                                <input disabled value="<%= session.getAttribute("Email") %>" type="text" class="form-control" placeholder="Enter email">
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Phone</label>
-                                <input disabled value="<%= request.getAttribute("Phone") %>" type="text" class="form-control" placeholder="Enter phone">
+                                <input disabled value="<%= session.getAttribute("Phone") %>" type="text" class="form-control" placeholder="Enter phone">
                             </div>
                         </div>
                         <div class="col-12 mt-4">

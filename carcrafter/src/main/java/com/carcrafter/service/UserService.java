@@ -1,5 +1,6 @@
 package com.carcrafter.service;
 
+import com.carcrafter.FileUtility.FileService;
 import com.carcrafter.model.JPAUtil;
 import com.carcrafter.model.UserProfile;
 import jakarta.persistence.EntityManager;
@@ -15,7 +16,7 @@ import java.util.regex.Pattern;
 public class UserService {
 
     public UserProfile login(String email, String password){
-        String hashedPassword = hashPassword(password);
+        String hashedPassword = FileService.hashPassword(password);
         try (EntityManager em = JPAUtil.getEntityManager()){
             String jpql = "SELECT u FROM UserProfile u WHERE u.email = :email AND u.password = :hashedPassword";
             TypedQuery<UserProfile> query = em.createQuery(jpql, UserProfile.class);
@@ -45,7 +46,7 @@ public class UserService {
     public boolean changePassword(String email, String oldPassword, String newPassword) {
         EntityManager em = JPAUtil.getEntityManager();
         try {
-            String hashedOldPassword = hashPassword(oldPassword);
+            String hashedOldPassword = FileService.hashPassword(oldPassword);
 
             String jpql = "SELECT u FROM UserProfile u WHERE u.email = :email AND u.password = :hashedOldPassword";
             TypedQuery<UserProfile> query = em.createQuery(jpql, UserProfile.class);
@@ -53,7 +54,7 @@ public class UserService {
             query.setParameter("hashedOldPassword", hashedOldPassword);
             UserProfile user = query.getSingleResult();
             em.getTransaction().begin();
-            String hashedNewPassword = hashPassword(newPassword);
+            String hashedNewPassword = FileService.hashPassword(newPassword);
             user.setPassword(hashedNewPassword);
             em.persist(user);
             em.getTransaction().commit();
@@ -143,21 +144,4 @@ public class UserService {
             }
         }
     }
-    private String hashPassword(String password) {
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] encodedhash = digest.digest(password.getBytes());
-            StringBuilder hexString = new StringBuilder();
-            for (byte b : encodedhash) {
-                String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1) hexString.append('0');
-                hexString.append(hex);
-            }
-            return hexString.toString();
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("Error hashing password", e);
-        }
-    }
-
-
 }

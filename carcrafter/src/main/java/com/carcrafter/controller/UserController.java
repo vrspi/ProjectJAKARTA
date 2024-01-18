@@ -1,6 +1,6 @@
 package com.carcrafter.controller;
 
-import com.carcrafter.Factory.UserServiceFactory;
+import com.carcrafter.Factory.ServiceFactory;
 import com.carcrafter.service.UserService;
 import jakarta.servlet.ServletException;
 
@@ -27,8 +27,9 @@ import jakarta.servlet.http.HttpServletResponse;
 public class UserController extends HttpServlet {
 
     private final UserService userService;
-    public UserController() {
-        this.userService = UserServiceFactory.createUserService();
+
+    public UserController() throws IllegalAccessException, InstantiationException {
+        this.userService = ServiceFactory.createService(UserService.class);
     }
     private static final long serialVersionUID = 1L;
 
