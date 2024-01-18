@@ -186,10 +186,7 @@ public class CarController extends HttpServlet {
         }
         else
         {
-            // Vérifier si la condition existe dans la base de données
-            TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM ConditionT c WHERE c.conditionTID = :conditionID", Long.class);
-            countQuery.setParameter("conditionID", condition);
-            Long countResult = countQuery.getSingleResult();
+            Long countResult = carService.SelectcConditionCount(condition);
             if (countResult == 0)
             {
                 errors.put("condition", "Condition n'exist Pas.");
@@ -209,9 +206,7 @@ public class CarController extends HttpServlet {
             req.setAttribute("selectedbodyType", "-1");
         } else {
             // Vérifier si bodyTypeID existe dans la base de données
-            TypedQuery<Long> countQuer = em.createQuery("SELECT COUNT(c) FROM BodyType c WHERE c.bodyTypeID = :bodyTypeID", Long.class);
-            countQuer.setParameter("bodyTypeID", bodyType);
-            Long countResult = countQuer.getSingleResult();
+            Long countResult = carService.SelectcBodyTypeCount(bodyType);
             if (countResult == 0)
             {
                 errors.put("bodyType", "bodyType n'exist Pas");
@@ -229,9 +224,7 @@ public class CarController extends HttpServlet {
             req.setAttribute("selectedmakeBrand", "-1");
         } else {
             try {
-                TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM MakeBrand c WHERE c.makeID = :makeID", Long.class);
-                countQuery.setParameter("makeID", makeBrand);
-                Long countResult = countQuery.getSingleResult();
+                Long countResult = carService.SelectcBrandCount(makeBrand);
 
                 if (countResult == 0) {
                     errors.put("makeBrand", "makeBrand n'existe pas");
@@ -256,10 +249,7 @@ public class CarController extends HttpServlet {
         } else {
             try {
                 // Vérifier si modelID existe dans la base de données
-                TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM Model c WHERE c.modelID = :modelID", Long.class);
-                countQuery.setParameter("modelID", model);
-                Long countResult = countQuery.getSingleResult();
-
+                Long countResult = carService.SelectcModelCount(model);
                 if (countResult == 0) {
                     errors.put("model", "model n'existe pas");
                     req.setAttribute("selectedmodel", "-1");
@@ -282,9 +272,7 @@ public class CarController extends HttpServlet {
             req.setAttribute("selecteddriveType", "-1");
         } else {
             try {
-                TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM DriveType c WHERE c.driveTypeID = :driveTypeID", Long.class);
-                countQuery.setParameter("driveTypeID", driveType);
-                Long countResult = countQuery.getSingleResult();
+                Long countResult = carService.SelectDriveTypeCount(driveType);
 
                 if (countResult == 0) {
                     errors.put("driveType", "driveType n'existe pas");
@@ -307,10 +295,7 @@ public class CarController extends HttpServlet {
             req.setAttribute("selectedyear", "-1");
         } else {
             try {
-                TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM Year c WHERE c.yearID = :yearID", Long.class);
-                countQuery.setParameter("yearID", year);
-                Long countResult = countQuery.getSingleResult();
-
+                Long countResult = carService.SelectYearTypeCount(year);
                 if (countResult == 0) {
                     errors.put("year", "year n'existe pas");
                     req.setAttribute("selectedyear", "-1");
@@ -332,9 +317,7 @@ public class CarController extends HttpServlet {
             req.setAttribute("selectedtransmission", "-1");
         } else {
             try {
-                TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM Transmission c WHERE c.transmissionID = :transmissionID", Long.class);
-                countQuery.setParameter("transmissionID", transmission);
-                Long countResult = countQuery.getSingleResult();
+                Long countResult = carService.SelectTransmissionCount(transmission);
 
                 if (countResult == 0) {
                     errors.put("transmission", "transmission n'existe pas");
@@ -356,9 +339,7 @@ public class CarController extends HttpServlet {
             req.setAttribute("selectedfuelType", "-1");
         } else {
             try {
-                TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM FuelType c WHERE c.fuelTypeID = :fuelTypeID", Long.class);
-                countQuery.setParameter("fuelTypeID", fuelType);
-                Long countResult = countQuery.getSingleResult();
+                Long countResult = carService.SelecFuelTypeCount(fuelType);
 
                 if (countResult == 0) {
                     errors.put("fuelType", "fuelType n'existe pas");
@@ -381,9 +362,7 @@ public class CarController extends HttpServlet {
             req.setAttribute("selectedcylinders", "-1");
         } else {
             try {
-                TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM Cylinders c WHERE c.cylindersID = :cylindersID", Long.class);
-                countQuery.setParameter("cylindersID", cylinders);
-                Long countResult = countQuery.getSingleResult();
+                Long countResult = carService.SelectCylindersCount(cylinders);
 
                 if (countResult == 0) {
                     errors.put("cylinders", "cylinders n'existe pas");
@@ -408,7 +387,7 @@ public class CarController extends HttpServlet {
             try {
                 TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM Color c WHERE c.colorID = :colorID", Long.class);
                 countQuery.setParameter("colorID", color);
-                Long countResult = countQuery.getSingleResult();
+                Long countResult = carService.SelectColorCount(color);
 
                 if (countResult == 0) {
                     errors.put("color", "color n'existe pas");
@@ -430,9 +409,7 @@ public class CarController extends HttpServlet {
             req.setAttribute("selecteddoors", "-1");
         } else {
             try {
-                TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM Doors c WHERE c.doorsID = :doorsID", Long.class);
-                countQuery.setParameter("doorsID", doors);
-                Long countResult = countQuery.getSingleResult();
+                Long countResult = carService.SelectDoorsCount(doors);
 
                 if (countResult == 0) {
                     errors.put("doors", "doors n'existe pas");
