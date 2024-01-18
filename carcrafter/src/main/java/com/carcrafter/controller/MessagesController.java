@@ -1,6 +1,7 @@
 package com.carcrafter.controller;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,22 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/Messages")
 public class MessagesController extends HttpServlet {
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        EntityManager em = JPAUtil.getEntityManager();
+        Message newMessage = new Message();
+        em.getTransaction().begin();
+        newMessage.setSenderID(Integer.parseInt(req.getParameter("currentUserId")));
+        newMessage.setReceiverID(Integer.parseInt(req.getParameter("otherUserId")));
+        newMessage.setContent(req.getParameter("message"));
+        newMessage.setTimestamp(LocalDateTime.now());
+        em.persist(newMessage);
+        em.getTransaction().commit();
+        
+
+        resp.sendRedirect("Home");
+    }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         EntityManager em = JPAUtil.getEntityManager();
