@@ -7,7 +7,7 @@
                         <i class="flaticon-car-rental"></i>
                     </div>
                     <div>
-                        <% Integer count_cars = (Integer) request.getAttribute("Cars_count");
+                        <% var count_cars = request.getAttribute("Cars_count");
                         if (count_cars == null) { %>
                         <span class="counter" data-count="+" data-to="500" data-speed="3000">500</span>
                         <% } else { %>
@@ -23,7 +23,7 @@
                         <i class="flaticon-car-key"></i>
                     </div>
                     <div>
-                        <% Integer count_users = (Integer) request.getAttribute("Users_count");
+                        <% var count_users = request.getAttribute("Users_count");
                             if (count_users == null) { %>
                         <span class="counter" data-count="+" data-to="900" data-speed="3000">900</span>
                         <% } else { %>
