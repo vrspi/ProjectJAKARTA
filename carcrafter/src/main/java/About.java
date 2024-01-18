@@ -18,7 +18,7 @@ public class About extends HttpServlet {
     public About() throws IllegalAccessException, InstantiationException {
         this.homeService = ServiceFactory.createService(HomeService.class);
     }
-g
+    //get
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = JPAUtil.getEntityManager();
         try {
