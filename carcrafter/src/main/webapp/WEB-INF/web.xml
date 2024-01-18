@@ -3,26 +3,41 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-    <display-name>Motex</display-name>
-    <!--    <filter>-->
-    <!--        <filter-name>AuthenticationFilter</filter-name>-->
-    <!--        <filter-class>Filters.AuthenticationFilter</filter-class>-->
+    <display-name>Car Crafter</display-name>
 
-    <!--    </filter>-->
-    <!--    <filter>-->
-    <!--        <filter-name>RoleFilter</filter-name>-->
-    <!--        <filter-class>Filters.RoleFilter</filter-class>-->
-    <!--    </filter>-->
-    <!--    <filter-mapping>-->
-    <!--        <filter-name>AuthenticationFilter</filter-name>-->
-    <!--        <url-pattern>/Profile</url-pattern>-->
-    <!--    </filter-mapping>-->
-    <!--    <filter-mapping>-->
-    <!--        <filter-name>AuthenticationFilter</filter-name>-->
-    <!--        <url-pattern>/AddListing</url-pattern>-->
-    <!--    </filter-mapping>-->
-    <!--    <filter-mapping>-->
-    <!--        <filter-name>RoleFilter</filter-name>-->
-    <!--        <url-pattern>/AddListing</url-pattern>-->
-    <!--    </filter-mapping>-->
+    <welcome-file-list>
+        <welcome-file>Home</welcome-file>
+    </welcome-file-list>
+
+    <filter>
+        <filter-name>AuthenticationFilter</filter-name>
+        <filter-class>Filters.AuthenticationFilter</filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>RoleFilter</filter-name>
+        <filter-class>Filters.RoleFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/Profile</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/AddListing</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/ProfileListing</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>RoleFilter</filter-name>
+        <url-pattern>/AddListing</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>RoleFilter</filter-name>
+        <url-pattern>/ProfileListing</url-pattern>
+    </filter-mapping>
+
 </web-app>

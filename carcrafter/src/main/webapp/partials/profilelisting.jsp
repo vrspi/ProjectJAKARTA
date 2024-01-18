@@ -13,7 +13,7 @@
                         <i class="far fa-search"></i>
                     </div>
                 </div>
-                <a href="AddListing" class="theme-btn"><span class="far fa-plus-circle"></span>Add Listing</a>
+                <a href="AddListing" class="theme-btn"><span class="far fa-plus-circle"></span>New</a>
             </div>
         </div>
         <div class="col-lg-12">
@@ -37,7 +37,7 @@
                     <tr>
                         <td>
                             <div class="table-list-info">
-                                <a href="#">
+                                <a href="singlecar?id=<%=loto.getListingID()%>">
                                     <%
                                         if (loto.getImages() != null && loto.getImages().size() > 0 && loto.getImages().get(0).getImagePath() != null) {
                                     %>
@@ -60,7 +60,7 @@
                         <td><%=loto.getYear().getYear()%></td>
                         <td><%=loto.getPrice()%></td>
                         <td>
-                            <a href="#" class="btn btn-outline-secondary btn-sm rounded-2" data-bs-toggle="tooltip" aria-label="Details"><i class="far fa-eye"></i></a>
+                            <a href="singlecar?id=<%=loto.getListingID()%>" class="btn btn-outline-secondary btn-sm rounded-2" data-bs-toggle="tooltip" aria-label="Details"><i class="far fa-eye"></i></a>
                             <a href="UpdateListing?listingId=<%=loto.getListingID()%>" class="btn btn-outline-secondary btn-sm rounded-2" data-bs-toggle="tooltip" aria-label="Edit"><i class="far fa-pen"></i></a>
                             <a href="DeleteListing?listingId=<%=loto.getListingID()%>" class="btn btn-outline-danger btn-sm rounded-2" data-bs-toggle="tooltip" aria-label="Delete">
                                 <i class="far fa-trash-can"></i>
@@ -74,26 +74,26 @@
                     </tbody>
                 </table>
             </div>
-            <!-- pagination -->
-            <div class="pagination-area">
-                <div aria-label="Page navigation example">
-                    <ul class="pagination my-3">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true"><i class="far fa-angle-double-left"></i></span>
-                            </a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true"><i class="far fa-angle-double-right"></i></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<%--            <!-- pagination -->--%>
+<%--            <div class="pagination-area">--%>
+<%--                <div aria-label="Page navigation example">--%>
+<%--                    <ul class="pagination my-3">--%>
+<%--                        <li class="page-item">--%>
+<%--                            <a class="page-link" href="#" aria-label="Previous">--%>
+<%--                                <span aria-hidden="true"><i class="far fa-angle-double-left"></i></span>--%>
+<%--                            </a>--%>
+<%--                        </li>--%>
+<%--                        <li class="page-item active"><a class="page-link" href="#">1</a></li>--%>
+<%--                        <li class="page-item"><a class="page-link" href="#">2</a></li>--%>
+<%--                        <li class="page-item"><a class="page-link" href="#">3</a></li>--%>
+<%--                        <li class="page-item">--%>
+<%--                            <a class="page-link" href="#" aria-label="Next">--%>
+<%--                                <span aria-hidden="true"><i class="far fa-angle-double-right"></i></span>--%>
+<%--                            </a>--%>
+<%--                        </li>--%>
+<%--                    </ul>--%>
+<%--                </div>--%>
+<%--            </div>--%>
         </div>
     </div>
 </div>

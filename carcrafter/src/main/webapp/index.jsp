@@ -1,3 +1,6 @@
+<%@ page import="com.carcrafter.model.Listing" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.carcrafter.model.BodyType" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-- Jawad - Ayoub - Khalil -->
 <jsp:include page="template/top.jsp">
@@ -12,7 +15,7 @@
                     <div class="col-md-12 col-lg-6">
                         <div class="hero-content">
                             <h6 class="hero-sub-title wow fadeInUp" data-wow-delay=".25s">Welcome To
-                                Motex!</h6>
+                                Car Crafter!</h6>
                             <h1 class="hero-title wow fadeInRight" data-wow-delay=".50s">
                                 Best Way To Find Your <span>Dream</span> Car
                             </h1>
@@ -20,7 +23,7 @@
                                 Ready to embark on your car-buying journey?<br>Click now to explore our diverse selection and experience a seamless and transparent process.<br>Your dream car awaits!
                             </p>
                             <div class="hero-btn wow fadeInUp" data-wow-delay="1s">
-                                <a href="shop" class="theme-btn">Find Your Dream Car<i
+                                <a href="Shop" class="theme-btn">Find Your Dream Car<i
                                         class="fas fa-arrow-right-long"></i></a>
                                 <a href="about" class="theme-btn theme-btn2">Learn More<i
                                         class="fas fa-arrow-right-long"></i></a>
@@ -65,149 +68,31 @@
                 </div>
             </div>
             <div class="row">
+                <%
+                    List<Listing> cars = (List<Listing>) request.getAttribute("Cars");
+                    if (cars != null) {
+                        for (Listing car : cars) {
+                %>
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="car-item wow fadeInUp" data-wow-delay=".25s">
                         <div class="car-img">
-                            <span class="car-status status-1">Used</span>
-                            <img src="assets/img/car/01.jpg" alt="">
-                            <div class="car-btns">
-                                <a href="#"><i class="far fa-heart"></i></a>
-                                <a href="#"><i class="far fa-arrows-repeat"></i></a>
-                            </div>
-                        </div>
-                        <div class="car-content">
-                            <div class="car-top">
-                                <h4><a href="#">Mercedes Benz Car</a></h4>
-                                <div class="car-rate">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span>5.0 (58.5k Review)</span>
-                                </div>
-                            </div>
-                            <ul class="car-list">
-                                <li><i class="far fa-steering-wheel"></i>Automatic</li>
-                                <li><i class="far fa-road"></i>10.15km / 1-litre</li>
-                                <li><i class="far fa-car"></i>Model: 2023</li>
-                                <li><i class="far fa-gas-pump"></i>Hybrid</li>
-                            </ul>
-                            <div class="car-footer">
-                                <span class="car-price">$45,620</span>
-                                <a href="#" class="theme-btn"><span class="far fa-eye"></span>Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="car-item wow fadeInUp" data-wow-delay=".50s">
-                        <div class="car-img">
-                            <img src="assets/img/car/02.jpg" alt="">
-                            <div class="car-btns">
-                                <a href="#"><i class="far fa-heart"></i></a>
-                                <a href="#"><i class="far fa-arrows-repeat"></i></a>
-                            </div>
-                        </div>
-                        <div class="car-content">
-                            <div class="car-top">
-                                <h4><a href="#">Yellow Ferrari 458</a></h4>
-                                <div class="car-rate">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span>5.0 (58.5k Review)</span>
-                                </div>
-                            </div>
-                            <ul class="car-list">
-                                <li><i class="far fa-steering-wheel"></i>Automatic</li>
-                                <li><i class="far fa-road"></i>10.15km / 1-litre</li>
-                                <li><i class="far fa-car"></i>Model: 2023</li>
-                                <li><i class="far fa-gas-pump"></i>Hybrid</li>
-                            </ul>
-                            <div class="car-footer">
-                                <span class="car-price">$90,250</span>
-                                <a href="#" class="theme-btn"><span class="far fa-eye"></span>Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="car-item wow fadeInUp" data-wow-delay=".75s">
-                        <div class="car-img">
-                            <img src="assets/img/car/03.jpg" alt="">
-                            <div class="car-btns">
-                                <a href="#"><i class="far fa-heart"></i></a>
-                                <a href="#"><i class="far fa-arrows-repeat"></i></a>
-                            </div>
-                        </div>
-                        <div class="car-content">
-                            <div class="car-top">
-                                <h4><a href="#">Black Audi Q7</a></h4>
-                                <div class="car-rate">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span>5.0 (58.5k Review)</span>
-                                </div>
-                            </div>
-                            <ul class="car-list">
-                                <li><i class="far fa-steering-wheel"></i>Automatic</li>
-                                <li><i class="far fa-road"></i>10.15km / 1-litre</li>
-                                <li><i class="far fa-car"></i>Model: 2023</li>
-                                <li><i class="far fa-gas-pump"></i>Hybrid</li>
-                            </ul>
-                            <div class="car-footer">
-                                <span class="car-price">$44,350</span>
-                                <a href="#" class="theme-btn"><span class="far fa-eye"></span>Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="car-item wow fadeInUp" data-wow-delay="1s">
-                        <div class="car-img">
+                            <% if(car.getCondition().getConditionTType().equals("New")) {%>
                             <span class="car-status status-2">New</span>
-                            <img src="assets/img/car/04.jpg" alt="">
-                            <div class="car-btns">
-                                <a href="#"><i class="far fa-heart"></i></a>
-                                <a href="#"><i class="far fa-arrows-repeat"></i></a>
-                            </div>
-                        </div>
-                        <div class="car-content">
-                            <div class="car-top">
-                                <h4><a href="#">BMW Sports Car</a></h4>
-                                <div class="car-rate">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span>5.0 (58.5k Review)</span>
-                                </div>
-                            </div>
-                            <ul class="car-list">
-                                <li><i class="far fa-steering-wheel"></i>Automatic</li>
-                                <li><i class="far fa-road"></i>10.15km / 1-litre</li>
-                                <li><i class="far fa-car"></i>Model: 2023</li>
-                                <li><i class="far fa-gas-pump"></i>Hybrid</li>
-                            </ul>
-                            <div class="car-footer">
-                                <span class="car-price">$78,760</span>
-                                <a href="#" class="theme-btn"><span class="far fa-eye"></span>Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="car-item wow fadeInUp" data-wow-delay=".25s">
-                        <div class="car-img">
+                            <% } else if(car.getCondition().getConditionTType().equals("Used")) {%>
                             <span class="car-status status-1">Used</span>
-                            <img src="assets/img/car/05.jpg" alt="">
+                            <% } else if(car.getCondition().getConditionTType().equals("Certified Pre-Owned")) {%>
+                            <span class="car-status status-2 bg-primary">Certified Pre-Owned</span>
+                            <% }
+                                if (car.getImages() != null && car.getImages().size() > 0 && car.getImages().get(0).getImagePath() != null) {
+                            %>
+                            <img src="assets/upload/img/car/<%= car.getImages().get(0).getImagePath() %>" alt="ImageCar">
+                            <%
+                            } else {
+                            %>
+                            <img src="" alt="ImageCar">
+                            <%
+                                }
+                            %>
                             <div class="car-btns">
                                 <a href="#"><i class="far fa-heart"></i></a>
                                 <a href="#"><i class="far fa-arrows-repeat"></i></a>
@@ -215,7 +100,7 @@
                         </div>
                         <div class="car-content">
                             <div class="car-top">
-                                <h4><a href="#">White Tesla Car</a></h4>
+                                <h4><a href="singlecar?id=<%=car.getListingID()%>"><%=car.getTitle()%></a></h4>
                                 <div class="car-rate">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -226,129 +111,30 @@
                                 </div>
                             </div>
                             <ul class="car-list">
-                                <li><i class="far fa-steering-wheel"></i>Automatic</li>
-                                <li><i class="far fa-road"></i>10.15km / 1-litre</li>
-                                <li><i class="far fa-car"></i>Model: 2023</li>
-                                <li><i class="far fa-gas-pump"></i>Hybrid</li>
+                                <li><i class="far fa-steering-wheel"></i><%=car.getTransmission().getTransmissionType()%></li>
+                                <li><i class="far fa-road"></i><%=car.getMileage()%>km</li>
+                                <li><i class="far fa-car"></i>Model: <%=car.getYear().getYear()%></li>
+                                <li><i class="far fa-gas-pump"></i><%=car.getFuelType().getFuelType()%></li>
                             </ul>
                             <div class="car-footer">
-                                <span class="car-price">$64,230</span>
-                                <a href="#" class="theme-btn"><span class="far fa-eye"></span>Details</a>
+                                <span class="car-price"><%=car.getPrice().intValue()%> MAD</span>
+                                <a href="singlecar?id=<%=car.getListingID()%>" class="theme-btn"><span class="far fa-eye"></span>Details</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="car-item wow fadeInUp" data-wow-delay=".50s">
-                        <div class="car-img">
-                            <span class="car-status status-2">New</span>
-                            <img src="assets/img/car/06.jpg" alt="">
-                            <div class="car-btns">
-                                <a href="#"><i class="far fa-heart"></i></a>
-                                <a href="#"><i class="far fa-arrows-repeat"></i></a>
-                            </div>
-                        </div>
-                        <div class="car-content">
-                            <div class="car-top">
-                                <h4><a href="#">White Nissan Car</a></h4>
-                                <div class="car-rate">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span>5.0 (58.5k Review)</span>
-                                </div>
-                            </div>
-                            <ul class="car-list">
-                                <li><i class="far fa-steering-wheel"></i>Automatic</li>
-                                <li><i class="far fa-road"></i>10.15km / 1-litre</li>
-                                <li><i class="far fa-car"></i>Model: 2023</li>
-                                <li><i class="far fa-gas-pump"></i>Hybrid</li>
-                            </ul>
-                            <div class="car-footer">
-                                <span class="car-price">$34,540</span>
-                                <a href="#" class="theme-btn"><span class="far fa-eye"></span>Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="car-item wow fadeInUp" data-wow-delay=".75s">
-                        <div class="car-img">
-                            <img src="assets/img/car/07.jpg" alt="">
-                            <div class="car-btns">
-                                <a href="#"><i class="far fa-heart"></i></a>
-                                <a href="#"><i class="far fa-arrows-repeat"></i></a>
-                            </div>
-                        </div>
-                        <div class="car-content">
-                            <div class="car-top">
-                                <h4><a href="#">Mercedes Benz Suv</a></h4>
-                                <div class="car-rate">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span>5.0 (58.5k Review)</span>
-                                </div>
-                            </div>
-                            <ul class="car-list">
-                                <li><i class="far fa-steering-wheel"></i>Automatic</li>
-                                <li><i class="far fa-road"></i>10.15km / 1-litre</li>
-                                <li><i class="far fa-car"></i>Model: 2023</li>
-                                <li><i class="far fa-gas-pump"></i>Hybrid</li>
-                            </ul>
-                            <div class="car-footer">
-                                <span class="car-price">$75,820</span>
-                                <a href="#" class="theme-btn"><span class="far fa-eye"></span>Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="car-item wow fadeInUp" data-wow-delay="1s">
-                        <div class="car-img">
-                            <img src="assets/img/car/08.jpg" alt="">
-                            <div class="car-btns">
-                                <a href="#"><i class="far fa-heart"></i></a>
-                                <a href="#"><i class="far fa-arrows-repeat"></i></a>
-                            </div>
-                        </div>
-                        <div class="car-content">
-                            <div class="car-top">
-                                <h4><a href="#">Red Hyundai Car</a></h4>
-                                <div class="car-rate">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span>5.0 (58.5k Review)</span>
-                                </div>
-                            </div>
-                            <ul class="car-list">
-                                <li><i class="far fa-steering-wheel"></i>Automatic</li>
-                                <li><i class="far fa-road"></i>10.15km / 1-litre</li>
-                                <li><i class="far fa-car"></i>Model: 2023</li>
-                                <li><i class="far fa-gas-pump"></i>Hybrid</li>
-                            </ul>
-                            <div class="car-footer">
-                                <span class="car-price">$25,620</span>
-                                <a href="#" class="theme-btn"><span class="far fa-eye"></span>Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%
+                        }
+                    }
+                %>
             </div>
             <div class="text-center mt-4">
-                <a href="shop" class="theme-btn">See More <i class="fas fa-arrow-right-long"></i> </a>
+                <a href="Shop" class="theme-btn">See More <i class="fas fa-arrow-right-long"></i> </a>
             </div>
         </div>
     </div>
     <!-- car area end -->
-    
+
     
     <!-- counter area -->
     <%@ include file="partials/counter.jsp" %>
@@ -368,102 +154,23 @@
                 </div>
             </div>
             <div class="row">
+                <%
+                    List<BodyType> bodyTypes = (List<BodyType>) request.getAttribute("BodyTypes");
+                    if (cars != null) {
+                        for (BodyType body : bodyTypes) {
+                %>
                 <div class="col-6 col-md-4 col-lg-2">
-                    <a href="#" class="category-item wow fadeInUp" data-wow-delay=".25s">
+                    <a class="category-item wow fadeInUp" data-wow-delay=".25s">
                         <div class="category-img">
-                            <img src="assets/img/category/01.png" alt="">
+                            <img src="assets/img/category/<%= body.getBodyType() %>.png" alt="">
                         </div>
-                        <h5>Sedan</h5>
+                        <h5><%= body.getBodyType() %></h5>
                     </a>
                 </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <a href="#" class="category-item wow fadeInUp" data-wow-delay=".50s">
-                        <div class="category-img">
-                            <img src="assets/img/category/02.png" alt="">
-                        </div>
-                        <h5>Compact</h5>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <a href="#" class="category-item wow fadeInUp" data-wow-delay=".75s">
-                        <div class="category-img">
-                            <img src="assets/img/category/03.png" alt="">
-                        </div>
-                        <h5>Convertible</h5>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <a href="#" class="category-item wow fadeInUp" data-wow-delay="1s">
-                        <div class="category-img">
-                            <img src="assets/img/category/04.png" alt="">
-                        </div>
-                        <h5>SUV</h5>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <a href="#" class="category-item wow fadeInUp" data-wow-delay="1.25s">
-                        <div class="category-img">
-                            <img src="assets/img/category/05.png" alt="">
-                        </div>
-                        <h5>Crossover</h5>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <a href="#" class="category-item wow fadeInUp" data-wow-delay="1.50s">
-                        <div class="category-img">
-                            <img src="assets/img/category/06.png" alt="">
-                        </div>
-                        <h5>Wagon</h5>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <a href="#" class="category-item wow fadeInUp" data-wow-delay=".25s">
-                        <div class="category-img">
-                            <img src="assets/img/category/07.png" alt="">
-                        </div>
-                        <h5>Sports</h5>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <a href="#" class="category-item wow fadeInUp" data-wow-delay=".50s">
-                        <div class="category-img">
-                            <img src="assets/img/category/08.png" alt="">
-                        </div>
-                        <h5>Pickup</h5>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <a href="#" class="category-item wow fadeInUp" data-wow-delay=".75s">
-                        <div class="category-img">
-                            <img src="assets/img/category/09.png" alt="">
-                        </div>
-                        <h5>Family MPV</h5>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <a href="#" class="category-item wow fadeInUp" data-wow-delay="1s">
-                        <div class="category-img">
-                            <img src="assets/img/category/10.png" alt="">
-                        </div>
-                        <h5>Coupe</h5>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <a href="#" class="category-item wow fadeInUp" data-wow-delay="1.25s">
-                        <div class="category-img">
-                            <img src="assets/img/category/11.png" alt="">
-                        </div>
-                        <h5>Electric</h5>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <a href="#" class="category-item wow fadeInUp" data-wow-delay="1.50s">
-                        <div class="category-img">
-                            <img src="assets/img/category/12.png" alt="">
-                        </div>
-                        <h5>Luxury</h5>
-                    </a>
-                </div>
+                <%
+                        }
+                    }
+                %>
             </div>
         </div>
     </div>
@@ -494,145 +201,6 @@
     <!-- testimonial area end -->
 
 
-    <!-- car dealer -->
-    <!--<div class="car-dealer pb-120">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 mx-auto">
-                    <div class="site-heading text-center">
-                        <span class="site-title-tagline"><i class="flaticon-drive"></i> Car Dealers</span>
-                        <h2 class="site-title">Best Dealers In <span>Your City</span></h2>
-                        <div class="heading-divider"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-lg-3">
-                    <div class="dealer-item wow fadeInUp" data-wow-delay=".25s">
-                        <div class="dealer-img">
-                            <span class="dealer-listing">25 Listing</span>
-                            <img src="assets/img/dealer/01.png" alt="">
-                        </div>
-                        <div class="dealer-content">
-                            <h4><a href="#">Automotive Gear</a></h4>
-                            <ul>
-                                <li><i class="far fa-location-dot"></i> 25/B Milford Road, New York</li>
-                                <li><i class="far fa-phone"></i> <a href="tel:+21236547898">+2 123 654 7898</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="dealer-item wow fadeInUp" data-wow-delay=".50s">
-                        <div class="dealer-img">
-                            <span class="dealer-listing">35 Listing</span>
-                            <img src="assets/img/dealer/02.png" alt="">
-                        </div>
-                        <div class="dealer-content">
-                            <h4><a href="#">Keithson Car</a></h4>
-                            <ul>
-                                <li><i class="far fa-location-dot"></i> 25/B Milford Road, New York</li>
-                                <li><i class="far fa-phone"></i> <a href="tel:+21236547898">+2 123 654 7898</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="dealer-item wow fadeInUp" data-wow-delay=".75s">
-                        <div class="dealer-img">
-                            <span class="dealer-listing">15 Listing</span>
-                            <img src="assets/img/dealer/03.png" alt="">
-                        </div>
-                        <div class="dealer-content">
-                            <h4><a href="#">Superious Automotive</a></h4>
-                            <ul>
-                                <li><i class="far fa-location-dot"></i> 25/B Milford Road, New York</li>
-                                <li><i class="far fa-phone"></i> <a href="tel:+21236547898">+2 123 654 7898</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="dealer-item wow fadeInUp" data-wow-delay="1s">
-                        <div class="dealer-img">
-                            <span class="dealer-listing">20 Listing</span>
-                            <img src="assets/img/dealer/04.png" alt="">
-                        </div>
-                        <div class="dealer-content">
-                            <h4><a href="#">Racing Gear Car</a></h4>
-                            <ul>
-                                <li><i class="far fa-location-dot"></i> 25/B Milford Road, New York</li>
-                                <li><i class="far fa-phone"></i> <a href="tel:+21236547898">+2 123 654 7898</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="dealer-item wow fadeInUp" data-wow-delay=".25s">
-                        <div class="dealer-img">
-                            <span class="dealer-listing">19 Listing</span>
-                            <img src="assets/img/dealer/05.png" alt="">
-                        </div>
-                        <div class="dealer-content">
-                            <h4><a href="#">Car Showromio</a></h4>
-                            <ul>
-                                <li><i class="far fa-location-dot"></i> 25/B Milford Road, New York</li>
-                                <li><i class="far fa-phone"></i> <a href="tel:+21236547898">+2 123 654 7898</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="dealer-item wow fadeInUp" data-wow-delay=".50s">
-                        <div class="dealer-img">
-                            <span class="dealer-listing">40 Listing</span>
-                            <img src="assets/img/dealer/06.png" alt="">
-                        </div>
-                        <div class="dealer-content">
-                            <h4><a href="#">Fastspeedio Car</a></h4>
-                            <ul>
-                                <li><i class="far fa-location-dot"></i> 25/B Milford Road, New York</li>
-                                <li><i class="far fa-phone"></i> <a href="tel:+21236547898">+2 123 654 7898</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="dealer-item wow fadeInUp" data-wow-delay=".75s">
-                        <div class="dealer-img">
-                            <span class="dealer-listing">59 Listing</span>
-                            <img src="assets/img/dealer/07.png" alt="">
-                        </div>
-                        <div class="dealer-content">
-                            <h4><a href="#">Star AutoMall</a></h4>
-                            <ul>
-                                <li><i class="far fa-location-dot"></i> 25/B Milford Road, New York</li>
-                                <li><i class="far fa-phone"></i> <a href="tel:+21236547898">+2 123 654 7898</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="dealer-item wow fadeInUp" data-wow-delay="1s">
-                        <div class="dealer-img">
-                            <span class="dealer-listing">28 Listing</span>
-                            <img src="assets/img/dealer/08.png" alt="">
-                        </div>
-                        <div class="dealer-content">
-                            <h4><a href="#">Superspeed Auto</a></h4>
-                            <ul>
-                                <li><i class="far fa-location-dot"></i> 25/B Milford Road, New York</li>
-                                <li><i class="far fa-phone"></i> <a href="tel:+21236547898">+2 123 654 7898</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
-    <!-- car dealer end-->
-
-
     <!-- choose area -->
     <div class="choose-area py-120">
         <div class="container">
@@ -645,7 +213,7 @@
             </span>
                             <h2 class="site-title text-white mb-10">We are dedicated <span>to provide</span> quality service</h2>
                             <p class="text-white">
-                                At <strong>Motex</strong>, we are committed to delivering exceptional service with integrity. Our mission is to provide top-notch automotive solutions, ensuring your journey with us is reliable and worry-free.
+                                At <strong>Car Crafter</strong>, we are committed to delivering exceptional service with integrity. Our mission is to provide top-notch automotive solutions, ensuring your journey with us is reliable and worry-free.
                             </p>
                         </div>
                         <div class="choose-img wow fadeInUp" data-wow-delay=".25s">
@@ -718,7 +286,7 @@
                     <div class="col-lg-7 text-center text-lg-start">
                         <div class="cta-text cta-divider">
                             <h1>Discover Your Dream Car It's Simple and Affordable</h1>
-                            <p>At <strong>Motex</strong>, we make car ownership easy and affordable. Explore a curated selection of quality vehicles that fit your lifestyle. Your dream car is just a click away!</p>
+                            <p>At <strong>Car Crafter</strong>, we make car ownership easy and affordable. Explore a curated selection of quality vehicles that fit your lifestyle. Your dream car is just a click away!</p>
                         </div>
                     </div>
                     <div class="col-lg-5 text-center text-lg-end">
@@ -726,7 +294,7 @@
                             <a href="tel:<%@ include file="/info/phone.jsp" %>" class="cta-number"><i class="far fa-headset"></i><%@ include file="/info/phone.jsp" %></a>
                         </div>
                         <div class="cta-btn">
-                            <a href="shop" class="theme-btn">Buy Your Car<i class="fas fa-arrow-right-long"></i></a>
+                            <a href="Shop" class="theme-btn">Find Your Dream Car<i class="fas fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 </div>
@@ -823,7 +391,7 @@
                                 <span class="site-title-tagline justify-content-start">
                                     <i class="flaticon-drive"></i> Get Our App
                                 </span>
-                                <h2 class="site-title mb-10">Download <span>Our Motex</span> App For Free</h2>
+                                <h2 class="site-title mb-10">Download <span>Our Car Crafter</span> App For Free</h2>
                                 <p>
                                     There are many variations of passages available but the majority have suffered in some form going to use a passage by injected humour. 
                                 </p>

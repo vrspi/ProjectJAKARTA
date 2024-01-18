@@ -15,9 +15,12 @@ public class Listing {
     private String title;
 
     @ManyToOne
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "UserID", insertable=false, updatable=false)
     private UserProfile userProfile;
 
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
+    }
 
     public UserProfile getUserProfile() {
         return userProfile;
@@ -145,10 +148,9 @@ public class Listing {
     @JoinColumn(name = "locationID")
     private Location location;
 
-    @OneToMany(mappedBy = "listing")
+    @OneToMany(mappedBy = "listing", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ListingFeature> listingFeatures;
 
- 
 
     public int getListingID() {
         return listingID;
@@ -262,7 +264,7 @@ public class Listing {
         this.listingFeatures = listingFeatures;
     }
 
-    @OneToMany(mappedBy = "listing")
+    @OneToMany(mappedBy = "listing", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Image> images;
 
 

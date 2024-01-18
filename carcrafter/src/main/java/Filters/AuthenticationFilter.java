@@ -28,7 +28,8 @@ public class AuthenticationFilter implements Filter {
                 session = req.getSession(true);
             }
             session.setAttribute("redirectTo", requestedUri);
-            res.sendRedirect("Login.jsp");
+            session.setAttribute("errorMessage", "You must be logged in to access this page!");
+            res.sendRedirect("Login");
         }
     }
 

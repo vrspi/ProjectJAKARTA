@@ -10,7 +10,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="footer-widget-box about-us">
                         <a href="/carcrafter/" class="footer-logo">
-                            <img src="assets/img/logo/logo-light.png" alt="">
+                            <img src="assets/img/logo/logo-light.svg" alt="">
                         </a>
                         <p class="mb-3">
                             Explore possibilities with us. Our commitment to authenticity defines our journey. Join us where every word is heard and believed.
@@ -29,7 +29,7 @@
                             <li><a href="/carcrafter/"><i class="fas fa-caret-right"></i> Home</a></li>
                             <li><a href="services"><i class="fas fa-caret-right"></i> Services</a></li>
                             <li><a href="blog"><i class="fas fa-caret-right"></i> Blog</a></li>
-                            <li><a href="shop"><i class="fas fa-caret-right"></i> Shop</a></li>
+                            <li><a href="Shop"><i class="fas fa-caret-right"></i> Shop</a></li>
                             <li><a href="team"><i class="fas fa-caret-right"></i> Our Team</a></li>
                             <li><a href="calculator"><i class="fas fa-caret-right"></i> Calculator</a></li>
                         </ul>
@@ -72,7 +72,7 @@
             <div class="row">
                 <div class="col-md-6 align-self-center">
                     <p class="copyright-text">
-                        &copy; Copyright <span id="date"></span> <a href="/carcrafter/"> MOTEX </a> All Rights Reserved.
+                        &copy; Copyright <span id="date"></span> <a href="/carcrafter/"> Car Crafter </a> All Rights Reserved.
                     </p>
                 </div>
                 <div class="col-md-6 align-self-center">
@@ -113,6 +113,16 @@
 <script src="assets/js/main.js"></script>
 
 <script src="assets/js/messages.js"></script>
+<script>
+window.addEventListener('pageshow', function(event) {
+
+if (event.persisted) {
+
+window.location.reload(true);
+}
+<%session.removeAttribute("redirectTo");%>
+});
+</script>
 <script>
     function previewAndSubmit() {
         var fileInput = document.getElementById('fileInput');

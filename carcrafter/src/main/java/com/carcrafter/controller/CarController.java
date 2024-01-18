@@ -1,26 +1,16 @@
 package com.carcrafter.controller;
 
-import java.io.Console;
 import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigDecimal;
-import java.nio.file.FileAlreadyExistsException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
+import com.carcrafter.Factory.ServiceFactory;
+import com.carcrafter.FileUtility.FileService;
 import com.carcrafter.model.JPAUtil;
 import com.carcrafter.model.*;
 
+import com.carcrafter.service.CarService;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -34,6 +24,12 @@ import jakarta.servlet.http.*;
         maxRequestSize = 10 * 1024 * 1024  // 10 MB
 )
 public class CarController extends HttpServlet {
+
+    private final CarService carService;
+    public CarController() throws IllegalAccessException, InstantiationException {
+        this.carService = ServiceFactory.createService(CarService.class);
+    }
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -60,51 +56,20 @@ public class CarController extends HttpServlet {
             request.setAttribute("selectedcolor","-1");
             request.setAttribute("selecteddoors","-1");
 
-
-            HttpSession session = request.getSession(false);
-            request.setAttribute("Name",session.getAttribute("FullName"));
-            request.setAttribute("Email",session.getAttribute("Email"));
-            request.setAttribute("Phone",session.getAttribute("Phone"));
-
         }
 
-
-
-        TypedQuery<ConditionT> queryConditionT = em.createQuery("SELECT c FROM ConditionT c", ConditionT.class);
-        List<ConditionT> ConditionTs = queryConditionT.getResultList();
-
-        TypedQuery<BodyType> queryBodyType = em.createQuery("SELECT b FROM BodyType b", BodyType.class);
-        List<BodyType> bodyTypes = queryBodyType.getResultList();
-
-        TypedQuery<MakeBrand> queryMakeBrand = em.createQuery("SELECT m FROM MakeBrand m", MakeBrand.class);
-        List<MakeBrand> makeBrands = queryMakeBrand.getResultList();
-
-        TypedQuery<Model> queryModel = em.createQuery("SELECT m FROM Model m", Model.class);
-        List<Model> models = queryModel.getResultList();
-
-        TypedQuery<Year> queryYear = em.createQuery("SELECT y FROM Year y", Year.class);
-        List<Year> years = queryYear.getResultList();
-
-        TypedQuery<DriveType> queryDriveType = em.createQuery("SELECT d FROM DriveType d", DriveType.class);
-        List<DriveType> driveTypes = queryDriveType.getResultList();
-
-        TypedQuery<Transmission> queryTransmission = em.createQuery("SELECT t FROM Transmission t", Transmission.class);
-        List<Transmission> transmissions = queryTransmission.getResultList();
-
-        TypedQuery<FuelType> queryFuelType = em.createQuery("SELECT f FROM FuelType f", FuelType.class);
-        List<FuelType> fuelTypes = queryFuelType.getResultList();
-
-        TypedQuery<Cylinders> queryCylinders = em.createQuery("SELECT c FROM Cylinders c", Cylinders.class);
-        List<Cylinders> cylinders = queryCylinders.getResultList();
-
-        TypedQuery<Color> queryColor = em.createQuery("SELECT c FROM Color c", Color.class);
-        List<Color> colors = queryColor.getResultList();
-
-        TypedQuery<Doors> queryDoors = em.createQuery("SELECT d FROM Doors d", Doors.class);
-        List<Doors> doorsList = queryDoors.getResultList();
-
-        TypedQuery<Features> querFeatures = em.createQuery("SELECT f FROM Features f", Features.class);
-        List<Features> featureList = querFeatures.getResultList();
+        List<ConditionT> ConditionTs = carService.SelectConditionT();
+        List<BodyType> bodyTypes = carService.SelectBodyType();
+        List<MakeBrand> makeBrands = carService.SelectMakeBrand();
+        List<Model> models = carService.SelectModel();
+        List<Year> years = carService.SelectYear();
+        List<DriveType> driveTypes = carService.SelectDriveType();
+        List<Transmission> transmissions = carService.SelectTransmission();
+        List<FuelType> fuelTypes = carService.SelectFuelType();
+        List<Cylinders> cylinders = carService.SelectCylinders();
+        List<Color> colors = carService.SelectColor();
+        List<Doors> doorsList = carService.SelectDoors();
+        List<Features> featureList = carService.SelectFeatures();
 
         request.setAttribute("ConditionTs", ConditionTs);
         request.setAttribute("bodyTypes", bodyTypes);
@@ -123,16 +88,6 @@ public class CarController extends HttpServlet {
         em.close();
         request.getRequestDispatcher("AddListing.jsp").forward(request, response);
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -231,10 +186,7 @@ public class CarController extends HttpServlet {
         }
         else
         {
-            // Vérifier si la condition existe dans la base de données
-            TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM ConditionT c WHERE c.conditionTID = :conditionID", Long.class);
-            countQuery.setParameter("conditionID", condition);
-            Long countResult = countQuery.getSingleResult();
+            Long countResult = carService.SelectcConditionCount(condition);
             if (countResult == 0)
             {
                 errors.put("condition", "Condition n'exist Pas.");
@@ -248,20 +200,13 @@ public class CarController extends HttpServlet {
 
 
 
-
-
-
-
-
         //verifier le champs bodyType
         if (bodyType == null) {
             errors.put("bodyType", "Choisir bodyType");
             req.setAttribute("selectedbodyType", "-1");
         } else {
             // Vérifier si bodyTypeID existe dans la base de données
-            TypedQuery<Long> countQuer = em.createQuery("SELECT COUNT(c) FROM BodyType c WHERE c.bodyTypeID = :bodyTypeID", Long.class);
-            countQuer.setParameter("bodyTypeID", bodyType);
-            Long countResult = countQuer.getSingleResult();
+            Long countResult = carService.SelectcBodyTypeCount(bodyType);
             if (countResult == 0)
             {
                 errors.put("bodyType", "bodyType n'exist Pas");
@@ -279,9 +224,7 @@ public class CarController extends HttpServlet {
             req.setAttribute("selectedmakeBrand", "-1");
         } else {
             try {
-                TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM MakeBrand c WHERE c.makeID = :makeID", Long.class);
-                countQuery.setParameter("makeID", makeBrand);
-                Long countResult = countQuery.getSingleResult();
+                Long countResult = carService.SelectcBrandCount(makeBrand);
 
                 if (countResult == 0) {
                     errors.put("makeBrand", "makeBrand n'existe pas");
@@ -306,10 +249,7 @@ public class CarController extends HttpServlet {
         } else {
             try {
                 // Vérifier si modelID existe dans la base de données
-                TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM Model c WHERE c.modelID = :modelID", Long.class);
-                countQuery.setParameter("modelID", model);
-                Long countResult = countQuery.getSingleResult();
-
+                Long countResult = carService.SelectcModelCount(model);
                 if (countResult == 0) {
                     errors.put("model", "model n'existe pas");
                     req.setAttribute("selectedmodel", "-1");
@@ -332,9 +272,7 @@ public class CarController extends HttpServlet {
             req.setAttribute("selecteddriveType", "-1");
         } else {
             try {
-                TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM DriveType c WHERE c.driveTypeID = :driveTypeID", Long.class);
-                countQuery.setParameter("driveTypeID", driveType);
-                Long countResult = countQuery.getSingleResult();
+                Long countResult = carService.SelectDriveTypeCount(driveType);
 
                 if (countResult == 0) {
                     errors.put("driveType", "driveType n'existe pas");
@@ -357,10 +295,7 @@ public class CarController extends HttpServlet {
             req.setAttribute("selectedyear", "-1");
         } else {
             try {
-                TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM Year c WHERE c.yearID = :yearID", Long.class);
-                countQuery.setParameter("yearID", year);
-                Long countResult = countQuery.getSingleResult();
-
+                Long countResult = carService.SelectYearTypeCount(year);
                 if (countResult == 0) {
                     errors.put("year", "year n'existe pas");
                     req.setAttribute("selectedyear", "-1");
@@ -382,9 +317,7 @@ public class CarController extends HttpServlet {
             req.setAttribute("selectedtransmission", "-1");
         } else {
             try {
-                TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM Transmission c WHERE c.transmissionID = :transmissionID", Long.class);
-                countQuery.setParameter("transmissionID", transmission);
-                Long countResult = countQuery.getSingleResult();
+                Long countResult = carService.SelectTransmissionCount(transmission);
 
                 if (countResult == 0) {
                     errors.put("transmission", "transmission n'existe pas");
@@ -406,9 +339,7 @@ public class CarController extends HttpServlet {
             req.setAttribute("selectedfuelType", "-1");
         } else {
             try {
-                TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM FuelType c WHERE c.fuelTypeID = :fuelTypeID", Long.class);
-                countQuery.setParameter("fuelTypeID", fuelType);
-                Long countResult = countQuery.getSingleResult();
+                Long countResult = carService.SelecFuelTypeCount(fuelType);
 
                 if (countResult == 0) {
                     errors.put("fuelType", "fuelType n'existe pas");
@@ -431,9 +362,7 @@ public class CarController extends HttpServlet {
             req.setAttribute("selectedcylinders", "-1");
         } else {
             try {
-                TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM Cylinders c WHERE c.cylindersID = :cylindersID", Long.class);
-                countQuery.setParameter("cylindersID", cylinders);
-                Long countResult = countQuery.getSingleResult();
+                Long countResult = carService.SelectCylindersCount(cylinders);
 
                 if (countResult == 0) {
                     errors.put("cylinders", "cylinders n'existe pas");
@@ -458,7 +387,7 @@ public class CarController extends HttpServlet {
             try {
                 TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM Color c WHERE c.colorID = :colorID", Long.class);
                 countQuery.setParameter("colorID", color);
-                Long countResult = countQuery.getSingleResult();
+                Long countResult = carService.SelectColorCount(color);
 
                 if (countResult == 0) {
                     errors.put("color", "color n'existe pas");
@@ -480,9 +409,7 @@ public class CarController extends HttpServlet {
             req.setAttribute("selecteddoors", "-1");
         } else {
             try {
-                TypedQuery<Long> countQuery = em.createQuery("SELECT COUNT(c) FROM Doors c WHERE c.doorsID = :doorsID", Long.class);
-                countQuery.setParameter("doorsID", doors);
-                Long countResult = countQuery.getSingleResult();
+                Long countResult = carService.SelectDoorsCount(doors);
 
                 if (countResult == 0) {
                     errors.put("doors", "doors n'existe pas");
@@ -512,7 +439,7 @@ public class CarController extends HttpServlet {
         int countimage = 0;
         for (Part filePart : fileParts)
         {
-            String fileName = getFileName(filePart);
+            String fileName = FileService.getFileName(filePart);
             if (fileName != null)
             {
                 countimage++;
@@ -588,212 +515,24 @@ public class CarController extends HttpServlet {
 
 
 
-        req.setAttribute("Name","kadi");
-        req.setAttribute("Email","kadi@gmail.com");
-        req.setAttribute("Phone","0682653265");
-
-
-
-
         if (!errors.isEmpty()) {
             req.setAttribute("errors", errors);
             doGet(req, resp);
         }
         else
         {
+            HttpSession session = req.getSession(false);
+            Integer userId = (Integer) session.getAttribute("id");
+            Boolean ajoutcar = carService.SaveListing(userId,listingTitle,condition,bodyType,makeBrand,model,price,year,driveType,transmission,fuelType,mileage,engineSize,cylinders,color,doors,vin,tags,description);
 
-
-            // creer lobjet listing
-            try {
-                em.getTransaction().begin();
-
-                HttpSession session = req.getSession(false);
-                Listing listing = new Listing();
-                Integer userId = (Integer) session.getAttribute("id");
-                listing.setUserID(userId);
-                listing.setTitle(listingTitle);
-                ConditionT conditionEntity = new ConditionT();
-                conditionEntity.setConditionTID(Integer.parseInt(condition));
-                BodyType bodyTypeEntity = new BodyType();
-                bodyTypeEntity.setBodyTypeID(Integer.parseInt(bodyType));
-                MakeBrand makeEntity = new MakeBrand();
-                makeEntity.setMakeID(Integer.parseInt(makeBrand));
-                Model modelEntity = new Model();
-                modelEntity.setModelID(Integer.parseInt(model));
-                listing.setCondition(conditionEntity);
-                listing.setBodyType(bodyTypeEntity);
-                listing.setMakeBrand(makeEntity);
-                listing.setModel(modelEntity);
-                listing.setPrice(new BigDecimal(price));
-                // Assuming you have entities like Year, DriveType, Transmission, and FuelType
-                Year yearEntity = new Year();
-                DriveType driveTypeEntity = new DriveType();
-                Transmission transmissionEntity = new Transmission();
-                FuelType fuelTypeEntity = new FuelType();
-
-
-                yearEntity.setYearID(Integer.parseInt(year));
-                driveTypeEntity.setDriveTypeID(Integer.parseInt(driveType));
-                transmissionEntity.setTransmissionID(Integer.parseInt(transmission));
-                fuelTypeEntity.setFuelTypeID(Integer.parseInt(fuelType));
-
-
-                listing.setYear(yearEntity);
-                listing.setDriveType(driveTypeEntity);
-                listing.setTransmission(transmissionEntity);
-                listing.setFuelType(fuelTypeEntity);
-                listing.setMileage(Integer.parseInt(mileage));
-                listing.setEngineSize(new BigDecimal(engineSize));
-
-                Cylinders cylindersEntity = new Cylinders();
-                Color colorEntity = new Color();
-                Doors doorsEntity = new Doors();
-
-
-                cylindersEntity.setCylindersID(Integer.parseInt(cylinders));
-                colorEntity.setColorID(Integer.parseInt(color));
-                doorsEntity.setDoorsID(Integer.parseInt(doors));
-
-
-                listing.setCylinders(cylindersEntity);
-                listing.setColor(colorEntity);
-                listing.setDoors(doorsEntity);
-
-                listing.setVin(vin);
-                listing.setTags(tags);
-                listing.setDescription(description);
-
-                em.persist(listing);
-                em.getTransaction().commit();
-            } catch (Exception e)
+            if (ajoutcar)
             {
-                if (em.getTransaction().isActive()) {
-                    em.getTransaction().rollback();
-                }
-                e.printStackTrace();
+                int maxListingID = carService.SelectmaxListingID();
+                carService.SaveFeacherListing(maxListingID,Myfeatures);
+                carService.SaveImageListing( maxListingID,fileParts);
             }
+            resp.sendRedirect("ProfileListing");
 
-
-            //select le ID de la voiture inserer
-            TypedQuery<Integer> countQuery = em.createQuery("SELECT MAX(l.listingID) FROM Listing l", Integer.class);
-            int maxListingID = countQuery.getSingleResult();
-
-
-
-            //Fitures de voiture
-            Listing lst = new Listing();
-            lst.setListingID(maxListingID);
-
-            //System.out.println("list : " + Myfeatures.toString());
-            EntityTransaction transaction = em.getTransaction();
-
-            try {
-                transaction.begin();
-
-                for (int i = 0; i < Myfeatures.size(); i++) {
-                    Features ftc = new Features();
-                    ftc.setFeatureID(Myfeatures.get(i));
-                    ListingFeature lf = new ListingFeature();
-                    lf.setListing(lst);
-                    lf.setFeature(ftc);
-
-                    em.persist(lf);
-                }
-
-                transaction.commit();
-            } catch (Exception e) {
-                if (transaction.isActive()) {
-                    transaction.rollback();
-                }
-                e.printStackTrace(); // Gérez l'exception de manière appropriée ici
-            }
-
-
-            EntityTransaction transaction2 = em.getTransaction();
-
-            try {
-                transaction.begin();
-
-                for (Part filePart : fileParts) {
-                    String fileName = getFileName(filePart);
-
-                    if (fileName != null) {
-                        String hashedFileName = hashFileName(fileName);
-
-                        // Définir le répertoire d'upload
-                        String uploadDirectory = "C:\\Users\\MO KADI\\Desktop\\ProjectJAKARTA\\carcrafter\\src\\main\\webapp\\assets\\upload\\img\\car";
-
-                        // Utilisez un chemin relatif pour éviter les problèmes de compatibilité entre les systèmes d'exploitation
-                        Path uploadPath = Paths.get(uploadDirectory, hashedFileName);
-
-                        try (InputStream fileContent = filePart.getInputStream()) {
-                            Files.createDirectories(uploadPath.getParent());
-
-                            // Vérifiez si le fichier existe déjà
-                            if (Files.notExists(uploadPath)) {
-                                Files.copy(fileContent, uploadPath);
-                                String imageUrl = "assets/upload/img/car/" + hashedFileName;
-                                System.out.println("Image téléchargée avec succès : " + imageUrl);
-
-                                // Insérer l'image dans la base de données
-                                Image img = new Image();
-                                img.setImagePath(hashedFileName);
-                                img.setListing(lst);
-                                em.persist(img);
-                            } else {
-                                System.out.println("Une image avec le même nom existe déjà dans le dossier d'upload.");
-                            }
-                        } catch (IOException e) {
-                            System.out.println("Erreur lors du téléchargement de l'image '" + fileName + "'.");
-                            e.printStackTrace();
-                        }
-                    }
-                }
-
-                transaction2.commit();
-            }
-            finally
-            {
-                if (em.isOpen()) {
-                    em.close();
-                }
-            }
-
-        }
-    }
-
-
-
-
-    private String getFileName(Part part) {
-        String submittedFileName = part.getSubmittedFileName();
-        if (submittedFileName != null && !submittedFileName.isEmpty()) {
-            return submittedFileName;
-        }
-        return null;
-    }
-
-
-    private String hashFileName(String fileName) {
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
-            String currentTimeStamp = dateFormat.format(new Date());
-
-            String fileNameWithTimestamp = fileName + "-" + currentTimeStamp;
-
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(fileNameWithTimestamp.getBytes());
-            byte[] bytes = md.digest();
-
-            StringBuilder sb = new StringBuilder();
-            for (byte b : bytes) {
-                sb.append(String.format("%02x", b));
-            }
-
-            return sb.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return fileName;
         }
     }
 

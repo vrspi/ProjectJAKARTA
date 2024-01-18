@@ -9,10 +9,10 @@
   <meta name="keywords" content="">
 
   <!-- title -->
-  <title>Motex - Login</title>
+  <title>Car Crafter - Login</title>
 
   <!-- favicon -->
-  <link rel="icon" type="image/x-icon" href="assets/img/logo/favicon.png">
+  <link rel="icon" type="image/x-icon" href="assets/img/logo/favicon.svg">
 
   <!-- css -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -73,8 +73,8 @@
     <div class="col-md-5 mx-auto">
       <div class="login-form">
         <div class="login-header">
-          <img src="assets/img/logo/logo.png" alt="">
-          <p>Login with your motex account</p>
+          <img src="assets/img/logo/logo.svg" alt="">
+          <p>Login with your Car Crafter account</p>
         </div>
         <form action="UserController" method="post">
           <%
@@ -96,6 +96,7 @@
           <% }
           session.removeAttribute("successMessage");
           session.removeAttribute("errorMessage");
+
           %>
           <div class="form-group">
             <label>Email Address</label>
@@ -155,6 +156,21 @@
 <script src="assets/js/jquery.nice-select.min.js"></script>
 <script src="assets/js/wow.min.js"></script>
 <script src="assets/js/main.js"></script>
+
+
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+  <!-- Head content -->
+</head>
+<body class="home-3">
+<!-- Body content -->
+
+
+</body>
+</html>
+
 </body>
 <!-- login area end -->
 <%--<jsp:include page="template/bottom.jsp" />--%>

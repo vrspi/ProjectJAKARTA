@@ -1,6 +1,8 @@
 package com.carcrafter.controller;
 
+import com.carcrafter.Factory.ServiceFactory;
 import com.carcrafter.model.*;
+import com.carcrafter.service.CarService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.servlet.ServletException;
@@ -15,30 +17,29 @@ import java.util.List;
 @WebServlet("/ListingList")
 public class ListingListController extends HttpServlet {
 
+    private final CarService carService;
+    public ListingListController() throws IllegalAccessException, InstantiationException {
+        this.carService = ServiceFactory.createService(CarService.class);
+    }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        EntityManager em = JPAUtil.getEntityManager();
-        try {
-            em.getTransaction().begin();
-            //select voitures
-            TypedQuery<Listing> query = em.createQuery("SELECT L FROM Listing L", Listing.class);
-            List<Listing> listings = query.getResultList();
 
+        try {
+            //select voitures
+            List<Listing> listings = carService.SelectAllListings();
+
+            System.out.println(listings.size());
             //select brands
-            TypedQuery<MakeBrand> queryBrands = em.createQuery("SELECT L FROM MakeBrand L", MakeBrand.class);
-            List<MakeBrand> Brands = queryBrands.getResultList();
+            List<MakeBrand> Brands = carService.SelectMakeBrand();
 
             //select transmission
-            TypedQuery<Transmission> querytransmission = em.createQuery("SELECT L FROM Transmission L", Transmission.class);
-            List<Transmission> transmissions = querytransmission.getResultList();
+            List<Transmission> transmissions = carService.SelectTransmission();
 
             //select FuelType
-            TypedQuery<FuelType> queryFuelType = em.createQuery("SELECT f FROM FuelType f", FuelType.class);
-            List<FuelType> fuelTypes = queryFuelType.getResultList();
+            List<FuelType> fuelTypes = carService.SelectFuelType();
 
             //select Features
-            TypedQuery<Features> querFeatures = em.createQuery("SELECT f FROM Features f", Features.class);
-            List<Features> featureList = querFeatures.getResultList();
+            List<Features> featureList = carService.SelectFeatures();
 
             req.setAttribute("Cars", listings);
             req.setAttribute("CountCar", listings.size());
@@ -48,11 +49,9 @@ public class ListingListController extends HttpServlet {
             req.setAttribute("featureList", featureList);
             req.getRequestDispatcher("listing-list.jsp").forward(req, resp);
 
-            em.getTransaction().commit();
-        } finally {
-            if (em.isOpen()) {
-                em.close();
-            }
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
     }
 

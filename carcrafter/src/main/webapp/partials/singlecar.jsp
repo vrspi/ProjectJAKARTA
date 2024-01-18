@@ -43,7 +43,19 @@
 
                                                 <%
                                                 List<Image> ImageList = (List<Image>) car.getImages();
-                                                
+
+
+                                                    StringBuffer urlBuffer = request.getRequestURL();
+
+                                                    // Get the query string (e.g., "id=32")
+                                                    String queryString = request.getQueryString();
+
+                                                    if (queryString != null) {
+                                                        urlBuffer.append("?").append(queryString);
+                                                        String fullUrl = urlBuffer.toString();
+                                                        // String referer = request.getHeader("referer");
+                                                        session.setAttribute("URLCARLISTING", fullUrl);
+                                                    }
             
                                                 for(Image image : ImageList) {
                                                     
@@ -221,7 +233,9 @@
                                     for(ListingFeature features : featureList) {
                                         if (counter % 4 == 0) {
                                             if (counter > 0) {
-                                                %></ul></div><%
+                                                %>
+                                    </ul></div>
+                                <%
                                             }
                                             %><div class="col-lg-4"><ul class="car-single-list"><%
                                         }
@@ -276,7 +290,7 @@
                         <h5 class="mb-3">Contact Details</h5>
                         <div class="car-single-form">
                             <% if(request.getAttribute("id") != null){
-                                String id = request.getParameter("id");
+                                int id = (int)request.getAttribute("id");
                                 int AdminID = car.getUserID();
 
                                 %>
@@ -302,8 +316,10 @@
                             <%
                             }else{
                                 %>
+                            <div class="alert alert-danger" id="success-alert" role="alert">
+                                <h2>You have to login first</h2>
+                            </div>
 
-                                    <h2>You have to login first</h2> 
 
                                 <%
                             }
@@ -316,114 +332,31 @@
             <div class="car-single-related mt-5">
                 <h3 class="mb-30">Related Listing</h3>
                 <div class="row">
+                    <%
+                        List<Listing> lwata = (List<Listing>) request.getAttribute("RandomListings");
+                        if (lwata != null) {
+                            for (Listing loto : lwata) {
+                    %>
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="car-item">
                             <div class="car-img">
-                                <span class="car-status status-1">Used</span>
-                                <img src="assets/img/car/01.jpg" alt="">
-                                <div class="car-btns">
-                                    <a href="#"><i class="far fa-heart"></i></a>
-                                    <a href="#"><i class="far fa-arrows-repeat"></i></a>
-                                </div>
-                            </div>
-                            <div class="car-content">
-                                <div class="car-top">
-                                    <h4><a href="#">Mercedes Benz Car</a></h4>
-                                    <div class="car-rate">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span>5.0 (58.5k Review)</span>
-                                    </div>
-                                </div>
-                                <ul class="car-list">
-                                    <li><i class="far fa-steering-wheel"></i>Automatic</li>
-                                    <li><i class="far fa-road"></i>10.15km / 1-litre</li>
-                                    <li><i class="far fa-car"></i>Model: 2023</li>
-                                    <li><i class="far fa-gas-pump"></i>Hybrid</li>
-                                </ul>
-                                <div class="car-footer">
-                                    <span class="car-price">$45,620</span>
-                                    <a href="#" class="theme-btn"><span class="far fa-eye"></span>Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div class="car-item">
-                            <div class="car-img">
-                                <img src="assets/img/car/02.jpg" alt="">
-                                <div class="car-btns">
-                                    <a href="#"><i class="far fa-heart"></i></a>
-                                    <a href="#"><i class="far fa-arrows-repeat"></i></a>
-                                </div>
-                            </div>
-                            <div class="car-content">
-                                <div class="car-top">
-                                    <h4><a href="#">Yellow Ferrari 458</a></h4>
-                                    <div class="car-rate">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span>5.0 (58.5k Review)</span>
-                                    </div>
-                                </div>
-                                <ul class="car-list">
-                                    <li><i class="far fa-steering-wheel"></i>Automatic</li>
-                                    <li><i class="far fa-road"></i>10.15km / 1-litre</li>
-                                    <li><i class="far fa-car"></i>Model: 2023</li>
-                                    <li><i class="far fa-gas-pump"></i>Hybrid</li>
-                                </ul>
-                                <div class="car-footer">
-                                    <span class="car-price">$90,250</span>
-                                    <a href="#" class="theme-btn"><span class="far fa-eye"></span>Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div class="car-item">
-                            <div class="car-img">
-                                <img src="assets/img/car/03.jpg" alt="">
-                                <div class="car-btns">
-                                    <a href="#"><i class="far fa-heart"></i></a>
-                                    <a href="#"><i class="far fa-arrows-repeat"></i></a>
-                                </div>
-                            </div>
-                            <div class="car-content">
-                                <div class="car-top">
-                                    <h4><a href="#">Black Audi Q7</a></h4>
-                                    <div class="car-rate">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span>5.0 (58.5k Review)</span>
-                                    </div>
-                                </div>
-                                <ul class="car-list">
-                                    <li><i class="far fa-steering-wheel"></i>Automatic</li>
-                                    <li><i class="far fa-road"></i>10.15km / 1-litre</li>
-                                    <li><i class="far fa-car"></i>Model: 2023</li>
-                                    <li><i class="far fa-gas-pump"></i>Hybrid</li>
-                                </ul>
-                                <div class="car-footer">
-                                    <span class="car-price">$44,350</span>
-                                    <a href="#" class="theme-btn"><span class="far fa-eye"></span>Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div class="car-item">
-                            <div class="car-img">
+                                <% if(loto.getCondition().getConditionTType().equals("New")) {%>
                                 <span class="car-status status-2">New</span>
-                                <img src="assets/img/car/04.jpg" alt="">
+                                <% } else if(loto.getCondition().getConditionTType().equals("Used")) {%>
+                                <span class="car-status status-1">Used</span>
+                                <% } else if(loto.getCondition().getConditionTType().equals("Certified Pre-Owned")) {%>
+                                <span class="car-status status-2 bg-primary">Certified Pre-Owned</span>
+                                <% }
+                                    if (loto.getImages() != null && loto.getImages().size() > 0 && loto.getImages().get(0).getImagePath() != null) {
+                                %>
+                                <img src="assets/upload/img/car/<%= loto.getImages().get(0).getImagePath() %>" alt="ImageCar">
+                                <%
+                                } else {
+                                %>
+                                <img src="" alt="ImageCar">
+                                <%
+                                    }
+                                %>
                                 <div class="car-btns">
                                     <a href="#"><i class="far fa-heart"></i></a>
                                     <a href="#"><i class="far fa-arrows-repeat"></i></a>
@@ -431,7 +364,7 @@
                             </div>
                             <div class="car-content">
                                 <div class="car-top">
-                                    <h4><a href="#">BMW Sports Car</a></h4>
+                                    <h4><a href="singlecar?id=<%=loto.getListingID()%>"><%=loto.getTitle()%></a></h4>
                                     <div class="car-rate">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -442,18 +375,24 @@
                                     </div>
                                 </div>
                                 <ul class="car-list">
-                                    <li><i class="far fa-steering-wheel"></i>Automatic</li>
-                                    <li><i class="far fa-road"></i>10.15km / 1-litre</li>
-                                    <li><i class="far fa-car"></i>Model: 2023</li>
-                                    <li><i class="far fa-gas-pump"></i>Hybrid</li>
+                                    <li><i class="far fa-steering-wheel"></i><%=loto.getTransmission().getTransmissionType()%></li>
+                                    <li><i class="far fa-road"></i><%=loto.getMileage()%>km</li>
+                                    <li><i class="far fa-car"></i>Model: <%=loto.getYear().getYear()%></li>
+                                    <li><i class="far fa-gas-pump"></i><%=loto.getFuelType().getFuelType()%></li>
                                 </ul>
                                 <div class="car-footer">
-                                    <span class="car-price">$78,760</span>
-                                    <a href="#" class="theme-btn"><span class="far fa-eye"></span>Details</a>
+                                    <span class="car-price"><%=loto.getPrice()%> MAD</span>
+                                    <a  href="singlecar?id=<%=loto.getListingID()%>" class="theme-btn"><span class="far fa-eye"></span>Details</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <%
+                            }
+                        }
+                    %>
+
                 </div>
             </div>
         </div>

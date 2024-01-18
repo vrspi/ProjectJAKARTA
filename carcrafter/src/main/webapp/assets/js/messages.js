@@ -53,11 +53,10 @@ function updateMessageDiv(messages,currentUserId) {
   messages.forEach(function(message) {
     
       var messageItemDiv = document.createElement('div');
-      messageItemDiv.className = message.senderId ===  currentUserId? 'message-item me' : 'message-item';
+      messageItemDiv.className = message.senderId ==  currentUserId? 'message-item me' : 'message-item';
       
       var avatarDiv = document.createElement('div');
       avatarDiv.className = 'message-avatar';
-      avatarDiv.innerHTML = '<img src="path_to_avatar_image" alt="">';
 
       var descriptionDiv = document.createElement('div');
       descriptionDiv.className = 'message-description';

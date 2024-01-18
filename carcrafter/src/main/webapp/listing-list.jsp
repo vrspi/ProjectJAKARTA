@@ -8,15 +8,15 @@
 </jsp:include>
 
 <!-- breadcrumb -->
-<div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/01.jpg)">
-    <div class="container">
-        <h2 class="breadcrumb-title">Listing List</h2>
-        <ul class="breadcrumb-menu">
-            <li><a href="Home">Home</a></li>
-            <li class="active">Listing List</li>
-        </ul>
-    </div>
-</div>
+<%--<div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/01.jpg)">--%>
+<%--    <div class="container">--%>
+<%--        <h2 class="breadcrumb-title">Listing List</h2>--%>
+<%--        <ul class="breadcrumb-menu">--%>
+<%--            <li><a href="Home">Home</a></li>--%>
+<%--            <li class="active">Listing List</li>--%>
+<%--        </ul>--%>
+<%--    </div>--%>
+<%--</div>--%>
 <!-- breadcrumb end -->
 
 
@@ -150,7 +150,7 @@
                         %>
 
                         <div class="car-sort-list-grid">
-                            <a class="car-sort-grid" href="ListingGrid"><i
+                            <a class="car-sort-grid" href="Shop"><i
                                     class="far fa-grid-2"></i></a>
                             <a class="car-sort-list active" href="ListingList"><i class="far fa-list-ul"></i></a>
                         </div>
@@ -174,8 +174,13 @@
                     <div class="col-md-6 col-lg-12">
                         <div class="car-item">
                             <div class="car-img">
-                                <span class="car-status status-1"><%=loto.getCondition().getConditionTType()%></span>
-                                <%
+                                <% if(loto.getCondition().getConditionTType().equals("New")) {%>
+                                <span class="car-status status-2">New</span>
+                                <% } else if(loto.getCondition().getConditionTType().equals("Used")) {%>
+                                <span class="car-status status-1">Used</span>
+                                <% } else if(loto.getCondition().getConditionTType().equals("Certified Pre-Owned")) {%>
+                                <span class="car-status status-2 bg-primary">Certified Pre-Owned</span>
+                                <% }
                                     if (loto.getImages() != null && loto.getImages().size() > 0 && loto.getImages().get(0).getImagePath() != null) {
                                 %>
                                 <img src="assets/upload/img/car/<%= loto.getImages().get(0).getImagePath() %>" alt="ImageCar">
@@ -193,7 +198,7 @@
                             </div>
                             <div class="car-content">
                                 <div class="car-top">
-                                    <h4><a href="#"><%=loto.getTitle()%></a></h4>
+                                    <h4><a href="singlecar?id=<%=loto.getListingID()%>"><%=loto.getTitle()%></a></h4>
                                     <div class="car-rate">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -205,7 +210,7 @@
                                 </div>
                                 <ul class="car-list">
                                     <li><i class="far fa-steering-wheel"></i><%=loto.getTransmission().getTransmissionType()%></li>
-                                    <li><i class="far fa-road"></i><%=loto.getMileage()%>km / 1-litre</li>
+                                    <li><i class="far fa-road"></i><%=loto.getMileage()%>km</li>
                                     <li><i class="far fa-car"></i>Model: <%=loto.getYear().getYear()%></li>
                                     <li><i class="far fa-gas-pump"></i><%=loto.getFuelType().getFuelType()%></li>
                                 </ul>
@@ -213,8 +218,8 @@
                                     <%=loto.getDescription()%>
                                 </p>
                                 <div class="car-footer">
-                                    <span class="car-price"><%=loto.getPrice()%></span>
-                                    <a href="#" class="theme-btn"><span class="far fa-eye"></span>Details</a>
+                                    <span class="car-price"><%=loto.getPrice()%> MAD</span>
+                                    <a href="singlecar?id=<%=loto.getListingID()%>" class="theme-btn"><span class="far fa-eye"></span>Details</a>
                                 </div>
                             </div>
                         </div>
@@ -229,25 +234,25 @@
                 <div>
 
                 <!-- pagination -->
-                <div class="pagination-area">
-                    <div aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true"><i class="far fa-arrow-left"></i></span>
-                                </a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true"><i class="far fa-arrow-right"></i></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+<%--                <div class="pagination-area">--%>
+<%--                    <div aria-label="Page navigation example">--%>
+<%--                        <ul class="pagination">--%>
+<%--                            <li class="page-item">--%>
+<%--                                <a class="page-link" href="#" aria-label="Previous">--%>
+<%--                                    <span aria-hidden="true"><i class="far fa-arrow-left"></i></span>--%>
+<%--                                </a>--%>
+<%--                            </li>--%>
+<%--                            <li class="page-item active"><a class="page-link" href="#">1</a></li>--%>
+<%--                            <li class="page-item"><a class="page-link" href="#">2</a></li>--%>
+<%--                            <li class="page-item"><a class="page-link" href="#">3</a></li>--%>
+<%--                            <li class="page-item">--%>
+<%--                                <a class="page-link" href="#" aria-label="Next">--%>
+<%--                                    <span aria-hidden="true"><i class="far fa-arrow-right"></i></span>--%>
+<%--                                </a>--%>
+<%--                            </li>--%>
+<%--                        </ul>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
                 <!-- pagination end -->
             </div>
         </div>

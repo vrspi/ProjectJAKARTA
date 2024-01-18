@@ -10,7 +10,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -43,21 +42,11 @@ public class SingleCarController extends HttpServlet {
         Listing Listing = queryListing.getSingleResult();
         request.setAttribute("Car", Listing);
 
-        // TypedQuery<BodyType> queryBodyType = em.createQuery("SELECT f FROM BodyType f", BodyType.class);
-        // List<BodyType> BodytypeList = queryBodyType.getResultList();
-        // request.setAttribute("BodytypeList", BodytypeList);
 
-        // TypedQuery<Transmission> queryTransmission = em.createQuery("SELECT f FROM Transmission f", Transmission.class);
-        // List<Transmission> TransmissionList = queryTransmission.getResultList();
-        // request.setAttribute("TransmissionList", TransmissionList);
-
-        // TypedQuery<FuelType> queryFuelType = em.createQuery("SELECT f FROM FuelType f", FuelType.class);
-        // List<FuelType> FuelTypeList = queryFuelType.getResultList();
-        // request.setAttribute("FuelTypeList", FuelTypeList);
-
-        // TypedQuery<Features> queryFeatures = em.createQuery("SELECT f FROM Features f", Features.class);
-        // List<Features> FeaturesList = queryFeatures.getResultList();
-        // request.setAttribute("FeaturesList", FeaturesList);
+        TypedQuery<Listing> queryRandomListings = em.createQuery("SELECT c FROM Listing c ORDER BY RAND()", Listing.class);
+        queryRandomListings.setMaxResults(4);
+        List<Listing> randomListings = queryRandomListings.getResultList();
+        request.setAttribute("RandomListings", randomListings);
 
         request.getRequestDispatcher("/partials/singlecar.jsp").forward(request, response);
     }
