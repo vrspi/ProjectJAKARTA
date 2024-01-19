@@ -142,7 +142,7 @@ public class CarService {
     }
 
 
-    public boolean SaveImageListing(int maxListingID,Collection<Part> fileParts)
+    public boolean SaveImageListing(int maxListingID,Collection<Part> fileParts,String uploadDir)
     {
         EntityManager em = JPAUtil.getEntityManager();
         Listing lst = new Listing();
@@ -160,10 +160,14 @@ public class CarService {
                     String hashedFileName = FileService.hashFileName(fileName);
 
                     // Définir le répertoire d'upload
-                    String uploadDirectory = "C:\\Users\\MO KADI\\Desktop\\ProjectJAKARTA\\carcrafter\\src\\main\\webapp\\assets\\upload\\img\\car";
+                    //String uploadDirectory = "C:\\Users\\MO KADI\\Desktop\\ProjectJAKARTA\\carcrafter\\src\\main\\webapp\\assets\\upload\\img\\car";
 
                     // chemin server
+
                    // String uploadDirectory = getServletContext().getRealPath("/assets/upload/img/car");
+
+                    String uploadDirectory = uploadDir;
+
 
                     Path uploadPath = Paths.get(uploadDirectory, hashedFileName);
 

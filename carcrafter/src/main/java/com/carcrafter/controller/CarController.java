@@ -529,7 +529,8 @@ public class CarController extends HttpServlet {
             {
                 int maxListingID = carService.SelectmaxListingID();
                 carService.SaveFeacherListing(maxListingID,Myfeatures);
-                carService.SaveImageListing( maxListingID,fileParts);
+                String uploadDirectory = getServletContext().getRealPath("/assets/upload/img/car");
+                carService.SaveImageListing( maxListingID,fileParts,uploadDirectory);
             }
             resp.sendRedirect("ProfileListing");
 
