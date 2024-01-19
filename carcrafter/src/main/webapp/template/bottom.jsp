@@ -93,7 +93,7 @@
 <!-- scroll-top -->
 <a href="#" id="scroll-top"><i class="far fa-arrow-up"></i></a>
 <!-- scroll-top end -->
-<a href="AIContact" id="chatbot-button">IA</a>
+<a href="AIContact" id="chatbot-button">AI</a>
 
 
 <!-- js -->

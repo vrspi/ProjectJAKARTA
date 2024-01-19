@@ -31,7 +31,7 @@
                                 <% Listing car = (Listing) request.getAttribute("Car");%>
                                 <h3 class="car-single-title"><%= car.getTitle()%></h3>
                                 <ul class="car-single-meta">
-                                    <li><i class="far fa-clock"></i> Listed On: Sat, Jan 25, 2023</li>
+                                    <li><i class="far fa-clock"></i> Listed On: Fri, Jan 05, 2024</li>
                                     <li><i class="far fa-eye"></i> Views: 850</li>
                                 </ul>
                             </div>
