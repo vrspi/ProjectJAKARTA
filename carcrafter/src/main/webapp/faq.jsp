@@ -37,18 +37,16 @@
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <span><i class="far fa-question"></i></span> How Long Does A Car Buy Take ?
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="false"
+                                    aria-controls="collapseOne">
+                                <span><i class="far fa-question"></i></span> What Happens After I Confirm My Purchase?
                             </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show"
                              aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                We denounce with righteous indignation and dislike men who
-                                are so beguiled and demoralized by the charms of pleasure of the moment, so
-                                blinded by desire. Ante odio dignissim quam, vitae pulvinar turpis erat ac elit
-                                eu orci id odio facilisis pharetra.
+                                Once you confirm your purchase online, you'll have the option to visit our dealership to complete the payment process and take possession of your chosen vehicle. Our team will guide you through the necessary steps, ensuring a smooth and secure transaction. Feel free to reach out to our customer support for any assistance or to schedule your visit.
                             </div>
                         </div>
                     </div>
@@ -56,35 +54,27 @@
                         <h2 class="accordion-header" id="headingTwo">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                <span><i class="far fa-question"></i></span> How Can I Become A Member
-                                ?
+                                <span><i class="far fa-question"></i></span> How Can I Become A Member?
                             </button>
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                We denounce with righteous indignation and dislike men who
-                                are so beguiled and demoralized by the charms of pleasure of the moment, so
-                                blinded by desire. Ante odio dignissim quam, vitae pulvinar turpis erat ac elit
-                                eu orci id odio facilisis pharetra.
+                                Becoming a member is simple! Visit our registration page, provide the necessary details, and follow the prompts to create your account. Once registered, you'll unlock exclusive member benefits, personalized services, and the ability to track your transactions effortlessly.
                             </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingThree">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseThree" aria-expanded="false"
-                                    aria-controls="collapseThree">
-                                <span><i class="far fa-question"></i></span> What Payment Gateway You Support ?
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <span><i class="far fa-question"></i></span> How Can I Become A Member?
                             </button>
                         </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse"
-                             aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                We denounce with righteous indignation and dislike men who
-                                are so beguiled and demoralized by the charms of pleasure of the moment, so
-                                blinded by desire. Ante odio dignissim quam, vitae pulvinar turpis erat ac elit
-                                eu orci id odio facilisis pharetra.
+                                Becoming a member is easy! Simply navigate to our registration page, fill in the required details, and follow the prompts to create your account. Once registered, you'll have access to exclusive member benefits, personalized services, and the ability to track your transactions seamlessly.
                             </div>
                         </div>
                     </div>
@@ -93,16 +83,13 @@
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseFour" aria-expanded="false"
                                     aria-controls="collapseFour">
-                                <span><i class="far fa-question"></i></span> How Can I Cancel My Request ?
+                                <span><i class="far fa-question"></i></span> What Information Do You Collect?
                             </button>
                         </h2>
                         <div id="collapseFour" class="accordion-collapse collapse"
                              aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                We denounce with righteous indignation and dislike men who
-                                are so beguiled and demoralized by the charms of pleasure of the moment, so
-                                blinded by desire. Ante odio dignissim quam, vitae pulvinar turpis erat ac elit
-                                eu orci id odio facilisis pharetra.
+                                We collect information to enhance your experience, including details provided during registration and transaction processes. Rest assured, your privacy is important to us, and we handle your information with the utmost care. For more details, please refer to our Privacy Policy.
                             </div>
                         </div>
                     </div>
