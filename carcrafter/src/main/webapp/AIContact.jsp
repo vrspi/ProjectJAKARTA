@@ -10,7 +10,7 @@
             <div class="user-profile-card profile-message">
                 <div class="user-profile-card-header">
                     <h4 class="user-profile-card-title">Messages</h4>
-                    <div class="user-profile-card-header-right">
+                    <!--<div class="user-profile-card-header-right">
                         <div class="header-account">
                             <div class="dropdown">
                                 <div data-bs-toggle="dropdown" aria-expanded="false">
@@ -23,7 +23,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
