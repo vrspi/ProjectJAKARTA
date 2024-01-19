@@ -5,17 +5,13 @@
 </jsp:include>
 <div class="col-lg-6 mx-auto mt-5">
     <div class="accordion" id="accordionExample">
-
         <div class="accordion-item">
             <div class="user-profile-card profile-message">
                 <div class="user-profile-card-header">
-                    <h4 class="user-profile-card-title">Messages</h4>
+                    <h4 class="user-profile-card-title">Chat </h4>
                     <div class="user-profile-card-header-right">
                         <div class="header-account">
                             <div class="dropdown">
-                                <div data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="assets/img/account/01.jpg" alt="">
-                                </div>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li><a class="dropdown-item" href="#"><i class="far fa-ban"></i> Block Chat</a></li>
                                     <li><a class="dropdown-item" href="#"><i class="far fa-message-slash"></i> Mute Chat</a></li>
@@ -73,12 +69,20 @@
             sendMessage();
         });
 
+        $("#messageText").keypress(function (event) {
+            if (event.which === 13) {
+                event.preventDefault();
+
+                sendMessage();
+            }
+        });
+
         // Function to display the response in the UI
         function displayResponse(response) {
             // Assuming you have a div with class "message-item me" for the sender's message
             var senderMessageHtml = '<div class="message-item me">' +
                 '<div class="message-avatar">' +
-                '<img src="assets/img/faq/OIP.jpeg" alt="Your Avatar">' +
+                '<img src="assets/img/faq/télécharger.jpeg" alt="Your Avatar">' +
                 '</div>' +
                 '<div class="message-description">' +
                 '<p>' + response.message + '</p>' +
@@ -99,10 +103,11 @@
             $(".message-content-info").append(senderMessageHtml);
             $(".message-content-info").append(chatbotMessageHtml);
 
-            // You can customize this function to update the UI based on your specific requirements
+            var messagesContainer = $(".message-content-info");
+            messagesContainer.scrollTop(messagesContainer.prop("scrollHeight"));
+            // Clear the message input
+            $("#messageText").val('');
         }
-
-
     });
 </script>
 

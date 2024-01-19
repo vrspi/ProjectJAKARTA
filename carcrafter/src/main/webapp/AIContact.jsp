@@ -5,17 +5,13 @@
 </jsp:include>
 <div class="col-lg-6 mx-auto mt-5">
     <div class="accordion" id="accordionExample">
-
         <div class="accordion-item">
             <div class="user-profile-card profile-message">
                 <div class="user-profile-card-header">
-                    <h4 class="user-profile-card-title">Messages</h4>
+                    <h4 class="user-profile-card-title">FAQ Chat</h4>
                     <div class="user-profile-card-header-right">
                         <div class="header-account">
                             <div class="dropdown">
-                                <div data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="assets/img/account/01.jpg" alt="">
-                                </div>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li><a class="dropdown-item" href="#"><i class="far fa-ban"></i> Block Chat</a></li>
                                     <li><a class="dropdown-item" href="#"><i class="far fa-message-slash"></i> Mute Chat</a></li>
@@ -31,7 +27,6 @@
 
                             <div class="message-content">
                                 <div class="message-content-info" id="message-content-info">
-
                                 </div>
                                 <div class="message-reply">
                                     <textarea cols="40" rows="3" class="form-control" id="messageText" placeholder="Your Message"></textarea>
@@ -68,12 +63,18 @@
         }
 
 
-        // Attach a click event handler to the "Send Message" button
         $("#sendMessageButton").click(function () {
             sendMessage();
         });
 
-        // Function to display the response in the UI
+        $("#messageText").keypress(function (event) {
+            if (event.which === 13) {
+                event.preventDefault();
+
+                sendMessage();
+            }
+        });
+
         function displayResponse(userMessage, chatbotResponse) {
             var senderMessageHtml = "<div class='message-item me'>"
                 + "<div class='message-description'>"
@@ -99,10 +100,7 @@
             messagesContainer.scrollTop(messagesContainer.prop("scrollHeight"));
             // Clear the message input
             $("#messageText").val('');
-
         }
-
-
     });
 </script>
 

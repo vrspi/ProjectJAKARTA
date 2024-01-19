@@ -25,7 +25,6 @@ public class SendMessageServlet extends HttpServlet {
         // Get the message from the request
         String userMessage = request.getParameter("message");
 
-        // Process the user's message (you can add your business logic here)
 
         // Retrieve FAQ data from the database
         HashMap<String, String> faqMap = new HashMap<>();

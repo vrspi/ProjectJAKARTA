@@ -25,9 +25,6 @@ import java.util.List;
 public class AIContactController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-        // Forward the request to the JSP
         request.getRequestDispatcher("AIContact.jsp").forward(request, response);
     }
 
