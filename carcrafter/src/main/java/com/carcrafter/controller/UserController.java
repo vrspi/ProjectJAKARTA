@@ -185,7 +185,7 @@ public class UserController extends HttpServlet {
     }
     private void handleUpdateProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        int userId = (int) ((UserProfile) session.getAttribute("user")).getId();
+        int userId = (int) session.getAttribute("id");
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String email = request.getParameter("email");
@@ -196,6 +196,13 @@ public class UserController extends HttpServlet {
             UserProfile updatedUser = userService.updateUserProfile(userId, firstName, lastName, email, phone, address);
             if (updatedUser != null) {
                 session.setAttribute("user",updatedUser);
+
+                session.setAttribute("FullName", updatedUser.getFirstName() + " " + updatedUser.getLastName());
+                session.setAttribute("FirstName", updatedUser.getFirstName());
+                session.setAttribute("LastName", updatedUser.getLastName());
+                session.setAttribute("Email", updatedUser.getEmail());
+                session.setAttribute("Phone", updatedUser.getPhone());
+                session.setAttribute("Address", updatedUser.getAddress());
                 session.setAttribute("successMessage", "Profile updated successfully.");
                 response.sendRedirect("Profile");
             } else {

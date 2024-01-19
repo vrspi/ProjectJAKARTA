@@ -96,7 +96,8 @@
                     </div>
                     <% }
                         session.removeAttribute("successMessageD");
-                        session.removeAttribute("errorMessageD");%>
+                        session.removeAttribute("errorMessageD");
+                    %>
                     <div class="col-lg-12">
                         <div class="user-profile-form">
 
