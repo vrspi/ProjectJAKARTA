@@ -7,7 +7,6 @@
 <body>
 <h2>Response from Car Crafter</h2>
 <%
-    // Get the API response from the request attribute
     String apiResponse = (String) request.getAttribute("apiResponse");
     if(apiResponse != null) {
 %>
