@@ -16,10 +16,9 @@
                         <img src="assets/img/team/CHIBANI Mohammed Amine.jpg" alt="CHIBANI Mohammed Amine">
                     </div>
                     <div class="team-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/moha.amine.1428921?mibextid=JRoKGi" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/i/flow/login?redirect_after_login=%2Fchibaniamine764" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/mohamed-amine-chibani-9a6645237?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                     <div class="team-content">
                         <div class="team-bio">
@@ -54,10 +53,8 @@
                         <img src="assets/img/team/BENNANI DOSSE Omar.jpg" alt="BENNANI DOSSE Omar">
                     </div>
                     <div class="team-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/omar.bennanidosse" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/omar-bennani-61226619a/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                     <div class="team-content">
                         <div class="team-bio">

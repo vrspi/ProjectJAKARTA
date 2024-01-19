@@ -10,6 +10,9 @@
                 <div class="user-profile-card-header">
                     <h4 class="user-profile-card-title">FAQ Chat</h4>
                     <div class="user-profile-card-header-right">
+
+                    <h4 class="user-profile-card-title">Messages</h4>
+                    <!--<div class="user-profile-card-header-right">
                         <div class="header-account">
                             <div class="dropdown">
                                 <ul class="dropdown-menu dropdown-menu-end">
@@ -19,7 +22,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
