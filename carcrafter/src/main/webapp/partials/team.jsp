@@ -73,10 +73,10 @@
                         <img src="assets/img/team/DAALA Khaireddine.jpg" alt="DAALA Khaireddine">
                     </div>
                     <div class="team-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/Vr.Spii" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/KhaireddinneD" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/khaireddinedalaa/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/channel/UC7nwrc1WDsgvNp9Rzy_uCVg" target="_blank"><i class="fab fa-youtube"></i></a>
                     </div>
                     <div class="team-content">
                         <div class="team-bio">
@@ -92,10 +92,10 @@
                         <img src="assets/img/team/KADI Mohammed.jpg" alt="KADI Mohammed">
                     </div>
                     <div class="team-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/MO.KADI.22/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/mo_kadi_piratage?igsh=cTRwYm80azg3Yzdn" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/mohammed-kadi-b27596294/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/channel/UC0Du-Wo6Rl3WYLv1EFgxO_w" target="_blank"><i class="fab fa-youtube"></i></a>
                     </div>
                     <div class="team-content">
                         <div class="team-bio">
@@ -111,10 +111,10 @@
                         <img src="assets/img/team/ABBAOUI Khalil.jpg" alt="ABBAOUI Khalil">
                     </div>
                     <div class="team-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/khalil.abbaoui.3/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+
+                        <a href="https://www.linkedin.com/in/khalil-abbaoui-537873268/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+
                     </div>
                     <div class="team-content">
                         <div class="team-bio">
@@ -130,10 +130,10 @@
                         <img src="assets/img/team/HASHAS Jad El Mawla.jpg" alt="HASHAS Jad El Mawla">
                     </div>
                     <div class="team-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://web.facebook.com/profile.php?id=100018533010518&locale=fr_FR" target="_blank"><i class="fab fa-facebook-f"></i></a>
+
+                        <a href="https://www.linkedin.com/in/hashas-jad-el-mawla/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+
                     </div>
                     <div class="team-content">
                         <div class="team-bio">
