@@ -163,7 +163,7 @@ public class CarService {
                     String uploadDirectory = "C:\\Users\\MO KADI\\Desktop\\ProjectJAKARTA\\carcrafter\\src\\main\\webapp\\assets\\upload\\img\\car";
 
                     // chemin server
-                    //String uploadDirectory = getServletContext().getRealPath("/assets/upload/img/car");
+                   // String uploadDirectory = getServletContext().getRealPath("/assets/upload/img/car");
 
                     Path uploadPath = Paths.get(uploadDirectory, hashedFileName);
 
